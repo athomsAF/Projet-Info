@@ -10,11 +10,8 @@ namespace projects
         public byte[] Header { get; set; }
         public byte[] ImageInfo { get; set; }
         public byte[] ImageByte { get; set; }
-
         public Pixel[,] ImagePixel { get; set;}
-
         public int[] Dimensions {get; set; }
-
         public string Type {get; set;}
         public int Taille {get; set;}
         public int Offset{get; set;}
@@ -51,7 +48,7 @@ namespace projects
             {
                 for (int j = 0; j < Dimensions[1]; j++)
                 {
-                    var= this.ImageByte[i*(Dimensions[0]+3)+j*3];
+                    var=  i*(Dimensions[0]+3)+j*3; // ancien : this.ImageByte[i*(Dimensions[0]+3)+j*3]; je ne pense pas que ça aie un sens de chercher un byte depuis la liste
                     matrix[i, j] = new Pixel(this.ImageByte[var], this.ImageByte[var+1], this.ImageByte[var+2]);
                 }
             }
@@ -61,6 +58,7 @@ namespace projects
                 "Données Headers : Type : " + this.Type + " , Taille : " + this.Taille + " octets , Offset : " + this.Offset + "\n" +
                 "Données ImageInfo : Hauteur " + this.Dimensions[0] + " pi , Largeur : " + this.Dimensions[1] + " pi , Nbp : " + this.BitsParCouleur
             );
+
             //write all value in matrix
             WriteLine(matrix[Dimensions[0]-1,Dimensions[1]-1]);
         }
