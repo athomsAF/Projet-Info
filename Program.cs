@@ -24,9 +24,4 @@ class Program
         Pixel pixel = new Pixel((byte) 0,(byte) 0,(byte) 0);
     }
     
-    public static int ConvertByteArrayToInt(byte[] val)
-    {
-        Console.WriteLine(String.Join(',', val));
-        return BitConverter.ToInt32(val);
-    }
 }
