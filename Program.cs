@@ -22,6 +22,7 @@ class Program
         // Process.Start(@".\imagesIN\Test.bmp");
         
         Pixel pixel = new Pixel((byte) 0,(byte) 0,(byte) 0);
+
     }
     
 }
