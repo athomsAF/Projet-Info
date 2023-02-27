@@ -32,7 +32,7 @@ namespace projects
             this.Dimensions[0] = ToInt32(this.ImageInfo.Skip(8).Take(4).ToArray()); // Hauteur Image : bytes de 8 a 12 de ImageInfo
 
             // Initilaisation of the others attributes
-            this.Type=(this.Header[0] == (byte) 66 && this.Header[1] == (byte) 77)? "BMP" : "Autre";
+            this.Type = (this.Header[0] == (byte) 66 && this.Header[1] == (byte) 77)? "BMP" : "Autre";
 
             this.Size = ToInt32(this.Header.Skip(2).Take(4).ToArray());
 
@@ -66,8 +66,55 @@ namespace projects
 
         public void FromImageToFile(string file)
         {
-            byte[] data = this.Header.Concat(this.ImageInfo.Concat(this.ImageByte).ToArray()).ToArray();
-            // File.WriteAllBytes("imagesOut/"+file+".bmp", );
+            // Update the header data with the final value of ImagePixel
+            this.Dimensions = new int[2] {this.ImagePixel.GetLength(1), this.ImagePixel.GetLength(0)};
+
+            this.Size = 3 * (this.Dimensions[1] + 1) * this.Dimensions[0]; // Add One for the 3 bytes used to separate each line
+
+            int index = 2;
+            foreach(byte size in ConvertirIntToEndian(this.Size, 4))
+            {
+                this.Header[index] = size;
+                index++;
+            }
+
+            // Update Image Info with final values
+
+            index = 4;
+            foreach(byte width in ConvertirIntToEndian(Dimensions[1], 4))
+            {
+                this.ImageInfo[index] = width;
+                index++;
+            }
+
+            foreach(byte height in ConvertirIntToEndian(Dimensions[0], 4))
+            {
+                this.Header[index] = height;
+                index++;
+            }
+
+            this.ImageByte = new byte[(this.Dimensions[1]+1) * this.Dimensions[0] * 3];
+
+            for(int i = 0 ; i < this.Dimensions[1]; i++)
+            {
+                // Line with RGB RGB RGB ...
+                for(int j = 0; j < this.Dimensions[0]; j++)
+                {
+                    this.ImageByte[i*j*3] = ConvertirIntToEndian(this.ImagePixel[i,j].R, 1)[0];
+                    this.ImageByte[i*j*3+1] = ConvertirIntToEndian(this.ImagePixel[i,j].G, 1)[0];
+                    this.ImageByte[i*j*3+2] = ConvertirIntToEndian(this.ImagePixel[i,j].B, 1)[0];
+                }
+
+                // End of Line RGB 000
+                this.ImageByte[(i+1)*(this.Dimensions[0]-1)*3] = ConvertirIntToEndian(0,1)[0];
+                this.ImageByte[(i+1)*(this.Dimensions[0]-1)*3+1] = ConvertirIntToEndian(0,1)[0];
+                this.ImageByte[(i+1)*(this.Dimensions[0]-1)*3+2] = ConvertirIntToEndian(0,1)[0];
+            }
+
+            // Concat all data in a signle line of bytes
+            byte[] data = this.Header.Concat(this.ImageInfo.Concat(this.ImageByte)).ToArray();
+
+            File.WriteAllBytes("imagesOut/"+file+".bmp", data);
 
             Console.WriteLine("Saved", data);
         }
