@@ -6,11 +6,15 @@ namespace projects
 {
     public class BitMap
     {
-        // Header information
+        // Header informations
         public byte[] Header { get; set; }
         public byte[] ImageInfo { get; set; }
         public byte[] ImageByte { get; set; }
+
+        // Final Image in pixels : R G B
         public Pixel[,] ImagePixel { get; set;}
+
+        // Image Properties
         public int[] Dimensions {get; set; }
         public string Type {get; set;}
         public int Size {get; set;}
@@ -19,157 +23,196 @@ namespace projects
 
         public BitMap(string Path)
         {
+            // File content
             byte[] myfile = File.ReadAllBytes("imagesIN/"+Path+".bmp");
-            //
+
+            // Image data in bytes
             this.Header= myfile.Take(14).ToArray();
             this.ImageInfo= myfile.Where((x, i) => i >= 14 && i < 54).ToArray();
             this.ImageByte = myfile.Skip(54).ToArray();
 
-            // Creation of the array of the dimensions of the image
+            // Height / Witdh of the image
             this.Dimensions = new int[2];
-            //We takes the 4 bytes of the width and height of the image
-            this.Dimensions[1] = ToInt32(this.ImageInfo.Skip(4).Take(4).ToArray()); // Largeur image : bytes de 4 a 8 de ImageInfo
-            this.Dimensions[0] = ToInt32(this.ImageInfo.Skip(8).Take(4).ToArray()); // Hauteur Image : bytes de 8 a 12 de ImageInfo
+            this.Dimensions[1] = ToInt32(this.ImageInfo.Skip(4).Take(4).ToArray()); // Width image : bytes de 4 a 8 de ImageInfo
+            this.Dimensions[0] = ToInt32(this.ImageInfo.Skip(8).Take(4).ToArray()); // Height Image : bytes de 8 a 12 de ImageInfo
 
-            // Initilaisation of the others attributes
+            // Other images properties
             this.Type = (this.Header[0] == (byte) 66 && this.Header[1] == (byte) 77)? "BMP" : "Autre";
-
             this.Size = ToInt32(this.Header.Skip(2).Take(4).ToArray());
-
             this.Offset = ToInt32(this.Header.Skip(10).Take(4).ToArray());
-
             this.BitsParCouleur = ToInt16(this.ImageInfo.Skip(14).Take(2).ToArray());
 
-            // Conversion of the byte values of the image to a more exploitable image with rgb values
-            
-            Pixel[,] matrix = new Pixel[Dimensions[0], Dimensions[1]];
+            // Convert the list ImageByte to a matrix of pixels ImagePixel
+            this.ImagePixel = new Pixel[Dimensions[0], Dimensions[1]];
             var var = 0;
             for (int i = 0; i < Dimensions[0]; i++)
             {
                 for (int j = 0; j < Dimensions[1]; j++)
                 {
-                    var=  i*(Dimensions[0]+3)+j*3; // ancien : this.ImageByte[i*(Dimensions[0]+3)+j*3]; je ne pense pas que ça aie un sens de chercher un byte depuis la liste
-                    matrix[i, j] = new Pixel(this.ImageByte[var], this.ImageByte[var+1], this.ImageByte[var+2]);
+                    var =  (i * Dimensions[0] + j) * 3; 
+                    this.ImagePixel[Dimensions[0] - i - 1, j] = new Pixel(this.ImageByte[var], this.ImageByte[var+1], this.ImageByte[var+2]); // Chain of 3 pixels : R G B
                 }
             }
 
+            // Write down the loaded image properties
             Console.WriteLine(
                 "Nouvelle image chargée : " + Path + "\n" +
                 "Données Headers : Type : " + this.Type + " , Size : " + this.Size + " octets , Offset : " + this.Offset + "\n" +
                 "Données ImageInfo : Hauteur " + this.Dimensions[0] + " pi , Largeur : " + this.Dimensions[1] + " pi , Nbp : " + this.BitsParCouleur
             );
-
-            //write all value in matrix
-            WriteLine(matrix[Dimensions[0]-1,Dimensions[1]-1]);
         }
 
-
+        /// <summary>
+        /// Save ImagePixel's value into a file  by updating the header with the new dimensions / file size / and all the byte values of ImagePixel
+        /// Default saving folder : imagesOUT 
+        /// </summary>
+        /// <param name="file">Name of the file</param>
         public void FromImageToFile(string file)
         {
             // Update the header data with the final value of ImagePixel
-            this.Dimensions = new int[2] {this.ImagePixel.GetLength(1), this.ImagePixel.GetLength(0)};
+            this.Dimensions = new int[2] { this.ImagePixel.GetLength(0), this.ImagePixel.GetLength(1) };
 
-            this.Size = 3 * (this.Dimensions[1] + 1) * this.Dimensions[0]; // Add One for the 3 bytes used to separate each line
+            this.Size = 3 * this.Dimensions[0] * this.Dimensions[1] + 54 ; // Size of the image * 3 + header size (54 bytes)
 
             int index = 2;
-            foreach(byte size in ConvertirIntToEndian(this.Size, 4))
+            foreach (byte size in ConvertirIntToEndian(this.Size, 4))
             {
                 this.Header[index] = size;
                 index++;
             }
 
             // Update Image Info with final values
-
             index = 4;
-            foreach(byte width in ConvertirIntToEndian(Dimensions[1], 4))
+            foreach (byte InitWidth in ConvertirIntToEndian(Dimensions[1], 4))
             {
-                this.ImageInfo[index] = width;
+                this.ImageInfo[index] = InitWidth;
                 index++;
             }
 
-            foreach(byte height in ConvertirIntToEndian(Dimensions[0], 4))
+            foreach (byte InitHeigth in ConvertirIntToEndian(Dimensions[0], 4))
             {
-                this.Header[index] = height;
+                this.ImageInfo[index] = InitHeigth;
                 index++;
             }
 
-            this.ImageByte = new byte[(this.Dimensions[1]+1) * this.Dimensions[0] * 3];
-
-            for(int i = 0 ; i < this.Dimensions[1]; i++)
+            // Convert ImagePixel to ImageByte
+            List<byte> image = new List<byte>();
+            for (int i = 0; i < Dimensions[0]; i++)
             {
-                // Line with RGB RGB RGB ...
-                for(int j = 0; j < this.Dimensions[0]; j++)
+                for (int j = 0; j < Dimensions[1]; j++)
                 {
-                    this.ImageByte[i*j*3] = ConvertirIntToEndian(this.ImagePixel[i,j].R, 1)[0];
-                    this.ImageByte[i*j*3+1] = ConvertirIntToEndian(this.ImagePixel[i,j].G, 1)[0];
-                    this.ImageByte[i*j*3+2] = ConvertirIntToEndian(this.ImagePixel[i,j].B, 1)[0];
+                    image.Add(this.ImagePixel[Dimensions[0] - i - 1,j].R);
+                    image.Add(this.ImagePixel[Dimensions[0] - i - 1, j].G);
+                    image.Add(this.ImagePixel[Dimensions[0] - i - 1, j].B);
                 }
 
-                // End of Line RGB 000
-                this.ImageByte[(i+1)*(this.Dimensions[0]-1)*3] = ConvertirIntToEndian(0,1)[0];
-                this.ImageByte[(i+1)*(this.Dimensions[0]-1)*3+1] = ConvertirIntToEndian(0,1)[0];
-                this.ImageByte[(i+1)*(this.Dimensions[0]-1)*3+2] = ConvertirIntToEndian(0,1)[0];
-            }
+                // Add the right ammount of null bytes to have a line length multpiple of 4
+                if (Dimensions[1] % 4 != 0 && Dimensions[1] % 4 != 2)
+                {
+                    for (int k = 0; k < 3 -  Dimensions[1] % 4; k++)
+                    {
+                        image.Add((byte)0);
+                        image.Add((byte)0);
+                        image.Add((byte)0);
+                    }
+                }
 
-            // Concat all data in a signle line of bytes
+                // Parcicular case
+                if (Dimensions[1] % 4 == 2)
+                {
+                    image.Add((byte)0);
+                    image.Add((byte)0);
+                }
+
+            }
+            this.ImageByte = image.ToArray();
+
+            // Concat all data in a signle line of bytes & create the new bmp file
             byte[] data = this.Header.Concat(this.ImageInfo.Concat(this.ImageByte)).ToArray();
 
-            File.WriteAllBytes("imagesOut/"+file+".bmp", data);
+            File.WriteAllBytes($"imagesOUT/{file}.bmp", data);
 
-            Console.WriteLine("Saved", data);
+            Console.WriteLine("New Image Saved !");
         }
-
         
-        public Pixel[,] Rotation(int angle)
+        /// <summary>
+        /// Rotate ImagePixel by a certain angle counter clockwise and save the resulting matrix in ImagePixel
+        /// </summary>
+        /// <param name="angle">Angle of rotation in deg</param>
+        public void Rotation(int angle)
         {
-            int width = this.ImageByte.GetLength(1);
-            int height = this.ImageByte.GetLength(0);
-            int[] center  = new int[2] {width/2-1, height/2-1}; // Colonne : x / Ligne : y | 0,0
+            double[,] MatriceChangementBaseHorraire = Program.Rotation(angle-90);
+            double[,] MatriceChangementBaseAntiHorraire = Program.Rotation((-1) * (angle-90));
 
-            // Get corners position
-            int[] CoinSupGb = ChangementBase(center[0], center[1], 0, 0, angle);
-            int[] CoinSupDb = ChangementBase(center[0], center[1], width - 1, 0, angle);
-            int[] CoinInfGb = ChangementBase(center[0],center[1] , 0 , height - 1, angle);
-            int[] CoinInfDb = ChangementBase(center[0], center[1], width - 1, height - 1, angle);
+            int InitHeigth = this.ImagePixel.GetLength(0);
+            int InitWidth = this.ImagePixel.GetLength(1);
 
-            int MaxHeight = Enumerable.Max(new int[4] {CoinSupGb[0], CoinSupDb[0], CoinInfGb[0], CoinInfDb[0]});
-            int MinHeight = Enumerable.Min(new int[4] {CoinSupGb[0], CoinSupDb[0], CoinInfGb[0], CoinInfDb[0]});
-            int MaxWidth = Enumerable.Max(new int[4] {CoinSupGb[1], CoinSupDb[1], CoinInfGb[1], CoinInfDb[1]});
-            int MinWidth = Enumerable.Min(new int[4] {CoinSupGb[1], CoinSupDb[1], CoinInfGb[1], CoinInfDb[1]});
+            int[] InitCenter = new int[2] { InitHeigth / 2 - 1, InitWidth / 2 - 1 }; // Colonne : x / Ligne : y | 0,0
 
-            Pixel[,] rotation = new Pixel[MaxHeight - MinHeight, MaxWidth - MinWidth];
-            int[] center2  = new int[2] {rotation.GetLength(1)/2-1, rotation.GetLength(0)/2-1}; // Colonne : x / Ligne : y | 0,0
+            // Get opposite corners position
+            int[] CoinSupGb = ChangementBase(InitCenter[0], InitCenter[1], 0, 0, MatriceChangementBaseHorraire);
+            int[] CoinSupDb = ChangementBase(InitCenter[0], InitCenter[1], 0, InitWidth - 1, MatriceChangementBaseHorraire);
 
-            for(int i = 0; i < height; i++)
+            // Determine the new dimensions of the image using the previous result
+            int MaxHeight = Math.Max(Math.Abs(CoinSupGb[0]) + 1, Math.Abs(CoinSupDb[0]) + 1);
+            int MaxWidth = Math.Max(Math.Abs(CoinSupGb[1]) + 1, Math.Abs(CoinSupDb[1]) + 1);
+
+            // Create the new matrix of pixels
+            Pixel[,] Rotation = new Pixel[2 * MaxHeight, 2 * MaxWidth];
+            int[] RotationCenter = new int[2] { Rotation.GetLength(0) / 2 - 1, Rotation.GetLength(1) / 2 - 1 }; // Colonne : x / Ligne : y | 0,0
+
+            // For each pixel in the new matrix, calulate the corresponding pixel in the inital matrix by using a base changment
+            for (int newLine = 0; newLine < Rotation.GetLength(0); newLine++)
             {
-                for(int j = 0; j < width; j++)
+                for (int newColumn = 0; newColumn < Rotation.GetLength(1); newColumn++)
                 {
-                    // Coordonnées base 1 : j : x , i : y
-                    // hf1 = d1*cos(angle)
-                    // hf2 = d2*cos(angle)
-                    int[] cb = ChangementBase(center[0], center[1], j, i, angle); 
-                    cb[0] += center2[0];
-                    cb[1] += center2[1];
+                    int[] RotationCoordinates = ChangementBase(RotationCenter[0], RotationCenter[1], newLine, newColumn, MatriceChangementBaseAntiHorraire);
+                    RotationCoordinates[0] += InitCenter[0]; // Line
+                    RotationCoordinates[1] += InitCenter[1]; // Column
 
-                    rotation[cb[1], cb[0]] = this.ImagePixel[i,j];
+                    if (!(RotationCoordinates[0] < 0 || RotationCoordinates[1] < 0 || RotationCoordinates[0] >= this.ImagePixel.GetLength(0) || RotationCoordinates[1] >= this.ImagePixel.GetLength(1)))
+                    {
+                        Rotation[newLine, newColumn] = this.ImagePixel[RotationCoordinates[0], Dimensions[1] - RotationCoordinates[1] - 1]; //this.ImagePixel[RotationCoordinates[0], RotationCoordinates[1]]; 
+                    }
+                    else
+                    {
+                        Rotation[newLine, newColumn] = new Pixel((byte)0, (byte)0, (byte)0);
+                    }
+
                 }
             }
 
-            return rotation;
+            // Save the result in ImagePixel
+            this.ImagePixel = Rotation;
         }
 
-        public int[] ChangementBase(int centrex, int centrey, int x, int y, int angle)
+        /// <summary>
+        /// Calculate the new coordinates of a point by using a base changment
+        /// </summary>
+        /// <param name="centerLine">Center row coordinate of the initial matrix</param>
+        /// <param name="centerColumn">Center column of the initial matrix</param>
+        /// <param name="line">Row coordinate of the point to be calculated</param>
+        /// <param name="column">Column of the point to be calculated</param>
+        /// <param name="BaseChangmentMatrix">Matrix used to change the base</param>
+        /// <returns>Projected values of the row / column in a new base (!!! You sould add the new matrix center's coordinates to get the correct values)</returns>
+        public int[] ChangementBase(int centerLine, int centerColumn, double line, double column, double[,] BaseChangmentMatrix)
         {
-            
-            int angleRad = (int) (angle * Math.PI) / 180;
-            int distFromCenter = (int) Math.Sqrt(Math.Pow((x-centrex),2) + Math.Pow((y-centrey),2));            //r = √(x2 – x1)2 + (y2 – y1)2
-            int newx = (int) (Math.Cos(angle) * (x - centrex) + Math.Sin(angleRad) * (y - centrey));            //e'1 = cos(α) e1 + sin(α) e2 ;
-            int newy = (int) (- Math.Sin(angle) * (x - centrex) + Math.Cos(angle) * (y - centrey));             //e'2 = –sin(α) e1 + cos(α) e2 ;
-            
-            return new int[2] {newx, newy};
+            /* Base changment :
+                line' = cos(α) line + sin(α) column 
+                column' = –sin(α) line + cos(α) column
+
+                |row'| = |cos (α)  sin (α)| * |line + centerline    |
+                |col'| = |-sin(α)  cos (α)|   |column + centercolumn|
+            */
+            int[,] coordinates = Program.MultiplicationMatrice(BaseChangmentMatrix, new double[2,1] {{column - centerColumn},{line - centerLine}});
+            return new int[2] {coordinates[0,0], coordinates[1,0]};
         }
         
-
+        /// <summary>
+        /// Convert a byte array to an int
+        /// </summary>
+        /// <param name="tab">Byte array to be converted</param>
+        /// <returns>Resulting integer</returns>
         public int ConvertirEndianToInt(byte[] tab)
         {
             int value = 0;
@@ -182,7 +225,12 @@ namespace projects
             return value;
         }
 
-        //encode int to little endian in a function for a size of n bites
+        /// <summary>
+        /// Convert an int to a byte array
+        /// </summary>
+        /// <param name="val">Integer to be converted</param>
+        /// <param name="size">Size of the resulting array</param>
+        /// <returns>Resulting array</returns>
         public byte[] ConvertirIntToEndian(int val, int size)
         {
             byte[] bytes = new byte[size];
