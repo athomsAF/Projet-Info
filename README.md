@@ -10,6 +10,8 @@
    1. [ ] Traitement simple d’une image : nuance gris / noir et blanc
    1. [x] Sauvegarde fichier
    
+2. (TD 1 - 2) Lire et écrire une image (à partir d’un format .bmp)
+   2. [x] Création de la structure BitMap
 2. (TD 3) Traiter une image
    2. [x] Rotation quelconque
    2. [ ] Agrandissement
