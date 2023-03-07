@@ -49,7 +49,7 @@ namespace projects
             {
                 for (int j = 0; j < Dimensions[1]; j++)
                 {
-                    var =  (i * Dimensions[0] + j) * 3; 
+                    var =  (i * Dimensions[1] + j) * 3; 
                     this.ImagePixel[Dimensions[0] - i - 1, j] = new Pixel(this.ImageByte[var], this.ImageByte[var+1], this.ImageByte[var+2]); // Chain of 3 pixels : R G B
                 }
             }
@@ -101,9 +101,10 @@ namespace projects
             {
                 for (int j = 0; j < Dimensions[1]; j++)
                 {
-                    image.Add(this.ImagePixel[Dimensions[0] - i - 1,j].R);
-                    image.Add(this.ImagePixel[Dimensions[0] - i - 1, j].G);
                     image.Add(this.ImagePixel[Dimensions[0] - i - 1, j].B);
+                    image.Add(this.ImagePixel[Dimensions[0] - i - 1, j].G);
+                    image.Add(this.ImagePixel[Dimensions[0] - i - 1,j].R);
+
                 }
 
                 // Add the right ammount of null bytes to have a line length multpiple of 4
@@ -135,6 +136,66 @@ namespace projects
             Console.WriteLine("New Image Saved !");
         }
         
+        public void NuanceGris(int force = 255)
+        {
+            Pixel[,] imageFinale = new Pixel[Dimensions[0], Dimensions[1]];
+
+            for(int i = 0; i < Dimensions[0]; i++)
+            {
+                for(int j = 0; j < Dimensions[1]; j++)
+                {
+                    int moyennePixel = (int) ((int) this.ImagePixel[i,j].R + (int) this.ImagePixel[i,j].G + (int) this.ImagePixel[i,j].B)/3;
+                    moyennePixel *= force;
+                    moyennePixel /= 255;
+
+                    if(moyennePixel > 255)
+                    {
+                        moyennePixel = 255;
+                    }
+
+                    imageFinale[i,j] = new Pixel((byte) moyennePixel,(byte) moyennePixel, (byte) moyennePixel);
+                }
+            }
+
+            this.ImagePixel = imageFinale;
+        }
+
+        public void NoirEtBlanc(int force = 125)
+        {
+            Pixel[,] imageFinale = new Pixel[Dimensions[0], Dimensions[1]];
+
+            for(int i = 0; i < Dimensions[0]; i++)
+            {
+                for(int j = 0; j < Dimensions[1]; j++)
+                {   
+                    int moyennePixel = (int) ((int) this.ImagePixel[i,j].R + (int) this.ImagePixel[i,j].G + (int) this.ImagePixel[i,j].B)/3;
+                    if(moyennePixel < Math.Abs(force))
+                    {
+                        imageFinale[i,j] = new Pixel((byte) 0,(byte) 0, (byte) 0);
+                    }
+                    else
+                    {
+                        imageFinale[i,j] = new Pixel((byte) 255, (byte) 255, (byte) 255);
+                    }
+                }
+            }
+            this.ImagePixel = imageFinale;
+        }
+
+        public void ChoixChromatique(int rouge = 255, int vert = 255, int bleu = 255)
+        {
+            Pixel[,] imageFinale = new Pixel[Dimensions[0], Dimensions[1]];
+
+            for(int i = 0; i < Dimensions[0]; i++)
+            {
+                for(int j = 0; j < Dimensions[1]; j++)
+                {   
+                    imageFinale[i,j] = new Pixel((byte) (int)(((int) this.ImagePixel[i,j].R) * (rouge/255)), (byte) (int) (((int) this.ImagePixel[i,j].G) * (vert/255)), (byte) (int) (((int) this.ImagePixel[i,j].B) * (bleu/255)));
+                }
+            }
+            this.ImagePixel = imageFinale;
+        }
+
         /// <summary>
         /// Rotate ImagePixel by a certain angle counter clockwise and save the resulting matrix in ImagePixel
         /// </summary>
@@ -186,7 +247,6 @@ namespace projects
             this.ImagePixel = Rotation;
         }
 
-
         ///<summary> agrandissement de l'image </summary>
         /// 
         /// 
@@ -205,8 +265,6 @@ namespace projects
             }
             this.ImagePixel = AGImage;
         }
-
-
 
         /// <summary>
         /// Calculate the new coordinates of a point by using a base changment
