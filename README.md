@@ -7,7 +7,7 @@
 1. (TD 1 - 2) Lire et écrire une image (à partir d’un format .bmp)
    1. [x] Création de la structure BitMap
    1. [x] Lire une image dans un format donné (Bitmap)
-   1. [ ] Traitement simple d’une image : nuance gris / noir et blanc
+   1. [x] Traitement simple d’une image : nuance gris / noir et blanc
    1. [x] Sauvegarde fichier
    
 2. (TD 3) Traiter une image
@@ -29,4 +29,5 @@
    5. [ ] Compression de Huffman 
 
 6. Innovation
+   6. [x] Choix chromatique
    6. [ ] Libre
