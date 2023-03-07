@@ -12,7 +12,7 @@
    
 2. (TD 3) Traiter une image
    2. [x] Rotation quelconque
-   2. [ ] Agrandissement
+   2. [x] Agrandissement
 
 3. (TD 4): Filtre générique (matrice de convolution)
    3. [ ] Détection de contour

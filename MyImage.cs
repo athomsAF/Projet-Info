@@ -186,6 +186,28 @@ namespace projects
             this.ImagePixel = Rotation;
         }
 
+
+        ///<summary> agrandissement de l'image </summary>
+        /// 
+        /// 
+        public void Agrandissement(int coeffAG){
+            int height = Convert.ToUInt16( this.ImagePixel.GetLength(0)* coeffAG);
+            int width = Convert.ToUInt16( this.ImagePixel.GetLength(1)* coeffAG);
+            Pixel[,] AGImage = new Pixel[height,width];
+            for (int newLine = 0; newLine < height; newLine++)
+            {
+                for (int newColumn = 0; newColumn < width; newColumn++)
+                {
+                    uint oldx = (uint)(newLine / coeffAG);
+                    uint oldy = (uint)(newColumn / coeffAG);
+                    AGImage[newLine, newColumn] = this.ImagePixel[oldx,oldy]; //this.ImagePixel[RotationCoordinates[0], RotationCoordinates[1]]; 
+                }
+            }
+            this.ImagePixel = AGImage;
+        }
+
+
+
         /// <summary>
         /// Calculate the new coordinates of a point by using a base changment
         /// </summary>
@@ -200,11 +222,10 @@ namespace projects
             /* Base changment :
                 line' = cos(α) line + sin(α) column 
                 column' = –sin(α) line + cos(α) column
-
                 |row'| = |cos (α)  sin (α)| * |line + centerline    |
                 |col'| = |-sin(α)  cos (α)|   |column + centercolumn|
             */
-            int[,] coordinates = Program.MultiplicationMatrice(BaseChangmentMatrix, new double[2,1] {{column - centerColumn},{line - centerLine}});
+            int[,] coordinates = Program.MultiplicationMatriceint(BaseChangmentMatrix, new double[2,1] {{column - centerColumn},{line - centerLine}});
             return new int[2] {coordinates[0,0], coordinates[1,0]};
         }
         
@@ -254,5 +275,3 @@ namespace projects
         }
     }
 }
-
-

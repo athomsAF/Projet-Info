@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 
 namespace projects;
-public class Program
+class Program
 {
     static void Main(string[] args)
     {
@@ -13,27 +13,30 @@ public class Program
         
         BitMap[] IMAGES = files.Select(f => new BitMap(f)).ToArray();
 
-        AfficherMatriceByteRouge(IMAGES[0].ImagePixel);
+        Pixel pixel = new Pixel((byte) 0,(byte) 0,(byte) 0);
         IMAGES[0].Rotation(20);
         AfficherMatriceByteRouge(IMAGES[0].ImagePixel);
-        IMAGES[0].FromImageToFile("TestRot20");
-
-        /*
-
-
-        Pixel pixel = new Pixel((byte) 0,(byte) 0,(byte) 0);
-        Console.WriteLine(string.Join(" ", Rotation(0).Cast<double>()));
-        int[] matrice = IMAGES[0].Dimensions;
-        //create a new matrice 2 by 3 with matrice[0], - matrice[1] ; matrice[0], matrice[1] ; -matrice[0], matrice[1]
-        double [,] newMatrice = { {-matrice[0],matrice[0], matrice[0]}, {matrice[1],matrice[1], -matrice[1]} };
-
-        double[,] results =  MultiplicationMatrice(Rotation(45),(double[,])newMatrice);
-        Console.WriteLine(string.Join(" ", results.Cast<double>()));
-        */
-        
-
+        IMAGES[0].Agrandissement(2);
+        AfficherMatriceByteRouge(IMAGES[0].ImagePixel);
     }
-    public static int[,] MultiplicationMatrice(double[,] matrice1, double[,] matrice2)
+
+    static Pixel[,] MatriceRotation(BitMap image, uint angle){
+        int[] dimension = image.Dimensions;
+        //create a new matrice 2 by 3 with matrice[0], - matrice[1] ; matrice[0], matrice[1] ; -matrice[0], matrice[1]
+        double [,] newMatrice = { {-dimension[0],dimension[0], dimension[0]}, {dimension[1],dimension[1], -dimension[1]} };
+
+        double[,] results =  MultiplicationMatrice(Rotation(angle),(double[,])newMatrice);
+        // Console.WriteLine(string.Join(" ", results.Cast<double>()));
+        //get max of the first three elements of results
+        uint max = Convert.ToUInt16 (results.Cast<double>().Take(3).Max());
+        //get max of the rest
+        uint max2 = Convert.ToUInt16 (results.Cast<double>().Skip(3).Max());
+
+        return new Pixel[max,max2];
+    }
+
+
+    public static int[,] MultiplicationMatriceint(double[,] matrice1, double[,] matrice2)
     {
         int[,] matrice = new int[matrice1.GetLength(0), matrice2.GetLength(1)];
         for(int i = 0; i < matrice1.GetLength(0); i++)
@@ -43,6 +46,22 @@ public class Program
                 for(int k = 0; k < matrice1.GetLength(1); k++)
                 {
                     matrice[i,j] += (int) (matrice1[i,k] * matrice2[k,j]);
+                }
+            }
+        }
+        return matrice;
+    }
+
+    static double[,] MultiplicationMatrice(double[,] matrice1, double[,] matrice2)
+    {
+        double[,] matrice = new double[matrice1.GetLength(0), matrice2.GetLength(1)];
+        for(int i = 0; i < matrice1.GetLength(0); i++)
+        {
+            for(int j = 0; j < matrice2.GetLength(1); j++)
+            {
+                for(int k = 0; k < matrice1.GetLength(1); k++)
+                {
+                    matrice[i,j] += matrice1[i,k] * matrice2[k,j];
                 }
             }
         }
