@@ -11,23 +11,23 @@
    1. [x] Sauvegarde fichier
    
 2. (TD 3) Traiter une image
-   2. [x] Rotation quelconque
+   1. [x] Rotation quelconque
    2. [x] Agrandissement
 
 3. (TD 4): Filtre générique (matrice de convolution)
-   3. [ ] Détection de contour
-   3. [ ] Renforcement des bords
-   3. [ ] Flou
-   3. [ ] Repoussage
+   1. [x] Détection de contour
+   2. [x] Renforcement des bords
+   3. [x] Flou
+   4. [x] Repoussage
    
 4. (TD 5) Créer ou extraire une image nouvelle
-   4. [ ] Créer une image décrivant une fractale
-   4. [ ] Coder et Décoder une image dans une image (stéganographie)
+   1. [ ] Créer une image décrivant une fractale
+   2. [ ] Coder et Décoder une image dans une image (stéganographie)
 
 5. (TD 6 - 7) Implémentation des algorithmes suivants
-   5. [ ] Compression de QuadTree 
-   5. [ ] Compression de Huffman 
+   1. [ ] Compression de QuadTree 
+   2. [ ] Compression de Huffman 
 
 6. Innovation
-   6. [x] Choix chromatique
-   6. [ ] Libre
+   1. [x] Choix chromatique
+   2. [ ] Libre

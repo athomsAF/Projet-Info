@@ -14,36 +14,49 @@ namespace projects{
             BitMap[] IMAGES = files.Select(f => new BitMap(f)).ToArray();
 
 
-            IMAGES[1].ChoixChromatique(255, 0 , 0);
-            IMAGES[1].FromImageToFile("gris");
-            /*
-            Pixel pixel = new Pixel((byte) 0,(byte) 0,(byte) 0);
-            IMAGES[0].Rotation(20);
-            AfficherMatriceByteRouge(IMAGES[0].ImagePixel);
-            IMAGES[0].Agrandissement(2);
-            AfficherMatriceByteRouge(IMAGES[0].ImagePixel);
+            Pixel[,] image = IMAGES[0].ImagePixel;
+            AfficherMatriceByteRouge(image);
+            int[,]matrice = new int[3,3]{{1,2,1},{2,5,2},{1,2,1}};
+
+            AfficherMatriceByteRouge(convolution(image,matrice));
+
         }
 
-        static Pixel[,] MatriceRotation(BitMap image, uint angle){
-            int[] dimension = image.Dimensions;
-            Console.WriteLine(string.Join(" ", Rotation(0).Cast<double>()));
-            int[] matrice = IMAGES[0].Dimensions;
-            //create a new matrice 2 by 3 with matrice[0], - matrice[1] ; matrice[0], matrice[1] ; -matrice[0], matrice[1]
-            double [,] newMatrice = { {-dimension[0],dimension[0], dimension[0]}, {dimension[1],dimension[1], -dimension[1]} };
-            double [,] newMatrice = { {-matrice[0],matrice[0], matrice[0]}, {matrice[1],matrice[1], -matrice[1]} };
-
-            double[,] results =  MultiplicationMatrice(Rotation(angle),(double[,])newMatrice);
-            // Console.WriteLine(string.Join(" ", results.Cast<double>()));
-            //get max of the first three elements of results
-            uint max = Convert.ToUInt16 (results.Cast<double>().Take(3).Max());
-            //get max of the rest
-            uint max2 = Convert.ToUInt16 (results.Cast<double>().Skip(3).Max());
-
-            return new Pixel[max,max2];
-            double[,] results =  MultiplicationMatrice(Rotation(45),(double[,])newMatrice);
-            Console.WriteLine(string.Join(" ", results.Cast<double>()));
-            */
+        public static Pixel[,] convolution(Pixel[,]image, int[,] matrice){
+            Pixel[,] newImage = new Pixel[image.GetLength(0),image.GetLength(1)];
+            for (int j = 0; j < image.GetLength(0); j++){
+                Console.WriteLine("test");
+                for (int i = 0; i < image.GetLength(1); i++){
+                    Console.Write("n");
+                    newImage[i,j] = convolution1Pixel(image, matrice,i,j);
+                }
+            }
+            return(newImage);
         }
+
+        public static Pixel convolution1Pixel(Pixel[,]image, int[,] matrice, int x, int y){
+            Pixel newPixel = new Pixel(0,0,0);
+            int value=0;
+            for (int i=-1;i<=1;i++){
+                for (int j=-1;j<=1;j++){
+                    Console.WriteLine("test2");
+                    if (j+y>=0 && j+y<image.GetLength(0) && i+x>=0 && i+x<image.GetLength(1)){
+                        newPixel.R += (byte)(image[i+x,j+y].R * matrice[i+1,j+1]);
+                        newPixel.G += (byte)(image[i+x,j+y].G * matrice[i+1,j+1]);
+                        newPixel.B += (byte)(image[i+x,j+y].B * matrice[i+1,j+1]);
+                        value+=matrice[i+1,j+1];
+                    }
+                }
+            }
+            //divide the value of newPixel by value
+            newPixel.R = (byte)(newPixel.R/value);
+            newPixel.G = (byte)(newPixel.G/value);
+            newPixel.B = (byte)(newPixel.B/value);
+
+            return(newPixel);
+        }
+
+
 
 
         public static int[,] MultiplicationMatriceint(double[,] matrice1, double[,] matrice2)
