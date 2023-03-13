@@ -25,9 +25,7 @@ namespace projects{
         public static Pixel[,] convolution(Pixel[,]image, int[,] matrice){
             Pixel[,] newImage = new Pixel[image.GetLength(0),image.GetLength(1)];
             for (int j = 0; j < image.GetLength(0); j++){
-                Console.WriteLine("test");
                 for (int i = 0; i < image.GetLength(1); i++){
-                    Console.Write("n");
                     newImage[i,j] = convolution1Pixel(image, matrice,i,j);
                 }
             }
@@ -37,21 +35,21 @@ namespace projects{
         public static Pixel convolution1Pixel(Pixel[,]image, int[,] matrice, int x, int y){
             Pixel newPixel = new Pixel(0,0,0);
             int value=0;
+            int R=0, G=0, B=0;
             for (int i=-1;i<=1;i++){
                 for (int j=-1;j<=1;j++){
-                    Console.WriteLine("test2");
                     if (j+y>=0 && j+y<image.GetLength(0) && i+x>=0 && i+x<image.GetLength(1)){
-                        newPixel.R += (byte)(image[i+x,j+y].R * matrice[i+1,j+1]);
-                        newPixel.G += (byte)(image[i+x,j+y].G * matrice[i+1,j+1]);
-                        newPixel.B += (byte)(image[i+x,j+y].B * matrice[i+1,j+1]);
+                        R += (byte)(image[i+x,j+y].R * matrice[i+1,j+1]);
+                        G += (byte)(image[i+x,j+y].G * matrice[i+1,j+1]);
+                        B += (byte)(image[i+x,j+y].B * matrice[i+1,j+1]);
                         value+=matrice[i+1,j+1];
                     }
                 }
             }
             //divide the value of newPixel by value
-            newPixel.R = (byte)(newPixel.R/value);
-            newPixel.G = (byte)(newPixel.G/value);
-            newPixel.B = (byte)(newPixel.B/value);
+            newPixel.R = Convert.ToByte(R/value);
+            newPixel.G = Convert.ToByte(G/value);
+            newPixel.B = Convert.ToByte(B/value);
 
             return(newPixel);
         }
