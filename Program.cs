@@ -16,9 +16,20 @@ namespace projects{
 
             Pixel[,] image = IMAGES[0].ImagePixel;
             AfficherMatriceByteRouge(image);
-            int[,]matrice = new int[3,3]{{1,2,1},{2,5,2},{1,2,1}};
+            int[,]matriceConv = new int[3,3]{{1,2,1},
+                                             {2,5,2},
+                                             {1,2,1}};
+            int[,]RBords = new int[3,3]{{0,0,0},
+                                        {-1,1,0},
+                                        {0,0,0}};
+            int[,]DContours = new int[3,3]{{0,-1,0},
+                                           {-1,4,-1},
+                                           {0,-1,0}};
+            int[,]DRepoussage = new int[3,3]{{-2,-1,0},
+                                             {-1,1,1},
+                                             {0,-1,2}};
 
-            AfficherMatriceByteRouge(convolution(image,matrice));
+            AfficherMatriceByteRouge(convolution(image,matriceConv));
 
         }
 
@@ -46,10 +57,12 @@ namespace projects{
                     }
                 }
             }
+
             //divide the value of newPixel by value
-            newPixel.R = Convert.ToByte(R/value);
-            newPixel.G = Convert.ToByte(G/value);
-            newPixel.B = Convert.ToByte(B/value);
+            value=value==0?1:value;
+            newPixel.R = R>=0?Convert.ToByte(R/value): (byte) 0;
+            newPixel.G = G>=0?Convert.ToByte(G/value): (byte) 0;
+            newPixel.B = B>=0?Convert.ToByte(B/value): (byte) 0;
 
             return(newPixel);
         }
