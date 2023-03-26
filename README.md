@@ -19,15 +19,16 @@
    2. [x] Renforcement des bords
    3. [x] Flou
    4. [x] Repoussage
-   
+
 4. (TD 5) Créer ou extraire une image nouvelle
-   1. [ ] Créer une image décrivant une fractale
-   2. [ ] Coder et Décoder une image dans une image (stéganographie)
+   1. [ ] Créer une image décrivant une fractale (mathys)
+   2. [ ] Coder et Décoder une image dans une image (stéganographie) (mathys)
 
 5. (TD 6 - 7) Implémentation des algorithmes suivants
-   1. [ ] Compression de QuadTree 
-   2. [ ] Compression de Huffman 
+   1. [ ] Compression de QuadTree (thomas)
+   2. [ ] Compression de Huffman/JPG (thomas)
 
 6. Innovation
    1. [x] Choix chromatique
-   2. [ ] Libre
+   2. [ ] Interface
+   3. [ ] Libre
