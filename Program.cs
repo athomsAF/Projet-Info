@@ -10,10 +10,8 @@ namespace projects{
         {
             string[] files = {"Test","lac","lena","coco"};
             // create BitMap[] IMAGES for each file in files
-            
+
             BitMap[] IMAGES = files.Select(f => new BitMap(f)).ToArray();
-
-
             Pixel[,] image = IMAGES[0].ImagePixel;
             AfficherMatriceByteRouge(image);
             int[,]matriceConv = new int[3,3]{{1,2,1},
@@ -28,9 +26,18 @@ namespace projects{
             int[,]DRepoussage = new int[3,3]{{-2,-1,0},
                                              {-1,1,1},
                                              {0,-1,2}};
+            AfficherMatriceByteRouge(jpg(image));
+        }
 
-            AfficherMatriceByteRouge(convolution(image,matriceConv));
 
+        public static PixelJPG[,] jpg(Pixel[,]image){
+            PixelJPG[,] newImage = new PixelJPG[image.GetLength(0),image.GetLength(1)];
+            for (int j = 0; j < image.GetLength(0); j++){
+                for (int i = 0; i < image.GetLength(1); i++){
+                    newImage[i,j] = new PixelJPG(image[i,j].R,image[i,j].G,image[i,j].B);
+                }
+            }
+            return(newImage);
         }
 
         public static Pixel[,] convolution(Pixel[,]image, int[,] matrice){
@@ -112,6 +119,27 @@ namespace projects{
             return rotation;
         }
 
+        static void AfficherMatriceByteRouge(PixelJPG[,] matrice)
+        {
+            for(int i = 0; i < matrice.GetLength(0); i++)
+            {
+                for(int j = 0; j < matrice.GetLength(1); j++)
+                {
+                    if(matrice[i,j].Y < 10)
+                    {
+                        Console.Write($" {matrice[i,j].Y} ");
+                    }
+                    else
+                    {
+                        Console.Write(matrice[i,j].Y + " ");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+
+
+
         static void AfficherMatriceByteRouge(Pixel[,] matrice)
         {
             for(int i = 0; i < matrice.GetLength(0); i++)
@@ -126,9 +154,7 @@ namespace projects{
                     {
                         Console.Write(matrice[i,j].R + " ");
                     }
-
                 }
-
                 Console.WriteLine();
             }
         }

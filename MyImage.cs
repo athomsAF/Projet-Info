@@ -332,4 +332,16 @@ namespace projects
             B = b;
         }
     }
+    public struct PixelJPG
+    {
+        public byte Y;
+        public byte Cb;
+        public byte Cr;
+        public PixelJPG(byte r, byte g, byte b)
+            {
+                Y = Convert.ToByte(0.299*r+0.087*g+0.114*b);
+                Cb = Convert.ToByte(-0.1687*r-0.3313*g+0.5*b+128);
+                Cr = Convert.ToByte(0.5*r-0.4187*g-0.0813*b+128);
+            }
+    }
 }
