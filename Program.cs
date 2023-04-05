@@ -8,6 +8,7 @@ namespace projects{
     {
         static void Main(string[] args)
         {
+            
             string[] files = {"Test","lac","lena","coco"};
             // create BitMap[] IMAGES for each file in files
 

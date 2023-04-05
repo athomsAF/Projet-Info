@@ -1,6 +1,9 @@
 using System.IO;
 using static System.Console;
 using static System.BitConverter;
+using static projects.Pixel;
+using static projects.PixelJPG;
+
 
 namespace projects
 {
@@ -248,8 +251,6 @@ namespace projects
         }
 
         ///<summary> agrandissement de l'image </summary>
-        /// 
-        /// 
         public void Agrandissement(int coeffAG){
             int height = Convert.ToUInt16( this.ImagePixel.GetLength(0)* coeffAG);
             int width = Convert.ToUInt16( this.ImagePixel.GetLength(1)* coeffAG);
@@ -292,7 +293,7 @@ namespace projects
         /// </summary>
         /// <param name="tab">Byte array to be converted</param>
         /// <returns>Resulting integer</returns>
-        public int ConvertirEndianToInt(byte[] tab)
+        public static int ConvertirEndianToInt(byte[] tab)
         {
             int value = 0;
 
@@ -310,7 +311,7 @@ namespace projects
         /// <param name="val">Integer to be converted</param>
         /// <param name="size">Size of the resulting array</param>
         /// <returns>Resulting array</returns>
-        public byte[] ConvertirIntToEndian(int val, int size)
+        public static byte[] ConvertirIntToEndian(int val, int size)
         {
             byte[] bytes = new byte[size];
             for (int i = 0; i < size; i++)
@@ -320,28 +321,5 @@ namespace projects
             return bytes;
         }
     }
-    public struct Pixel
-    {
-        public byte R;
-        public byte G;
-        public byte B;
-        public Pixel(byte r, byte g, byte b)
-        {
-            R = r;
-            G = g;
-            B = b;
-        }
-    }
-    public struct PixelJPG
-    {
-        public byte Y;
-        public byte Cb;
-        public byte Cr;
-        public PixelJPG(byte r, byte g, byte b)
-            {
-                Y = Convert.ToByte(0.299*r+0.087*g+0.114*b);
-                Cb = Convert.ToByte(-0.1687*r-0.3313*g+0.5*b+128);
-                Cr = Convert.ToByte(0.5*r-0.4187*g-0.0813*b+128);
-            }
-    }
+
 }
