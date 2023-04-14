@@ -1,20 +1,39 @@
-﻿﻿using static System.Console;
-using static System.BitConverter;
-using System.Diagnostics;
+using static projects.Fractal;
+using static projects.Form1;
 
-
-namespace projects{
-    public class Program
+namespace projects
+{
+    public static class Program
     {
-        static void Main(string[] args)
+        public static string PROJECT_PATH = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\"));
+        /// <summary>
+        ///  The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            // To customize application configuration such as set high DPI settings or default font,
+            // see https://aka.ms/applicationconfiguration.
+
+            Console.WriteLine(PROJECT_PATH);
+
+            ApplicationConfiguration.Initialize();
+            Application.Run(new Form1());
+        }
+        public static void Main2()
         {
             
             string[] files = {"Test","lac","lena","coco"};
             // create BitMap[] IMAGES for each file in files
 
+            
             BitMap[] IMAGES = files.Select(f => new BitMap(f)).ToArray();
-            Pixel[,] image = IMAGES[0].ImagePixel;
-            AfficherMatriceByteRouge(image);
+            BitMap image = IMAGES[0];
+
+            image.ImagePixel = Fractal.Mandelbrot(200, 200, 100);
+            image.FromImageToFile("test");
+
+            /*
             int[,]matriceConv = new int[3,3]{{1,2,1},
                                              {2,5,2},
                                              {1,2,1}};
@@ -28,7 +47,9 @@ namespace projects{
                                              {-1,1,1},
                                              {0,-1,2}};
             AfficherMatriceByteRouge(jpg(image));
+            */
         }
+
 
 
         public static PixelJPG[,] jpg(Pixel[,]image){

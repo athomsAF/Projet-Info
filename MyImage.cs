@@ -27,7 +27,7 @@ namespace projects
         public BitMap(string Path)
         {
             // File content
-            byte[] myfile = File.ReadAllBytes("imagesIN/"+Path+".bmp");
+            byte[] myfile = File.ReadAllBytes(Program.PROJECT_PATH + "imagesIN/" + Path + ".bmp");
 
             // Image data in bytes
             this.Header= myfile.Take(14).ToArray();
@@ -134,7 +134,7 @@ namespace projects
             // Concat all data in a signle line of bytes & create the new bmp file
             byte[] data = this.Header.Concat(this.ImageInfo.Concat(this.ImageByte)).ToArray();
 
-            File.WriteAllBytes($"imagesOUT/{file}.bmp", data);
+            File.WriteAllBytes(Program.PROJECT_PATH + $"imagesOUT/{file}.bmp", data);
 
             Console.WriteLine("New Image Saved !");
         }

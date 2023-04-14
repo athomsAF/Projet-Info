@@ -3,59 +3,48 @@ using static projects.Complexe;
 
 namespace projects
 {
-    public class Factal
+    public class Fractal
     {
 
-        public Pixel[,] Mandelbrot(int xMin, int yMin, int xMax, int yMax, int ystep, int xstep, int xyPixelStep, int kMax, int kLast)
+        public static Pixel[,] Mandelbrot(int h, int w, int maxiter, double zoom = 1, double decalx = 0, double decaly = 0)
         {
-            Pixel[,] mandelbrot = new Pixel[xMax - xMin, yMax - yMin];
-            double modulusSquared = 0;
+            double realzoom = 4.0 / (zoom * Math.Pow(10, zoom));
+            ColorTable ct = new ColorTable(new Color[] { new Color(0, 0, 0), new Color(255, 0, 0), new Color(255, 255, 0), new Color(0, 255, 255), new Color(0, 255, 0) });
 
-            for (double y = yMin; y < yMax; y += ystep) {
-                int xPix = 0, yPix = 0;
-                for (double x = xMin; x < xMax; x += xstep) {
-                    Complexe c = new Complexe(x, y);
-                    Complexe zk = new Complexe(0, 0);
-                    int k = 0;
-                    
-                    do {
-                        zk = zk.doCmplxSqPlusConst(c);
-                        modulusSquared = zk.doMoulusSq();
-                        k++;
-                    } while ((modulusSquared <= 4.0) && (k < kMax));
-                    
-                    /*
-                    if (k < kMax) {
-                        if (k == kLast) {
-                            color = colorLast;
-                        } else {
-                            color = colourTable.GetColour(k);
-                            colorLast = color;
-                        }
+            Pixel[,] mandelbrot = new Pixel[h, w];
 
-                        if (xyPixelStep == 1) {
-                            if ((xPix < mandelbrot.GetLength(0)) && (yPix >= 0)) {
-                                mandelbrot[xPix, yPix] = new Pixel(color);
-                            }
-                        } else {
-                            for (int pX = 0; pX < xyPixelStep; pX++) {
-                                for (int pY = 0; pY < xyPixelStep; pY++) {
-                                    if (((xPix + pX) < mandelbrot.GetLength(0)) && ((yPix - pY) >= 0)) {
-                                        mandelbrot[xPix + pX, yPix - pY] = new Pixel(color);
-                                    }
-                                }
-                            }
-                        }
+            for(int lig = 0; lig < h; lig++)
+            {
+                for(int col = 0; col < w; col++)
+                {
+                    double c_re = (col - w / 2.0) * realzoom / w + decalx;
+                    double c_im = (lig - h / 2.0) * realzoom / h + decaly;
+
+                    int iter = 0;
+                    double x = 0, y = 0;
+
+                    while (iter < maxiter && ((x*x) + (y*y)) <= 4)
+                    {
+                        double x_temp = (x * x) - (y * y) + c_re;
+                        y = 2 * y * x + c_im;
+                        x = x_temp;
+                        iter++;
                     }
-                    xPix += xyPixelStep;
-                    */
+
+                    if(iter < maxiter)
+                    {
+                        Color c = ct.table[iter % ct.table.Length];
+                        mandelbrot[lig, col] = new Pixel(c.RB, c.GB, c.BB);
+
+                    }
+                    else
+                    {
+                        Color c = new Color(0, 0, 0);
+                        mandelbrot[lig, col] = new Pixel(c.RB, c.GB, c.BB);
+                    }
                 }
-                yPix -= xyPixelStep;
             }
-
-            return new Pixel[2,2];
+            return mandelbrot;
         }
-        
-
     }
 }
