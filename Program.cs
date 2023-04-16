@@ -6,23 +6,32 @@ namespace projects
     public static class Program
     {
         public static string PROJECT_PATH = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\"));
+        public static bool INTERFACE = false;
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            if(INTERFACE)
+            {
+                // To customize application configuration such as set high DPI settings or default font,
+                // see https://aka.ms/applicationconfiguration.
 
-            Console.WriteLine(PROJECT_PATH);
+                Console.WriteLine(PROJECT_PATH);
 
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+                ApplicationConfiguration.Initialize();
+                Application.Run(new Form1());
+            }
+            else
+            {
+                Main2();
+            }
+
         }
         public static void Main2()
         {
-            
+            /*
             string[] files = {"Test","lac","lena","coco"};
             // create BitMap[] IMAGES for each file in files
 
@@ -30,10 +39,7 @@ namespace projects
             BitMap[] IMAGES = files.Select(f => new BitMap(f)).ToArray();
             BitMap image = IMAGES[0];
 
-            image.ImagePixel = Fractal.Mandelbrot(200, 200, 100);
-            image.FromImageToFile("test");
 
-            /*
             int[,]matriceConv = new int[3,3]{{1,2,1},
                                              {2,5,2},
                                              {1,2,1}};
@@ -47,6 +53,47 @@ namespace projects
                                              {-1,1,1},
                                              {0,-1,2}};
             AfficherMatriceByteRouge(jpg(image));
+            */
+
+            BitMap image = new BitMap("lena");
+
+            Huffman huf = new Huffman(image.ImagePixel);
+
+            huf.AfficherBinaireArbre();
+
+            Console.WriteLine("End");
+
+            /*
+            Noeud A = new Noeud(1, 0, null, null);
+            Noeud B = new Noeud(2, 0, null, null);
+            Noeud CA = new Noeud(6, 0, null, null);
+            Noeud CB = new Noeud(7, 0, null, null);
+            Noeud C = new Noeud(3, 0, CA, CB);
+            Noeud D = new Noeud(4, 0, A, B);
+            Noeud E = new Noeud(5, 0, D, C);
+
+            List<bool> test = E.BinaireEnfants(4, new List<bool>());
+
+            if(test == null)
+            {
+                Console.WriteLine("Nope");
+            }
+            else
+            {
+                Console.WriteLine("yepee");
+                foreach(bool bin in test)
+                {
+                    if(bin)
+                    {
+                        Console.Write("1");
+                    }
+                    else
+                    {
+                        Console.Write("0");
+                    }
+
+                }
+            }
             */
         }
 

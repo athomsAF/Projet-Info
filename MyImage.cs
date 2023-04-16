@@ -9,11 +9,6 @@ namespace projects
 {
     public class BitMap
     {
-        // Header informations
-        public byte[] Header { get; set; }
-        public byte[] ImageInfo { get; set; }
-        public byte[] ImageByte { get; set; }
-
         // Final Image in pixels : R G B
         public Pixel[,] ImagePixel { get; set;}
 
@@ -24,26 +19,43 @@ namespace projects
         public int Offset{get; set;}
         public int BitsParCouleur {get;set;}
 
+        public BitMap()
+        {
+            // Height / Witdh of the image
+            this.Dimensions = new int[2];
+            this.Dimensions[1] = 200;
+            this.Dimensions[0] = 100;
+            // Other images properties
+            this.Type = "BMP";
+            this.Size = Dimensions[0] * Dimensions[1] * 3 + 54;
+            this.Offset = 54;
+            this.BitsParCouleur = 24;
+
+            // Convert the list ImageByte to a matrix of pixels ImagePixel
+            this.ImagePixel = new Pixel[Dimensions[0], Dimensions[1]];
+
+        }
+
         public BitMap(string Path)
         {
             // File content
             byte[] myfile = File.ReadAllBytes(Program.PROJECT_PATH + "imagesIN/" + Path + ".bmp");
 
             // Image data in bytes
-            this.Header= myfile.Take(14).ToArray();
-            this.ImageInfo= myfile.Where((x, i) => i >= 14 && i < 54).ToArray();
-            this.ImageByte = myfile.Skip(54).ToArray();
+            byte[] Header= myfile.Take(14).ToArray();
+            byte[] ImageInfo= myfile.Where((x, i) => i >= 14 && i < 54).ToArray();
+            byte[] ImageByte = myfile.Skip(54).ToArray();
 
             // Height / Witdh of the image
             this.Dimensions = new int[2];
-            this.Dimensions[1] = ToInt32(this.ImageInfo.Skip(4).Take(4).ToArray()); // Width image : bytes de 4 a 8 de ImageInfo
-            this.Dimensions[0] = ToInt32(this.ImageInfo.Skip(8).Take(4).ToArray()); // Height Image : bytes de 8 a 12 de ImageInfo
+            this.Dimensions[1] = ToInt32(ImageInfo.Skip(4).Take(4).ToArray()); // Width image : bytes de 4 a 8 de ImageInfo
+            this.Dimensions[0] = ToInt32(ImageInfo.Skip(8).Take(4).ToArray()); // Height Image : bytes de 8 a 12 de ImageInfo
 
             // Other images properties
-            this.Type = (this.Header[0] == (byte) 66 && this.Header[1] == (byte) 77)? "BMP" : "Autre";
-            this.Size = ToInt32(this.Header.Skip(2).Take(4).ToArray());
-            this.Offset = ToInt32(this.Header.Skip(10).Take(4).ToArray());
-            this.BitsParCouleur = ToInt16(this.ImageInfo.Skip(14).Take(2).ToArray());
+            this.Type = (Header[0] == (byte) 66 && Header[1] == (byte) 77)? "BMP" : "Autre";
+            this.Size = ToInt32(Header.Skip(2).Take(4).ToArray());
+            this.Offset = ToInt32(Header.Skip(10).Take(4).ToArray());
+            this.BitsParCouleur = ToInt16(ImageInfo.Skip(14).Take(2).ToArray());
 
             // Convert the list ImageByte to a matrix of pixels ImagePixel
             this.ImagePixel = new Pixel[Dimensions[0], Dimensions[1]];
@@ -53,7 +65,7 @@ namespace projects
                 for (int j = 0; j < Dimensions[1]; j++)
                 {
                     var =  (i * Dimensions[1] + j) * 3; 
-                    this.ImagePixel[Dimensions[0] - i - 1, j] = new Pixel(this.ImageByte[var], this.ImageByte[var+1], this.ImageByte[var+2]); // Chain of 3 pixels : R G B
+                    this.ImagePixel[Dimensions[0] - i - 1, j] = new Pixel(ImageByte[var], ImageByte[var+1], ImageByte[var+2]); // Chain of 3 pixels : R G B
                 }
             }
 
@@ -72,41 +84,91 @@ namespace projects
         /// <param name="file">Name of the file</param>
         public void FromImageToFile(string file)
         {
+            List<byte> data = new List<byte>();
+
+            // Add bmp file code
+            data.Add((byte) 66);
+            data.Add((byte) 77);
+
             // Update the header data with the final value of ImagePixel
             this.Dimensions = new int[2] { this.ImagePixel.GetLength(0), this.ImagePixel.GetLength(1) };
 
             this.Size = 3 * this.Dimensions[0] * this.Dimensions[1] + 54 ; // Size of the image * 3 + header size (54 bytes)
 
-            int index = 2;
+            // File total size
             foreach (byte size in ConvertirIntToEndian(this.Size, 4))
             {
-                this.Header[index] = size;
-                index++;
+                data.Add(size);
             }
 
-            // Update Image Info with final values
-            index = 4;
+            // Add reserved field (4 bytes)
+            foreach (byte size in ConvertirIntToEndian(0, 4))
+            {
+                data.Add(size);
+            }
+
+            // Add Offset (4 bytes)
+            foreach (byte offset in ConvertirIntToEndian(this.Offset, 4))
+            {
+                data.Add(offset);
+            }
+
+            // Add Hearder size : 40 (4 bytes)
+            foreach (byte hsize in ConvertirIntToEndian(40, 4))
+            {
+                data.Add(hsize);
+            }
+
+            // Add Image Width & Height
             foreach (byte InitWidth in ConvertirIntToEndian(Dimensions[1], 4))
             {
-                this.ImageInfo[index] = InitWidth;
-                index++;
+                data.Add(InitWidth);
             }
 
             foreach (byte InitHeigth in ConvertirIntToEndian(Dimensions[0], 4))
             {
-                this.ImageInfo[index] = InitHeigth;
-                index++;
+                data.Add(InitHeigth);
+            }
+
+            // Add number of plans
+            foreach (byte plans in ConvertirIntToEndian(1, 2))
+            {
+                data.Add(plans);
+            }
+
+            // Add bits per color
+            foreach (byte bpc in ConvertirIntToEndian(this.BitsParCouleur, 2))
+            {
+                data.Add(bpc);
+            }
+
+            // Add copression type (4 bytes)
+            foreach (byte compression in ConvertirIntToEndian(0, 4))
+            {
+                data.Add(compression);
+            }
+
+            // Add image size (4 bytes)
+            foreach (byte imagesize in ConvertirIntToEndian(this.Size-54, 4))
+            {
+                data.Add(imagesize);
+            }
+
+            // Add image info (16 bytes)
+            foreach (byte lastinfo in ConvertirIntToEndian(0, 16))
+            {
+                data.Add(lastinfo);
             }
 
             // Convert ImagePixel to ImageByte
-            List<byte> image = new List<byte>();
             for (int i = 0; i < Dimensions[0]; i++)
             {
                 for (int j = 0; j < Dimensions[1]; j++)
                 {
-                    image.Add(this.ImagePixel[Dimensions[0] - i - 1, j].B);
-                    image.Add(this.ImagePixel[Dimensions[0] - i - 1, j].G);
-                    image.Add(this.ImagePixel[Dimensions[0] - i - 1,j].R);
+
+                    data.Add(this.ImagePixel[Dimensions[0] - i - 1, j].B);
+                    data.Add(this.ImagePixel[Dimensions[0] - i - 1, j].G);
+                    data.Add(this.ImagePixel[Dimensions[0] - i - 1, j].R);
 
                 }
 
@@ -115,26 +177,22 @@ namespace projects
                 {
                     for (int k = 0; k < 3 -  Dimensions[1] % 4; k++)
                     {
-                        image.Add((byte)0);
-                        image.Add((byte)0);
-                        image.Add((byte)0);
+                        data.Add((byte)0);
+                        data.Add((byte)0);
+                        data.Add((byte)0);
                     }
                 }
 
                 // Parcicular case
                 if (Dimensions[1] % 4 == 2)
                 {
-                    image.Add((byte)0);
-                    image.Add((byte)0);
+                    data.Add((byte)0);
+                    data.Add((byte)0);
                 }
 
             }
-            this.ImageByte = image.ToArray();
 
-            // Concat all data in a signle line of bytes & create the new bmp file
-            byte[] data = this.Header.Concat(this.ImageInfo.Concat(this.ImageByte)).ToArray();
-
-            File.WriteAllBytes(Program.PROJECT_PATH + $"imagesOUT/{file}.bmp", data);
+            File.WriteAllBytes(Program.PROJECT_PATH + $"imagesOUT/{file}.bmp", data.ToArray());
 
             Console.WriteLine("New Image Saved !");
         }

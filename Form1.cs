@@ -9,9 +9,7 @@ namespace projects
         public Form1()
         {
             InitializeComponent();
-            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.Height = 1800;
-            this.Width = 1000;
+            pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,7 +36,7 @@ namespace projects
         private void button3_Click(object sender, EventArgs e)
         {
             string path = Program.PROJECT_PATH + this.label1.Text;
-            pictureBox1.ImageLocation = path;
+            pictureBox2.ImageLocation = path;
 
         }
 
@@ -49,25 +47,59 @@ namespace projects
 
         private void button4_Click(object sender, EventArgs e)
         {
-            string[] files = { "Test", "lac", "lena", "coco" };
-            // create BitMap[] IMAGES for each file in files
+            BitMap image = new BitMap();
 
-            BitMap image = new BitMap(files[0]);
+            ColorTable ct;
+            if(IsGrayscale.Checked)
+            {
+                ct = new ColorTable();
+            }
+            else if (IsCustom.Checked)
+            {
+                ct = new ColorTable(new Color(Color1.BackColor.R, Color1.BackColor.G, Color1.BackColor.B), new Color(Color2.BackColor.R, Color2.BackColor.G, Color2.BackColor.B));
+            }
+            else
+            {
+                Color[] rainbow = new Color[] { new Color(0,0,0), new Color(255, 0, 0), new Color(0, 255, 0), new Color(0, 0, 255) };
+                ct = new ColorTable(rainbow);
+            }
 
-            image.ImagePixel = Fractal.Mandelbrot(Convert.ToInt32(this.textBox1.Text), Convert.ToInt32(this.textBox2.Text), Convert.ToInt32(this.textBox3.Text), Convert.ToDouble(this.textBox4.Text)
-                , Convert.ToDouble(this.textBox5.Text), Convert.ToDouble(this.textBox6.Text)); ;
-            image.FromImageToFile("test");
+            if (IsMandelbrot.Checked)
+            {
+                Console.WriteLine("Running Mandelbrot");
+                image.ImagePixel = projects.Fractal.Mandelbrot(Convert.ToInt32(this.FractalHeigth.Text), Convert.ToInt32(this.FractalWidth.Text),
+                    Convert.ToInt32(this.FractalIterations.Text), Convert.ToDouble(this.FractalZoom.Text), Convert.ToDouble(this.FractalMMoveX.Text),
+                    Convert.ToDouble(this.FractalMMoveY.Text), ct);
+                
+                image.FromImageToFile("fractal");
+            }
+            else if (IsJulia.Checked)
+            {
+                image.ImagePixel = projects.Fractal.Julia(Convert.ToInt32(this.FractalHeigth.Text), Convert.ToInt32(this.FractalWidth.Text),
+                    Convert.ToInt32(this.FractalIterations.Text), Convert.ToDouble(this.FractalZoom.Text), Convert.ToDouble(FractalMMoveX.Text),
+                    Convert.ToDouble(FractalMMoveY.Text), Convert.ToDouble(FractalJSeedX.Text), Convert.ToDouble(FractalJSeedY.Text), ct);
+                image.FromImageToFile("fractal");
+            }
+            else
+            {
+                Console.WriteLine("No fractal selected !");
+            }
+
+            string path = Program.PROJECT_PATH + "imagesOUT/fractal.bmp";
+            pictureBox2.ImageLocation = path;
+
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void button4_Click_1(object sender, EventArgs e)
         {
-
+            colorDialog1.ShowDialog();
+            Color1.BackColor = colorDialog1.Color;
         }
 
-        private void Form1_Load_1(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
-
+            colorDialog1.ShowDialog();
+            Color2.BackColor = colorDialog1.Color;
         }
-
     }
 }
