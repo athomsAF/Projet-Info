@@ -378,6 +378,31 @@ namespace projects
             }
             return bytes;
         }
+
+        public static Pixel[,] steganography(BitMap image1, BitMap image2)
+        {
+            if (image1.ImagePixel.GetLength(0) != image2.ImagePixel.GetLength(0) || image1.ImagePixel.GetLength(1) != image2.ImagePixel.GetLength(1))
+            {
+                Console.WriteLine("Error : image1 and image2 are not at the same size");
+                return null;
+            }
+            else
+            {
+                Program.mainBinary[,] image1Binary = Program.mainBinaryMatrix(image1.ImagePixel);
+                Program.mainBinary[,] image2Binary = Program.mainBinaryMatrix(image2.ImagePixel);
+                Pixel[,] steganographyImage = new Pixel[image1Binary.GetLength(0), image1Binary.GetLength(1)];
+                for (int i = 0; i < image1Binary.GetLength(0); i++)
+                {   
+                    for (int j = 0; j < image1Binary.GetLength(1); j++)
+                    {
+                        steganographyImage[i, j].R = (byte)Convert.ToInt32((image1Binary[i, j].R + image2Binary[i, j].R).ToString(), 2);
+                        steganographyImage[i, j].G = (byte)Convert.ToInt32((image1Binary[i, j].G + image2Binary[i, j].G).ToString(), 2);
+                        steganographyImage[i, j].B = (byte)Convert.ToInt32((image1Binary[i, j].B + image2Binary[i, j].B).ToString(), 2);
+                    }
+                }
+                return steganographyImage;
+            }
+        }
     }
 
 }

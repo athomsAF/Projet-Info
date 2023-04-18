@@ -1,3 +1,5 @@
+using System.DirectoryServices.ActiveDirectory;
+using System.Runtime.ExceptionServices;
 using static projects.BitMap;
 
 namespace projects
@@ -63,7 +65,7 @@ namespace projects
         /// <summary>
         /// Default greysacle
         /// </summary>
-        public ColorTable()
+        public ColorTable(int force = 1)
         {
             Color a = new Color(0, 0, 0);
             Color b = new Color(255, 255, 255);
@@ -79,9 +81,9 @@ namespace projects
             List<Color> tab = new List<Color>();
 
             // Create the color scale
-            for (int i = 0; i < iter; i++)
+            for (int i = 0; i < iter/force; i++)
             {
-                tab.Add(new Color(a.R - i * diffR / iter, a.G - i * diffG / iter, a.B - i * diffB / iter));
+                tab.Add(new Color(a.R - i * force * diffR / iter, a.G - i * force * diffG / iter, a.B - i * force * diffB / iter));
             }
 
             this.table = tab.ToArray();
@@ -92,7 +94,7 @@ namespace projects
         /// </summary>
         /// <param name="a">First color</param>
         /// <param name="b">Second color</param>
-        public ColorTable(Color a, Color b)
+        public ColorTable(Color a, Color b, int force = 1)
         {
             // Get difference of variation between the two colors
             int diffR = a.R - b.R;
@@ -105,9 +107,9 @@ namespace projects
             List<Color> tab = new List<Color>();
 
             // Create the color scale
-            for (int i = 0; i < iter; i++)
+            for (int i = 0; i < iter/force; i++)
             {
-                tab.Add(new Color(a.R - i * diffR/iter, a.G - i * diffG/iter, a.B - i * diffB/iter));
+                tab.Add(new Color(a.R - i * force * diffR/iter, a.G - i * force * diffG/iter, a.B - i * force * diffB/iter));
             }
 
             this.table = tab.ToArray();
@@ -117,7 +119,7 @@ namespace projects
         /// Color scale between n colors
         /// </summary>
         /// <param name="a">Array with n color</param>
-        public ColorTable(Color[] a)
+        public ColorTable(Color[] a, int force = 1)
         {
             List<Color> tab = new List<Color>();
             
@@ -133,9 +135,9 @@ namespace projects
                 int iter = Math.Max(Math.Abs(diffR), Math.Max(Math.Abs(diffG), Math.Abs(diffB)));
 
                 // Create the color scale
-                for (int i = 0; i < iter; i++)
+                for (int i = 0; i < iter/force; i++)
                 {
-                    tab.Add(new Color(a[j].R - i * diffR / iter, a[j].G - i * diffG / iter, a[j].B - i * diffB / iter));
+                    tab.Add(new Color(a[j].R - i * force *  diffR / iter, a[j].G - i * force * diffG / iter, a[j].B - i * force * diffB / iter));
                 }
             }
             this.table = tab.ToArray();

@@ -52,16 +52,16 @@ namespace projects
             ColorTable ct;
             if(IsGrayscale.Checked)
             {
-                ct = new ColorTable();
+                ct = new ColorTable(10);
             }
             else if (IsCustom.Checked)
             {
-                ct = new ColorTable(new Color(Color1.BackColor.R, Color1.BackColor.G, Color1.BackColor.B), new Color(Color2.BackColor.R, Color2.BackColor.G, Color2.BackColor.B));
+                ct = new ColorTable(new Color(Color1.BackColor.R, Color1.BackColor.G, Color1.BackColor.B), new Color(Color2.BackColor.R, Color2.BackColor.G, Color2.BackColor.B), 10);
             }
             else
             {
                 Color[] rainbow = new Color[] { new Color(0,0,0), new Color(255, 0, 0), new Color(0, 255, 0), new Color(0, 0, 255) };
-                ct = new ColorTable(rainbow);
+                ct = new ColorTable(rainbow, 10);
             }
 
             if (IsMandelbrot.Checked)

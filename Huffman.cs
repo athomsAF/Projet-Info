@@ -15,6 +15,12 @@ namespace projects
         public Noeud root;
         public Dictionary<Color, int> arbre;
 
+        public Huffman(Noeud root)
+        {
+            this.root = root;
+            this.arbre = null;
+        }
+
         public Huffman(Pixel[,] image)
         {
             arbre = new Dictionary<Color, int>();
@@ -70,42 +76,42 @@ namespace projects
         /// DFS revisitée :-)
         /// </summary>
         /// <returns></returns>
-        public List<int> TreeEncode()
+        public List<bool> TreeEncode(Noeud node)
         {
-            List<int> encoding = new List<int>();
+            Console.WriteLine(node.ToString());
 
-            Stack<Noeud> pile = new Stack<Noeud>();
+            List<bool> res = new List<bool>();
 
-            pile.Push(this.root);
-
-            while(pile.Count != 0)
+            if (node.pixel == null)
             {
-                if(pile.Last().noeudGauche == null && pile.Last().noeudDroit == null)
-                {
-                    encoding.Add(1);
-                    pile.Pop();
-                    // !!! Ajoutter encodage pixel
-                    encoding.Add(2);
-                }
-                else
-                {
-                    encoding.Add(0);
-                    pile.Pop();
+                Console.WriteLine("A");
 
-                    if (pile.Last().noeudDroit != null)
-                    {
-                        pile.Push(pile.Last().noeudDroit);
-                    }
+                List<bool> a = TreeEncode(node.noeudGauche);
+                List<bool> b = TreeEncode(node.noeudDroit);
 
-                    if (pile.Last().noeudGauche != null)
-                    {
-                        pile.Push(pile.Last().noeudGauche);
-                    }
-                }
+                res.Add(false);
+                res.AddRange(a);
+                res.AddRange(b);
+
+                return res;
             }
+            else
+            {
+                Console.WriteLine("B");
 
-            return encoding;
+
+                res.Add(true);
+
+                List<bool> a = new List<bool>();
+                a.Add(true);
+
+
+                res.AddRange(a);
+
+                return res;
+            }
         }
+
 
         public Noeud TreeDecode(BitArray liste)
         {
@@ -166,7 +172,7 @@ namespace projects
             return root;
         }
 
-        static byte GetByteFromBitArray(BitArray bitArray, int start)
+         static byte GetByteFromBitArray(BitArray bitArray, int start)
         {
             byte b = 0;
 
@@ -187,6 +193,14 @@ namespace projects
             }
 
             return b;
+        }
+
+        public static bool[] GetBoolFromByte(byte[] b)
+        {
+            bool[] result = new bool[8];
+            BitArray bitArray = new BitArray(b);
+            bitArray.CopyTo(result, 0);
+            return result;
         }
 
         public void AfficherBinaireArbre()
@@ -254,8 +268,14 @@ namespace projects
 
         public Noeud(Color pixel, int frequence, Noeud? noeudGauche, Noeud ?noeudDroit)
         {
-
-            this.pixel = new Color(pixel.R, pixel.G, pixel.B);
+            if(pixel == null)
+            {
+                this.pixel = null;
+            }
+            else
+            {
+                this.pixel = new Color(pixel.R, pixel.G, pixel.B);
+            }
 
             this.frequence = frequence;
             this.noeudDroit = noeudDroit;
@@ -306,6 +326,42 @@ namespace projects
 
             return null;
 
+        }
+
+        public string ToString()
+        {
+            string str = null;
+
+            if(this.pixel != null)
+            {
+                str += "(" + this.pixel.R + " " + this.pixel.G + " " + this.pixel.B + ")\n";
+            }
+            else
+            {
+                str += "(null)\n";
+            }
+
+            str += "Freq : " + this.frequence + "\n";
+
+            if(this.noeudGauche != null && this.noeudGauche.pixel != null)
+            {
+                str += "Node 1 : " + "(" + this.noeudGauche.pixel.R + " " + this.noeudGauche.pixel.G + " " + this.noeudGauche.pixel.B + ")\n";
+            }
+            else
+            {
+                str += "Node 1 : (null)\n";
+            }
+
+            if (this.noeudDroit != null && this.noeudDroit.pixel != null)
+            {
+                str += "Node 2 : " + "(" + this.noeudDroit.pixel.R + " " + this.noeudDroit.pixel.G + " " + this.noeudDroit.pixel.B + ")\n";
+            }
+            else
+            {
+                str += "Node 2 : (null)\n";
+            }
+
+            return str;
         }
     }
 }

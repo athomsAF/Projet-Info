@@ -35,16 +35,15 @@ namespace projects
                         iter++;
                     }
 
-                    if(iter < maxiter)
+                    Color c = ct.table.First();
+                    mandelbrot[lig, col] = new Pixel(c.RB, c.GB, c.BB);
+
+
+                    if (iter < maxiter)
                     {
-                        Color c = ct.table[iter % ct.table.Length];
+                        c = ct.table[ct.table.Length - 1 - iter % ct.table.Length];
                         mandelbrot[lig, col] = new Pixel(c.RB, c.GB, c.BB);
 
-                    }
-                    else
-                    {
-                        Color c = ct.table[0];
-                        mandelbrot[lig, col] = new Pixel(c.RB, c.GB, c.BB);
                     }
                 }
             }
@@ -78,14 +77,12 @@ namespace projects
                         i += 1;
                     }
 
-                    if(i < maxiter)
+                    Color c = ct.table.Last();
+                    julia[lig, col] = new Pixel(c.RB, c.GB, c.BB);
+
+                    if (i < maxiter)
                     {
-                        Color c = ct.table[i % ct.table.Length];
-                        julia[lig, col] = new Pixel(c.RB, c.GB, c.BB);
-                    }
-                    else
-                    {
-                        Color c = new Color(0,0,0);
+                        c = ct.table[i % ct.table.Length];
                         julia[lig, col] = new Pixel(c.RB, c.GB, c.BB);
                     }
                 }

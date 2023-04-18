@@ -1,5 +1,7 @@
 using static projects.Fractal;
 using static projects.Form1;
+using static projects.BitMap;
+using static projects.Pixel;
 
 namespace projects
 {
@@ -15,9 +17,6 @@ namespace projects
         {
             if(INTERFACE)
             {
-                // To customize application configuration such as set high DPI settings or default font,
-                // see https://aka.ms/applicationconfiguration.
-
                 Console.WriteLine(PROJECT_PATH);
 
                 ApplicationConfiguration.Initialize();
@@ -55,46 +54,34 @@ namespace projects
             AfficherMatriceByteRouge(jpg(image));
             */
 
-            BitMap image = new BitMap("lena");
-
-            Huffman huf = new Huffman(image.ImagePixel);
-
-            huf.AfficherBinaireArbre();
-
-            Console.WriteLine("End");
+            // BitMap image = new BitMap("lena");
 
             /*
-            Noeud A = new Noeud(1, 0, null, null);
-            Noeud B = new Noeud(2, 0, null, null);
-            Noeud CA = new Noeud(6, 0, null, null);
-            Noeud CB = new Noeud(7, 0, null, null);
-            Noeud C = new Noeud(3, 0, CA, CB);
-            Noeud D = new Noeud(4, 0, A, B);
-            Noeud E = new Noeud(5, 0, D, C);
 
-            List<bool> test = E.BinaireEnfants(4, new List<bool>());
+            Noeud A = new Noeud(new Color(1,1,1), 1, null, null);
+            Noeud B = new Noeud(new Color(3, 3, 3), 2, null, null);
+            Noeud CA = new Noeud(new Color(4, 4, 4), 3, null, null);
+            Noeud CB = new Noeud(new Color(5, 5, 5), 4, null, null);
+            Noeud C = new Noeud(null, 5, CA, CB);
+            // Noeud D = new Noeud(null, 6, A, B);
+            Noeud E = new Noeud(null, 7, A, C);
 
-            if(test == null)
+            Huffman huf = new Huffman(E);
+
+            foreach(var elt in huf.TreeEncode(huf.root))
             {
-                Console.WriteLine("Nope");
-            }
-            else
-            {
-                Console.WriteLine("yepee");
-                foreach(bool bin in test)
-                {
-                    if(bin)
-                    {
-                        Console.Write("1");
-                    }
-                    else
-                    {
-                        Console.Write("0");
-                    }
-
-                }
+                Console.WriteLine(elt);
             }
             */
+            BitMap image = new BitMap("coco");
+            BitMap image2 = new BitMap("coco");
+            image2.NoirEtBlanc();
+            Pixel[,] imgnoir = image.ImagePixel;
+            Pixel[,] img2 = BitMap.steganography(image, image2);
+            image.ImagePixel = img2;
+            image.FromImageToFile("stega");
+            
+
         }
 
 
@@ -227,5 +214,49 @@ namespace projects
                 Console.WriteLine();
             }
         }
+
+        public static mainBinary[,] mainBinaryMatrix(Pixel[,] image)
+        {
+            //for all element in image add 1
+            mainBinary[,] fimage = new mainBinary[image.GetLength(0), image.GetLength(1)];
+            for (int i = 0; i < image.GetLength(0); i++)
+            {
+                for (int j = 0; j < image.GetLength(1); j++)
+                {
+                    fimage[i, j] = new mainBinary(image[i, j]);
+                }
+            }
+            return fimage;
+        }
+
+
+        public static string getFourBinary(string str)
+        {
+            int len = str.Length;
+            for (int i = 0; i <= 7 - len; i++)
+            {
+                str = "0" + str;
+            }
+            return (str.Substring(0, 4));
+        }
+
+
+        public struct mainBinary
+        {
+            public string R;
+            public string G;
+            public string B;
+            public mainBinary(Pixel pixel)
+            {
+                B = Convert.ToString(pixel.R, 2);
+                B = getFourBinary(B);
+                G = Convert.ToString(pixel.G, 2);
+                G = getFourBinary(G);
+                R = Convert.ToString(pixel.B, 2);
+                R = getFourBinary(R);
+            }
+        }
+
+
     }
 }
