@@ -21,6 +21,11 @@ namespace projects
             this.arbre = null;
         }
 
+        /// <summary>
+        /// constructor of the huffman class
+        /// </summary>
+        /// <param name="image">image a triller avec l'algorithme d huffman
+        /// </param>
         public Huffman(Pixel[,] image)
         {
             arbre = new Dictionary<Color, int>();
@@ -112,7 +117,11 @@ namespace projects
             }
         }
 
-
+        /// <summary>
+        /// Decode of the Huffman tree
+        /// </summary>
+        /// <param name="liste">list of all the bites</param>
+        /// <returns></returns>
         public Noeud TreeDecode(BitArray liste)
         {
             Noeud root = null;
@@ -172,7 +181,13 @@ namespace projects
             return root;
         }
 
-         static byte GetByteFromBitArray(BitArray bitArray, int start)
+        /// <summary>
+        /// transform a bit array to a byte
+        /// </summary>
+        /// <param name="bitArray"></param>
+        /// <param name="start"></param>
+        /// <returns></returns>
+        static byte GetByteFromBitArray(BitArray bitArray, int start)
         {
             byte b = 0;
 
@@ -195,6 +210,11 @@ namespace projects
             return b;
         }
 
+        /// <summary>
+        /// Transform a byte list in a bit array
+        /// </summary>
+        /// <param name="b">byte array</param>
+        /// <returns></returns>
         public static bool[] GetBoolFromByte(byte[] b)
         {
             bool[] result = new bool[8];
@@ -203,6 +223,10 @@ namespace projects
             return result;
         }
 
+
+        /// <summary>
+        /// draw the current binary tree
+        /// </summary>
         public void AfficherBinaireArbre()
         {
             Console.WriteLine("Couleur & Binaire");
@@ -235,6 +259,12 @@ namespace projects
             }
         }
 
+
+        /// <summary>
+        /// get the minus frequency from a list of node
+        /// </summary>
+        /// <param name="liste">list of nods</param>
+        /// <returns></returns>
         public static Noeud MinFreqFromNodeList(List<Noeud> liste)
         {
             Noeud node = null;
@@ -259,6 +289,10 @@ namespace projects
         }
     }
 
+
+    /// <summary>
+    /// Node class
+    /// </summary>
     internal class Noeud
     {
         public Color ?pixel;
@@ -266,6 +300,13 @@ namespace projects
         public Noeud ?noeudDroit;
         public Noeud ?noeudGauche;
 
+        /// <summary>
+        /// constructor of node class
+        /// </summary>
+        /// <param name="pixel"></param>
+        /// <param name="frequence"></param>
+        /// <param name="noeudGauche"></param>
+        /// <param name="?noeudDroit"></param>
         public Noeud(Color pixel, int frequence, Noeud? noeudGauche, Noeud ?noeudDroit)
         {
             if(pixel == null)
@@ -282,6 +323,13 @@ namespace projects
             this.noeudGauche = noeudGauche;
         }
 
+
+        /// <summary>
+        /// get all binary code of the children nodes
+        /// </summary>
+        /// <param name="pixel"></param>
+        /// <param name="?liste"></param>
+        /// <returns></returns>
         public List<bool> BinaireEnfants(Color pixel, List<bool> ?liste = null)
         {
             // Return the list if the pixel researched correspond to this node
@@ -328,6 +376,11 @@ namespace projects
 
         }
 
+
+        /// <summary>
+        /// return the tostring of the node
+        /// </summary>
+        /// <returns></returns>
         public string ToString()
         {
             string str = null;

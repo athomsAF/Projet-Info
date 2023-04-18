@@ -19,6 +19,9 @@ namespace projects
         public int Offset{get; set;}
         public int BitsParCouleur {get;set;}
 
+        /// <summary>
+        /// bitmap class
+        /// </summary>
         public BitMap()
         {
             // Height / Witdh of the image
@@ -36,6 +39,10 @@ namespace projects
 
         }
 
+        /// <summary>
+        /// bitmap constructor
+        /// </summary>
+        /// <param name="Path">current path of the iamge</param>
         public BitMap(string Path)
         {
             // File content
@@ -197,6 +204,10 @@ namespace projects
             Console.WriteLine("New Image Saved !");
         }
         
+        /// <summary>
+        /// transform an image with grey scale
+        /// </summary>
+        /// <param name="force">power of the grey</param>
         public void NuanceGris(int force = 255)
         {
             Pixel[,] imageFinale = new Pixel[Dimensions[0], Dimensions[1]];
@@ -221,6 +232,11 @@ namespace projects
             this.ImagePixel = imageFinale;
         }
 
+
+        /// <summary>
+        /// transform an image in black and white
+        /// </summary>
+        /// <param name="force">power of the grey and white</param>
         public void NoirEtBlanc(int force = 125)
         {
             Pixel[,] imageFinale = new Pixel[Dimensions[0], Dimensions[1]];
@@ -243,6 +259,13 @@ namespace projects
             this.ImagePixel = imageFinale;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rouge"></param>
+        /// <param name="vert"></param>
+        /// <param name="bleu"></param>
         public void ChoixChromatique(int rouge = 255, int vert = 255, int bleu = 255)
         {
             Pixel[,] imageFinale = new Pixel[Dimensions[0], Dimensions[1]];

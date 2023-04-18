@@ -4,6 +4,9 @@ using static projects.BitMap;
 
 namespace projects
 {
+    /// <summary>
+    /// structure for pixel
+    /// </summary>
     public struct Pixel
     {
         public byte R;
@@ -18,6 +21,9 @@ namespace projects
         }
     }
 
+    /// <summary>
+    /// Pixel value for jpg
+    /// </summary>
     public struct PixelJPG
     {
         public byte Y;
@@ -31,6 +37,9 @@ namespace projects
             }
     }
 
+    /// <summary>
+    /// class Color
+    /// </summary>
     public class Color
     {
         // Int values
@@ -43,6 +52,13 @@ namespace projects
         public byte GB { get { return (byte) this.G; } }
         public byte BB { get { return (byte) this.B; } }
 
+        /// <summary>
+        /// color constructor
+        /// </summary>
+        /// <param name="r">red byte value</param>
+        /// <param name="g">green byte value</param>
+        /// <param name="b">blue byte value</param>
+
         public Color(byte r, byte g, byte b)
         {
             this.R = BitMap.ConvertirEndianToInt(new byte[] {r});
@@ -50,6 +66,12 @@ namespace projects
             this.B = BitMap.ConvertirEndianToInt(new byte[] {b});
         }
 
+        /// <summary>
+        /// color constructor
+        /// </summary>
+        /// <param name="r"></param>
+        /// <param name="g"></param>
+        /// <param name="b"></param>
         public Color(int r, int g, int b)
         {
             this.R = r;

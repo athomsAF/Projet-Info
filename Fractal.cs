@@ -6,6 +6,17 @@ namespace projects
     public class Fractal
     {
 
+        /// <summary>
+        /// class that create a mandelbroat factal
+        /// </summary>
+        /// <param name="h"></param>
+        /// <param name="w"></param>
+        /// <param name="maxiter"></param>
+        /// <param name="zoom"></param>
+        /// <param name="decalx"></param>
+        /// <param name="decaly"></param>
+        /// <param name="ct"></param>
+        /// <returns>matrix of the pixel for the acual mandelbrot image</returns>
         public static Pixel[,] Mandelbrot(int h, int w, int maxiter = 1000, double zoom = 1, double decalx = 0, double decaly = 0, ColorTable ct = null)
         {
             double realzoom = 4.0 / (zoom * Math.Pow(10, zoom - 1));
@@ -50,6 +61,19 @@ namespace projects
             return mandelbrot;
         }
 
+        /// <summary>
+        /// create the julia fractal
+        /// </summary>
+        /// <param name="h"></param>
+        /// <param name="w"></param>
+        /// <param name="maxiter"></param>
+        /// <param name="zoom"></param>
+        /// <param name="decalx"></param>
+        /// <param name="decaly"></param>
+        /// <param name="seedX"></param>
+        /// <param name="seedY"></param>
+        /// <param name="ct"></param>
+        /// <returns></returns>
         public static Pixel[,] Julia (int h, int w, int maxiter = 1000, double zoom = 1, double decalx = 0, double decaly = 0, double seedX = 0, double seedY = 0, ColorTable ct = null)
         {
             // -0.7 / 0.27015;
