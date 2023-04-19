@@ -3,3 +3,7 @@ obj
 *.dib
 *.log
 documents
+*.vsidx
+*.v2
+*.1
+*.v2

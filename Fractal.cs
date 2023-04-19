@@ -3,41 +3,43 @@ using static projects.Complexe;
 
 namespace projects
 {
+    /// <summary>
+    /// Fractal
+    /// </summary>
     public class Fractal
     {
-
         /// <summary>
-        /// class that create a mandelbroat factal
+        /// Mandelbrot fractal
         /// </summary>
-        /// <param name="h"></param>
-        /// <param name="w"></param>
-        /// <param name="maxiter"></param>
-        /// <param name="zoom"></param>
-        /// <param name="decalx"></param>
-        /// <param name="decaly"></param>
-        /// <param name="ct"></param>
-        /// <returns>matrix of the pixel for the acual mandelbrot image</returns>
-        public static Pixel[,] Mandelbrot(int h, int w, int maxiter = 1000, double zoom = 1, double decalx = 0, double decaly = 0, ColorTable ct = null)
+        /// <param name="height">Height of the fractal</param>
+        /// <param name="width">Width of the fractal</param>
+        /// <param name="maxiter">Maximum iteration before exiting the loop</param>
+        /// <param name="zoom">Zooming value</param>
+        /// <param name="decalx">X shift</param>
+        /// <param name="decaly">Y shift</param>
+        /// <param name="colorTable">Color gradient used for the fractal</param>
+        /// <returns>Mandelbrot fractal generated from the given parameters</returns>
+        public static Pixel[,] Mandelbrot(int height, int width, int maxiter = 1000, double zoom = 1, double decalx = 0, double decaly = 0, ColorTable ?colorTable = null)
         {
+            // Initialisation of all parameters
             double realzoom = 4.0 / (zoom * Math.Pow(10, zoom - 1));
 
-            if(ct == null)
-            {
-                ct = new ColorTable();
-            }
+            colorTable ??= new ColorTable();
 
-            Pixel[,] mandelbrot = new Pixel[h, w];
+            Pixel[,] mandelbrot = new Pixel[height, width];
 
-            for(int lig = 0; lig < h; lig++)
+            // Loop through the canvas and compute the level of the pixel in the mandelbrot fractal through their iteration count
+            for(int row = 0; row < height; row++)
             {
-                for(int col = 0; col < w; col++)
+                for(int col = 0; col < width; col++)
                 {
-                    double c_re = (col - w / 2.0) * realzoom / w + decalx;
-                    double c_im = (lig - h / 2.0) * realzoom / h + decaly;
+                    double c_re = (col - width / 2.0) * realzoom / width + decalx;
+                    double c_im = (row - height / 2.0) * realzoom / height + decaly;
 
                     int iter = 0;
                     double x = 0, y = 0;
 
+                    // Repeat until the modulus of the complex number exceed the circle radius of 4
                     while (iter < maxiter && ((x*x) + (y*y)) <= 4)
                     {
                         double x_temp = (x * x) - (y * y) + c_re;
@@ -46,14 +48,14 @@ namespace projects
                         iter++;
                     }
 
-                    Color c = ct.table.First();
-                    mandelbrot[lig, col] = new Pixel(c.RB, c.GB, c.BB);
-
+                    // Set the color using the iterations required to exit the loot
+                    Pixel c = colorTable.table.First();
+                    mandelbrot[row, col] = new Pixel(c.R, c.G, c.B);
 
                     if (iter < maxiter)
                     {
-                        c = ct.table[ct.table.Length - 1 - iter % ct.table.Length];
-                        mandelbrot[lig, col] = new Pixel(c.RB, c.GB, c.BB);
+                        c = colorTable.table[colorTable.table.Length - 1 - iter % colorTable.table.Length];
+                        mandelbrot[row, col] = new Pixel(c.R, c.G, c.B);
 
                     }
                 }
@@ -62,37 +64,40 @@ namespace projects
         }
 
         /// <summary>
-        /// create the julia fractal
+        /// Julia fractal
         /// </summary>
-        /// <param name="h"></param>
-        /// <param name="w"></param>
-        /// <param name="maxiter"></param>
-        /// <param name="zoom"></param>
-        /// <param name="decalx"></param>
-        /// <param name="decaly"></param>
-        /// <param name="seedX"></param>
-        /// <param name="seedY"></param>
-        /// <param name="ct"></param>
-        /// <returns></returns>
-        public static Pixel[,] Julia (int h, int w, int maxiter = 1000, double zoom = 1, double decalx = 0, double decaly = 0, double seedX = 0, double seedY = 0, ColorTable ct = null)
+        /// <param name="height">Height of the fractal</param>
+        /// <param name="width">Width of the fractal</param>
+        /// <param name="maxiter">Maximum iteration before exiting the loop</param>
+        /// <param name="zoom">Zooming value</param>
+        /// <param name="decalx">X shift</param>
+        /// <param name="decaly">Y shift</param>
+        /// <param name="seedX">X increment</param>
+        /// <param name="seedY">Y increment</param>
+        /// <param name="colorTable">Color gradient used for the fractal</param>
+        /// <returns>Julia fractal generated from the given parameters</returns>
+        public static Pixel[,] Julia (int height, int width, int maxiter = 1000, double zoom = 1, double decalx = 0, double decaly = 0, double seedX = -0.7, double seedY = 0.27015, ColorTable colorTable = null)
         {
-            // -0.7 / 0.27015;
+            // Initialisation of all parameters
+            var julia = new Pixel[height, width];
             double zx, zy, tmp;
             int i;
 
-            if (ct == null)
+            if (colorTable == null)
             {
-                ct = new ColorTable();
+                colorTable = new ColorTable();
             }
 
-            var julia = new Pixel[h, w];
-            for (int lig = 0; lig < h; lig++)
+            // Loop through the canvas and compute the level of the pixel in the mandelbrot fractal through their iteration count
+            for (int row = 0; row < height; row++)
             {
-                for (int col = 0; col < w; col++)
+                for (int col = 0; col < width; col++)
                 {
-                    zx = 1.5 * (lig - h / 2) / (0.5 * zoom * h) + decalx;
-                    zy = 1.0 * (col - w / 2) / (0.5 * zoom * w) + decaly;
+                    zx = 1.5 * (row - height / 2) / (0.5 * zoom * height) + decalx;
+                    zy = 1.0 * (col - width / 2) / (0.5 * zoom * width) + decaly;
                     i = 0;
+
+                    // Repeat until the modulus of the complex number exceed the circle radius of 4 
                     while (zx * zx + zy * zy < 4 && i < maxiter)
                     {
                         tmp = zx * zx - zy * zy + seedX;
@@ -101,34 +106,37 @@ namespace projects
                         i += 1;
                     }
 
-                    Color c = ct.table.Last();
-                    julia[lig, col] = new Pixel(c.RB, c.GB, c.BB);
+                    // Set the color using the iterations required to exit the loot
+
+                    Pixel c = colorTable.table.Last();
+                    julia[row, col] = new Pixel(c.R, c.G, c.B);
 
                     if (i < maxiter)
                     {
-                        c = ct.table[i % ct.table.Length];
-                        julia[lig, col] = new Pixel(c.RB, c.GB, c.BB);
+                        c = colorTable.table[i % colorTable.table.Length];
+                        julia[row, col] = new Pixel(c.R, c.G, c.B);
                     }
                 }
             }
 
             return julia;
         }
-        /*
-        public static Pixel[,] Newton(int h, int w, int maxiter = 1000, double zoom = 1)
+
+        /* Unfinished Newton's fractal
+        public static Pixel[,] Newton(int height, int width, int maxiter = 1000, double zoom = 1)
         {
             double zx, zy, tmp;
             int i;
             int a = 1;
-            ColorTable ct= new ColorTable(new Color[] { new Color(0, 0, 0), new Color(255, 0, 0), new Color(255, 255, 0), new Color(0, 255, 255), new Color(0, 255, 0) });
+            ColorTable colorTable= new ColorTable(new Pixel[] { new Pixel(0, 0, 0), new Pixel(255, 0, 0), new Pixel(255, 255, 0), new Pixel(0, 255, 255), new Pixel(0, 255, 0) });
 
-            var newton = new Pixel[h, w];
-            for (int lig = 0; lig < h; lig++)
+            var newton = new Pixel[height, width];
+            for (int lig = 0; lig < height; lig++)
             {
-                for (int col = 0; col < w; col++)
+                for (int col = 0; col < width; col++)
                 {
-                    zx = 1.5 * (lig - h / 2) / (0.5 * zoom * h);
-                    zy = 1.0 * (col - w / 2) / (0.5 * zoom * w);
+                    zx = 1.5 * (lig - height / 2) / (0.5 * zoom * height);
+                    zy = 1.0 * (col - width / 2) / (0.5 * zoom * width);
                     i = 0;
                     Complexe z = new Complexe(zx, zy);
                     while (z.Mod() < 4 && i < maxiter)
@@ -139,12 +147,12 @@ namespace projects
 
                     if (i < maxiter)
                     {
-                        Color c = ct.table[i % ct.table.Length];
+                        Pixel c = colorTable.table[i % colorTable.table.Length];
                         newton[lig, col] = new Pixel(c.RB, c.GB, c.BB);
                     }
                     else
                     {
-                        Color c = new Color(0, 0, 0);
+                        Pixel c = new Pixel(0, 0, 0);
                         newton[lig, col] = new Pixel(c.RB, c.GB, c.BB);
                     }
                 }
