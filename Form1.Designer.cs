@@ -34,7 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.Fractal = new System.Windows.Forms.Button();
+            this.FractalRun = new System.Windows.Forms.Button();
             this.FractalHeigth = new System.Windows.Forms.TextBox();
             this.FractalWidth = new System.Windows.Forms.TextBox();
             this.FractalIterations = new System.Windows.Forms.TextBox();
@@ -67,9 +67,68 @@
             this.IsMandelbrot = new System.Windows.Forms.RadioButton();
             this.IsJulia = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Color = new System.Windows.Forms.TabPage();
+            this.ColorOption = new System.Windows.Forms.GroupBox();
+            this.IsFilter = new System.Windows.Forms.RadioButton();
+            this.IsBlack = new System.Windows.Forms.RadioButton();
+            this.IsGray = new System.Windows.Forms.RadioButton();
+            this.BlackWhiteBox = new System.Windows.Forms.GroupBox();
+            this.BlackTrackBar = new System.Windows.Forms.TrackBar();
+            this.label13 = new System.Windows.Forms.Label();
+            this.ColorRun = new System.Windows.Forms.Button();
+            this.ColorFilterBox = new System.Windows.Forms.GroupBox();
+            this.BlueTrackBar = new System.Windows.Forms.TrackBar();
+            this.GreenTrackBar = new System.Windows.Forms.TrackBar();
+            this.RedTrackBar = new System.Windows.Forms.TrackBar();
+            this.label12 = new System.Windows.Forms.Label();
+            this.GrayScaleBox = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.GrayTrackBar = new System.Windows.Forms.TrackBar();
+            this.Modification = new System.Windows.Forms.TabPage();
+            this.ModifRun = new System.Windows.Forms.Button();
+            this.ModifRotationBox = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.ModifRotationBar = new System.Windows.Forms.TrackBar();
+            this.ModifExtensionBox = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.ModifExtensionBar = new System.Windows.Forms.TrackBar();
+            this.ModifTypeBox = new System.Windows.Forms.GroupBox();
+            this.IsRotation = new System.Windows.Forms.RadioButton();
+            this.IsExtension = new System.Windows.Forms.RadioButton();
+            this.Convolution = new System.Windows.Forms.TabPage();
+            this.ConvCustomBox = new System.Windows.Forms.GroupBox();
+            this.ConvCustom33 = new System.Windows.Forms.TextBox();
+            this.ConvCustom32 = new System.Windows.Forms.TextBox();
+            this.ConvCustom31 = new System.Windows.Forms.TextBox();
+            this.ConvCustom23 = new System.Windows.Forms.TextBox();
+            this.ConvCustom22 = new System.Windows.Forms.TextBox();
+            this.ConvCustom21 = new System.Windows.Forms.TextBox();
+            this.ConvCustom13 = new System.Windows.Forms.TextBox();
+            this.ConvCustom12 = new System.Windows.Forms.TextBox();
+            this.ConvCustom11 = new System.Windows.Forms.TextBox();
+            this.ConvTypeBox = new System.Windows.Forms.GroupBox();
+            this.IsConvCustom = new System.Windows.Forms.RadioButton();
+            this.IsOther = new System.Windows.Forms.RadioButton();
+            this.IsEmbossing = new System.Windows.Forms.RadioButton();
+            this.IsBorderDetection = new System.Windows.Forms.RadioButton();
+            this.IsBlur = new System.Windows.Forms.RadioButton();
+            this.ConvRun = new System.Windows.Forms.Button();
+            this.Stega = new System.Windows.Forms.TabPage();
+            this.StegDecodeBox = new System.Windows.Forms.GroupBox();
+            this.StegToUnhide = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.StegEncodeBox = new System.Windows.Forms.GroupBox();
+            this.StegSource = new System.Windows.Forms.Button();
+            this.StegToHide = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.StegTypeBox = new System.Windows.Forms.GroupBox();
+            this.IsStegDecode = new System.Windows.Forms.RadioButton();
+            this.IsStegEncode = new System.Windows.Forms.RadioButton();
+            this.StegRun = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.Convolution = new System.Windows.Forms.TabPage();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -79,6 +138,29 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.Color.SuspendLayout();
+            this.ColorOption.SuspendLayout();
+            this.BlackWhiteBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BlackTrackBar)).BeginInit();
+            this.ColorFilterBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BlueTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GreenTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RedTrackBar)).BeginInit();
+            this.GrayScaleBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GrayTrackBar)).BeginInit();
+            this.Modification.SuspendLayout();
+            this.ModifRotationBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ModifRotationBar)).BeginInit();
+            this.ModifExtensionBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ModifExtensionBar)).BeginInit();
+            this.ModifTypeBox.SuspendLayout();
+            this.Convolution.SuspendLayout();
+            this.ConvCustomBox.SuspendLayout();
+            this.ConvTypeBox.SuspendLayout();
+            this.Stega.SuspendLayout();
+            this.StegDecodeBox.SuspendLayout();
+            this.StegEncodeBox.SuspendLayout();
+            this.StegTypeBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,7 +173,6 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Fin";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -144,15 +225,15 @@
             this.listBox1.TabIndex = 6;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
-            // Fractal
+            // FractalRun
             // 
-            this.Fractal.Location = new System.Drawing.Point(76, 15);
-            this.Fractal.Name = "Fractal";
-            this.Fractal.Size = new System.Drawing.Size(147, 23);
-            this.Fractal.TabIndex = 7;
-            this.Fractal.Text = "Run and Load";
-            this.Fractal.UseVisualStyleBackColor = true;
-            this.Fractal.Click += new System.EventHandler(this.button4_Click);
+            this.FractalRun.Location = new System.Drawing.Point(6, 6);
+            this.FractalRun.Name = "FractalRun";
+            this.FractalRun.Size = new System.Drawing.Size(276, 23);
+            this.FractalRun.TabIndex = 7;
+            this.FractalRun.Text = "Run and Load";
+            this.FractalRun.UseVisualStyleBackColor = true;
+            this.FractalRun.Click += new System.EventHandler(this.button4_Click);
             // 
             // FractalHeigth
             // 
@@ -266,7 +347,10 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.Fractals);
+            this.tabControl1.Controls.Add(this.Color);
+            this.tabControl1.Controls.Add(this.Modification);
             this.tabControl1.Controls.Add(this.Convolution);
+            this.tabControl1.Controls.Add(this.Stega);
             this.tabControl1.Location = new System.Drawing.Point(12, 11);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -301,13 +385,13 @@
             // Fractals
             // 
             this.Fractals.AutoScroll = true;
-            this.Fractals.AutoScrollMargin = new System.Drawing.Size(0, 70);
+            this.Fractals.AutoScrollMargin = new System.Drawing.Size(0, 10);
             this.Fractals.Controls.Add(this.groupBox5);
             this.Fractals.Controls.Add(this.groupBox4);
             this.Fractals.Controls.Add(this.groupBox3);
             this.Fractals.Controls.Add(this.groupBox2);
             this.Fractals.Controls.Add(this.groupBox1);
-            this.Fractals.Controls.Add(this.Fractal);
+            this.Fractals.Controls.Add(this.FractalRun);
             this.Fractals.Location = new System.Drawing.Point(4, 26);
             this.Fractals.Name = "Fractals";
             this.Fractals.Padding = new System.Windows.Forms.Padding(3);
@@ -496,6 +580,627 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "All";
             // 
+            // Color
+            // 
+            this.Color.AutoScroll = true;
+            this.Color.AutoScrollMargin = new System.Drawing.Size(0, 10);
+            this.Color.Controls.Add(this.ColorOption);
+            this.Color.Controls.Add(this.BlackWhiteBox);
+            this.Color.Controls.Add(this.ColorRun);
+            this.Color.Controls.Add(this.ColorFilterBox);
+            this.Color.Controls.Add(this.GrayScaleBox);
+            this.Color.Location = new System.Drawing.Point(4, 26);
+            this.Color.Name = "Color";
+            this.Color.Padding = new System.Windows.Forms.Padding(3);
+            this.Color.Size = new System.Drawing.Size(308, 489);
+            this.Color.TabIndex = 2;
+            this.Color.Text = "Color";
+            this.Color.UseVisualStyleBackColor = true;
+            // 
+            // ColorOption
+            // 
+            this.ColorOption.Controls.Add(this.IsFilter);
+            this.ColorOption.Controls.Add(this.IsBlack);
+            this.ColorOption.Controls.Add(this.IsGray);
+            this.ColorOption.Location = new System.Drawing.Point(6, 35);
+            this.ColorOption.Name = "ColorOption";
+            this.ColorOption.Size = new System.Drawing.Size(278, 59);
+            this.ColorOption.TabIndex = 4;
+            this.ColorOption.TabStop = false;
+            this.ColorOption.Text = "Operation";
+            // 
+            // IsFilter
+            // 
+            this.IsFilter.AutoSize = true;
+            this.IsFilter.Location = new System.Drawing.Point(218, 26);
+            this.IsFilter.Name = "IsFilter";
+            this.IsFilter.Size = new System.Drawing.Size(54, 21);
+            this.IsFilter.TabIndex = 2;
+            this.IsFilter.Text = "Filter";
+            this.IsFilter.UseVisualStyleBackColor = true;
+            // 
+            // IsBlack
+            // 
+            this.IsBlack.AutoSize = true;
+            this.IsBlack.Location = new System.Drawing.Point(99, 26);
+            this.IsBlack.Name = "IsBlack";
+            this.IsBlack.Size = new System.Drawing.Size(119, 21);
+            this.IsBlack.TabIndex = 1;
+            this.IsBlack.Text = "Black And White";
+            this.IsBlack.UseVisualStyleBackColor = true;
+            // 
+            // IsGray
+            // 
+            this.IsGray.AutoSize = true;
+            this.IsGray.Checked = true;
+            this.IsGray.Location = new System.Drawing.Point(6, 26);
+            this.IsGray.Name = "IsGray";
+            this.IsGray.Size = new System.Drawing.Size(87, 21);
+            this.IsGray.TabIndex = 0;
+            this.IsGray.TabStop = true;
+            this.IsGray.Text = "Gray Scale";
+            this.IsGray.UseVisualStyleBackColor = true;
+            // 
+            // BlackWhiteBox
+            // 
+            this.BlackWhiteBox.Controls.Add(this.BlackTrackBar);
+            this.BlackWhiteBox.Controls.Add(this.label13);
+            this.BlackWhiteBox.Location = new System.Drawing.Point(6, 409);
+            this.BlackWhiteBox.Name = "BlackWhiteBox";
+            this.BlackWhiteBox.Size = new System.Drawing.Size(278, 92);
+            this.BlackWhiteBox.TabIndex = 0;
+            this.BlackWhiteBox.TabStop = false;
+            this.BlackWhiteBox.Text = "Black And White";
+            // 
+            // BlackTrackBar
+            // 
+            this.BlackTrackBar.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.BlackTrackBar.Location = new System.Drawing.Point(6, 41);
+            this.BlackTrackBar.Maximum = 255;
+            this.BlackTrackBar.Minimum = 1;
+            this.BlackTrackBar.Name = "BlackTrackBar";
+            this.BlackTrackBar.Size = new System.Drawing.Size(266, 45);
+            this.BlackTrackBar.TabIndex = 2;
+            this.BlackTrackBar.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.BlackTrackBar.Value = 1;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(115, 21);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(57, 17);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Strength";
+            // 
+            // ColorRun
+            // 
+            this.ColorRun.Location = new System.Drawing.Point(6, 6);
+            this.ColorRun.Name = "ColorRun";
+            this.ColorRun.Size = new System.Drawing.Size(278, 23);
+            this.ColorRun.TabIndex = 3;
+            this.ColorRun.Text = "Run And Load";
+            this.ColorRun.UseVisualStyleBackColor = true;
+            this.ColorRun.Click += new System.EventHandler(this.ColorRun_Click);
+            // 
+            // ColorFilterBox
+            // 
+            this.ColorFilterBox.Controls.Add(this.BlueTrackBar);
+            this.ColorFilterBox.Controls.Add(this.GreenTrackBar);
+            this.ColorFilterBox.Controls.Add(this.RedTrackBar);
+            this.ColorFilterBox.Controls.Add(this.label12);
+            this.ColorFilterBox.Location = new System.Drawing.Point(6, 206);
+            this.ColorFilterBox.Name = "ColorFilterBox";
+            this.ColorFilterBox.Size = new System.Drawing.Size(278, 197);
+            this.ColorFilterBox.TabIndex = 2;
+            this.ColorFilterBox.TabStop = false;
+            this.ColorFilterBox.Text = "Color Filter";
+            // 
+            // BlueTrackBar
+            // 
+            this.BlueTrackBar.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.BlueTrackBar.Location = new System.Drawing.Point(6, 143);
+            this.BlueTrackBar.Maximum = 500;
+            this.BlueTrackBar.Name = "BlueTrackBar";
+            this.BlueTrackBar.Size = new System.Drawing.Size(266, 45);
+            this.BlueTrackBar.TabIndex = 4;
+            this.BlueTrackBar.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.BlueTrackBar.Value = 255;
+            // 
+            // GreenTrackBar
+            // 
+            this.GreenTrackBar.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.GreenTrackBar.Location = new System.Drawing.Point(6, 92);
+            this.GreenTrackBar.Maximum = 500;
+            this.GreenTrackBar.Name = "GreenTrackBar";
+            this.GreenTrackBar.Size = new System.Drawing.Size(266, 45);
+            this.GreenTrackBar.TabIndex = 3;
+            this.GreenTrackBar.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.GreenTrackBar.Value = 255;
+            // 
+            // RedTrackBar
+            // 
+            this.RedTrackBar.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.RedTrackBar.Location = new System.Drawing.Point(6, 41);
+            this.RedTrackBar.Maximum = 500;
+            this.RedTrackBar.Name = "RedTrackBar";
+            this.RedTrackBar.Size = new System.Drawing.Size(266, 45);
+            this.RedTrackBar.TabIndex = 2;
+            this.RedTrackBar.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.RedTrackBar.Value = 255;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(115, 21);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(57, 17);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Strength";
+            // 
+            // GrayScaleBox
+            // 
+            this.GrayScaleBox.Controls.Add(this.label11);
+            this.GrayScaleBox.Controls.Add(this.GrayTrackBar);
+            this.GrayScaleBox.Location = new System.Drawing.Point(6, 100);
+            this.GrayScaleBox.Name = "GrayScaleBox";
+            this.GrayScaleBox.Size = new System.Drawing.Size(278, 100);
+            this.GrayScaleBox.TabIndex = 1;
+            this.GrayScaleBox.TabStop = false;
+            this.GrayScaleBox.Text = "Gray Scale";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(115, 21);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(57, 17);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Strength";
+            // 
+            // GrayTrackBar
+            // 
+            this.GrayTrackBar.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.GrayTrackBar.Location = new System.Drawing.Point(6, 49);
+            this.GrayTrackBar.Maximum = 255;
+            this.GrayTrackBar.Minimum = 1;
+            this.GrayTrackBar.Name = "GrayTrackBar";
+            this.GrayTrackBar.Size = new System.Drawing.Size(266, 45);
+            this.GrayTrackBar.TabIndex = 0;
+            this.GrayTrackBar.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.GrayTrackBar.Value = 1;
+            // 
+            // Modification
+            // 
+            this.Modification.AutoScroll = true;
+            this.Modification.AutoScrollMargin = new System.Drawing.Size(0, 10);
+            this.Modification.Controls.Add(this.ModifRun);
+            this.Modification.Controls.Add(this.ModifRotationBox);
+            this.Modification.Controls.Add(this.ModifExtensionBox);
+            this.Modification.Controls.Add(this.ModifTypeBox);
+            this.Modification.Location = new System.Drawing.Point(4, 26);
+            this.Modification.Name = "Modification";
+            this.Modification.Size = new System.Drawing.Size(308, 489);
+            this.Modification.TabIndex = 3;
+            this.Modification.Text = "Modif";
+            this.Modification.UseVisualStyleBackColor = true;
+            // 
+            // ModifRun
+            // 
+            this.ModifRun.Location = new System.Drawing.Point(10, 12);
+            this.ModifRun.Name = "ModifRun";
+            this.ModifRun.Size = new System.Drawing.Size(278, 23);
+            this.ModifRun.TabIndex = 4;
+            this.ModifRun.Text = "Run And Load";
+            this.ModifRun.UseVisualStyleBackColor = true;
+            this.ModifRun.Click += new System.EventHandler(this.ModifRun_Click);
+            // 
+            // ModifRotationBox
+            // 
+            this.ModifRotationBox.Controls.Add(this.label15);
+            this.ModifRotationBox.Controls.Add(this.ModifRotationBar);
+            this.ModifRotationBox.Location = new System.Drawing.Point(10, 235);
+            this.ModifRotationBox.Name = "ModifRotationBox";
+            this.ModifRotationBox.Size = new System.Drawing.Size(278, 102);
+            this.ModifRotationBox.TabIndex = 2;
+            this.ModifRotationBox.TabStop = false;
+            this.ModifRotationBox.Text = "Rotation";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(104, 21);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(76, 17);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Angle (deg)";
+            // 
+            // ModifRotationBar
+            // 
+            this.ModifRotationBar.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.ModifRotationBar.Location = new System.Drawing.Point(6, 51);
+            this.ModifRotationBar.Maximum = 180;
+            this.ModifRotationBar.Minimum = -180;
+            this.ModifRotationBar.Name = "ModifRotationBar";
+            this.ModifRotationBar.Size = new System.Drawing.Size(266, 45);
+            this.ModifRotationBar.TabIndex = 2;
+            this.ModifRotationBar.TickStyle = System.Windows.Forms.TickStyle.Both;
+            // 
+            // ModifExtensionBox
+            // 
+            this.ModifExtensionBox.Controls.Add(this.label14);
+            this.ModifExtensionBox.Controls.Add(this.ModifExtensionBar);
+            this.ModifExtensionBox.Location = new System.Drawing.Point(10, 104);
+            this.ModifExtensionBox.Name = "ModifExtensionBox";
+            this.ModifExtensionBox.Size = new System.Drawing.Size(278, 106);
+            this.ModifExtensionBox.TabIndex = 1;
+            this.ModifExtensionBox.TabStop = false;
+            this.ModifExtensionBox.Text = "Extension";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(104, 21);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(69, 17);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "Coefficient";
+            // 
+            // ModifExtensionBar
+            // 
+            this.ModifExtensionBar.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.ModifExtensionBar.Location = new System.Drawing.Point(6, 50);
+            this.ModifExtensionBar.Minimum = 1;
+            this.ModifExtensionBar.Name = "ModifExtensionBar";
+            this.ModifExtensionBar.Size = new System.Drawing.Size(266, 45);
+            this.ModifExtensionBar.TabIndex = 0;
+            this.ModifExtensionBar.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.ModifExtensionBar.Value = 1;
+            // 
+            // ModifTypeBox
+            // 
+            this.ModifTypeBox.Controls.Add(this.IsRotation);
+            this.ModifTypeBox.Controls.Add(this.IsExtension);
+            this.ModifTypeBox.Location = new System.Drawing.Point(10, 41);
+            this.ModifTypeBox.Name = "ModifTypeBox";
+            this.ModifTypeBox.Size = new System.Drawing.Size(278, 57);
+            this.ModifTypeBox.TabIndex = 0;
+            this.ModifTypeBox.TabStop = false;
+            this.ModifTypeBox.Text = "Modification Type";
+            // 
+            // IsRotation
+            // 
+            this.IsRotation.AutoSize = true;
+            this.IsRotation.Location = new System.Drawing.Point(140, 24);
+            this.IsRotation.Name = "IsRotation";
+            this.IsRotation.Size = new System.Drawing.Size(75, 21);
+            this.IsRotation.TabIndex = 1;
+            this.IsRotation.Text = "Rotation";
+            this.IsRotation.UseVisualStyleBackColor = true;
+            // 
+            // IsExtension
+            // 
+            this.IsExtension.AutoSize = true;
+            this.IsExtension.Checked = true;
+            this.IsExtension.Location = new System.Drawing.Point(42, 24);
+            this.IsExtension.Name = "IsExtension";
+            this.IsExtension.Size = new System.Drawing.Size(81, 21);
+            this.IsExtension.TabIndex = 0;
+            this.IsExtension.TabStop = true;
+            this.IsExtension.Text = "Extension";
+            this.IsExtension.UseVisualStyleBackColor = true;
+            // 
+            // Convolution
+            // 
+            this.Convolution.Controls.Add(this.ConvCustomBox);
+            this.Convolution.Controls.Add(this.ConvTypeBox);
+            this.Convolution.Controls.Add(this.ConvRun);
+            this.Convolution.Location = new System.Drawing.Point(4, 26);
+            this.Convolution.Name = "Convolution";
+            this.Convolution.Size = new System.Drawing.Size(308, 489);
+            this.Convolution.TabIndex = 4;
+            this.Convolution.Text = "Conv";
+            this.Convolution.UseVisualStyleBackColor = true;
+            // 
+            // ConvCustomBox
+            // 
+            this.ConvCustomBox.Controls.Add(this.ConvCustom33);
+            this.ConvCustomBox.Controls.Add(this.ConvCustom32);
+            this.ConvCustomBox.Controls.Add(this.ConvCustom31);
+            this.ConvCustomBox.Controls.Add(this.ConvCustom23);
+            this.ConvCustomBox.Controls.Add(this.ConvCustom22);
+            this.ConvCustomBox.Controls.Add(this.ConvCustom21);
+            this.ConvCustomBox.Controls.Add(this.ConvCustom13);
+            this.ConvCustomBox.Controls.Add(this.ConvCustom12);
+            this.ConvCustomBox.Controls.Add(this.ConvCustom11);
+            this.ConvCustomBox.Location = new System.Drawing.Point(14, 131);
+            this.ConvCustomBox.Name = "ConvCustomBox";
+            this.ConvCustomBox.Size = new System.Drawing.Size(280, 168);
+            this.ConvCustomBox.TabIndex = 7;
+            this.ConvCustomBox.TabStop = false;
+            this.ConvCustomBox.Text = "Custom";
+            // 
+            // ConvCustom33
+            // 
+            this.ConvCustom33.Location = new System.Drawing.Point(181, 117);
+            this.ConvCustom33.Name = "ConvCustom33";
+            this.ConvCustom33.Size = new System.Drawing.Size(50, 25);
+            this.ConvCustom33.TabIndex = 8;
+            // 
+            // ConvCustom32
+            // 
+            this.ConvCustom32.Location = new System.Drawing.Point(108, 117);
+            this.ConvCustom32.Name = "ConvCustom32";
+            this.ConvCustom32.Size = new System.Drawing.Size(50, 25);
+            this.ConvCustom32.TabIndex = 7;
+            // 
+            // ConvCustom31
+            // 
+            this.ConvCustom31.Location = new System.Drawing.Point(33, 117);
+            this.ConvCustom31.Name = "ConvCustom31";
+            this.ConvCustom31.Size = new System.Drawing.Size(50, 25);
+            this.ConvCustom31.TabIndex = 6;
+            // 
+            // ConvCustom23
+            // 
+            this.ConvCustom23.Location = new System.Drawing.Point(183, 73);
+            this.ConvCustom23.Name = "ConvCustom23";
+            this.ConvCustom23.Size = new System.Drawing.Size(50, 25);
+            this.ConvCustom23.TabIndex = 5;
+            // 
+            // ConvCustom22
+            // 
+            this.ConvCustom22.Location = new System.Drawing.Point(107, 73);
+            this.ConvCustom22.Name = "ConvCustom22";
+            this.ConvCustom22.Size = new System.Drawing.Size(50, 25);
+            this.ConvCustom22.TabIndex = 4;
+            // 
+            // ConvCustom21
+            // 
+            this.ConvCustom21.Location = new System.Drawing.Point(33, 73);
+            this.ConvCustom21.Name = "ConvCustom21";
+            this.ConvCustom21.Size = new System.Drawing.Size(50, 25);
+            this.ConvCustom21.TabIndex = 3;
+            // 
+            // ConvCustom13
+            // 
+            this.ConvCustom13.Location = new System.Drawing.Point(183, 30);
+            this.ConvCustom13.Name = "ConvCustom13";
+            this.ConvCustom13.Size = new System.Drawing.Size(50, 25);
+            this.ConvCustom13.TabIndex = 2;
+            // 
+            // ConvCustom12
+            // 
+            this.ConvCustom12.Location = new System.Drawing.Point(108, 30);
+            this.ConvCustom12.Name = "ConvCustom12";
+            this.ConvCustom12.Size = new System.Drawing.Size(50, 25);
+            this.ConvCustom12.TabIndex = 1;
+            // 
+            // ConvCustom11
+            // 
+            this.ConvCustom11.Location = new System.Drawing.Point(33, 30);
+            this.ConvCustom11.Name = "ConvCustom11";
+            this.ConvCustom11.Size = new System.Drawing.Size(50, 25);
+            this.ConvCustom11.TabIndex = 0;
+            // 
+            // ConvTypeBox
+            // 
+            this.ConvTypeBox.Controls.Add(this.IsConvCustom);
+            this.ConvTypeBox.Controls.Add(this.IsOther);
+            this.ConvTypeBox.Controls.Add(this.IsEmbossing);
+            this.ConvTypeBox.Controls.Add(this.IsBorderDetection);
+            this.ConvTypeBox.Controls.Add(this.IsBlur);
+            this.ConvTypeBox.Location = new System.Drawing.Point(14, 41);
+            this.ConvTypeBox.Name = "ConvTypeBox";
+            this.ConvTypeBox.Size = new System.Drawing.Size(280, 84);
+            this.ConvTypeBox.TabIndex = 6;
+            this.ConvTypeBox.TabStop = false;
+            this.ConvTypeBox.Text = "Convolution Type";
+            // 
+            // IsConvCustom
+            // 
+            this.IsConvCustom.AutoSize = true;
+            this.IsConvCustom.Location = new System.Drawing.Point(88, 27);
+            this.IsConvCustom.Name = "IsConvCustom";
+            this.IsConvCustom.Size = new System.Drawing.Size(70, 21);
+            this.IsConvCustom.TabIndex = 4;
+            this.IsConvCustom.Text = "Custom";
+            this.IsConvCustom.UseVisualStyleBackColor = true;
+            // 
+            // IsOther
+            // 
+            this.IsOther.AutoSize = true;
+            this.IsOther.Location = new System.Drawing.Point(173, 54);
+            this.IsOther.Name = "IsOther";
+            this.IsOther.Size = new System.Drawing.Size(58, 21);
+            this.IsOther.TabIndex = 3;
+            this.IsOther.Text = "NOM";
+            this.IsOther.UseVisualStyleBackColor = true;
+            // 
+            // IsEmbossing
+            // 
+            this.IsEmbossing.AutoSize = true;
+            this.IsEmbossing.Location = new System.Drawing.Point(183, 27);
+            this.IsEmbossing.Name = "IsEmbossing";
+            this.IsEmbossing.Size = new System.Drawing.Size(90, 21);
+            this.IsEmbossing.TabIndex = 2;
+            this.IsEmbossing.Text = "Embossing";
+            this.IsEmbossing.UseVisualStyleBackColor = true;
+            // 
+            // IsBorderDetection
+            // 
+            this.IsBorderDetection.AutoSize = true;
+            this.IsBorderDetection.Location = new System.Drawing.Point(33, 54);
+            this.IsBorderDetection.Name = "IsBorderDetection";
+            this.IsBorderDetection.Size = new System.Drawing.Size(125, 21);
+            this.IsBorderDetection.TabIndex = 1;
+            this.IsBorderDetection.TabStop = true;
+            this.IsBorderDetection.Text = "Border Detection";
+            this.IsBorderDetection.UseVisualStyleBackColor = true;
+            // 
+            // IsBlur
+            // 
+            this.IsBlur.AutoSize = true;
+            this.IsBlur.Checked = true;
+            this.IsBlur.Location = new System.Drawing.Point(15, 27);
+            this.IsBlur.Name = "IsBlur";
+            this.IsBlur.Size = new System.Drawing.Size(48, 21);
+            this.IsBlur.TabIndex = 0;
+            this.IsBlur.TabStop = true;
+            this.IsBlur.Text = "Blur";
+            this.IsBlur.UseVisualStyleBackColor = true;
+            // 
+            // ConvRun
+            // 
+            this.ConvRun.Location = new System.Drawing.Point(14, 12);
+            this.ConvRun.Name = "ConvRun";
+            this.ConvRun.Size = new System.Drawing.Size(280, 23);
+            this.ConvRun.TabIndex = 5;
+            this.ConvRun.Text = "Run And Load";
+            this.ConvRun.UseVisualStyleBackColor = true;
+            this.ConvRun.Click += new System.EventHandler(this.ConvRun_Click);
+            // 
+            // Stega
+            // 
+            this.Stega.Controls.Add(this.StegDecodeBox);
+            this.Stega.Controls.Add(this.StegEncodeBox);
+            this.Stega.Controls.Add(this.StegTypeBox);
+            this.Stega.Controls.Add(this.StegRun);
+            this.Stega.Location = new System.Drawing.Point(4, 26);
+            this.Stega.Name = "Stega";
+            this.Stega.Size = new System.Drawing.Size(308, 489);
+            this.Stega.TabIndex = 5;
+            this.Stega.Text = "Stega";
+            this.Stega.UseVisualStyleBackColor = true;
+            // 
+            // StegDecodeBox
+            // 
+            this.StegDecodeBox.Controls.Add(this.StegToUnhide);
+            this.StegDecodeBox.Controls.Add(this.label18);
+            this.StegDecodeBox.Location = new System.Drawing.Point(14, 219);
+            this.StegDecodeBox.Name = "StegDecodeBox";
+            this.StegDecodeBox.Size = new System.Drawing.Size(280, 74);
+            this.StegDecodeBox.TabIndex = 9;
+            this.StegDecodeBox.TabStop = false;
+            this.StegDecodeBox.Text = "Decode";
+            // 
+            // StegToUnhide
+            // 
+            this.StegToUnhide.AutoSize = true;
+            this.StegToUnhide.Location = new System.Drawing.Point(92, 40);
+            this.StegToUnhide.Name = "StegToUnhide";
+            this.StegToUnhide.Size = new System.Drawing.Size(182, 27);
+            this.StegToUnhide.TabIndex = 1;
+            this.StegToUnhide.Text = "Select";
+            this.StegToUnhide.UseVisualStyleBackColor = true;
+            this.StegToUnhide.Click += new System.EventHandler(this.StegToUnhide_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(12, 40);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(74, 17);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "To Unhide :";
+            // 
+            // StegEncodeBox
+            // 
+            this.StegEncodeBox.Controls.Add(this.StegSource);
+            this.StegEncodeBox.Controls.Add(this.StegToHide);
+            this.StegEncodeBox.Controls.Add(this.label17);
+            this.StegEncodeBox.Controls.Add(this.label16);
+            this.StegEncodeBox.Location = new System.Drawing.Point(14, 103);
+            this.StegEncodeBox.Name = "StegEncodeBox";
+            this.StegEncodeBox.Size = new System.Drawing.Size(280, 110);
+            this.StegEncodeBox.TabIndex = 8;
+            this.StegEncodeBox.TabStop = false;
+            this.StegEncodeBox.Text = "Encode";
+            // 
+            // StegSource
+            // 
+            this.StegSource.AutoSize = true;
+            this.StegSource.Location = new System.Drawing.Point(73, 71);
+            this.StegSource.Name = "StegSource";
+            this.StegSource.Size = new System.Drawing.Size(201, 27);
+            this.StegSource.TabIndex = 3;
+            this.StegSource.Text = "Select";
+            this.StegSource.UseVisualStyleBackColor = true;
+            this.StegSource.Click += new System.EventHandler(this.StegSource_Click);
+            // 
+            // StegToHide
+            // 
+            this.StegToHide.AutoSize = true;
+            this.StegToHide.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.StegToHide.Location = new System.Drawing.Point(73, 31);
+            this.StegToHide.Name = "StegToHide";
+            this.StegToHide.Size = new System.Drawing.Size(201, 26);
+            this.StegToHide.TabIndex = 2;
+            this.StegToHide.Text = "Select";
+            this.StegToHide.UseVisualStyleBackColor = true;
+            this.StegToHide.Click += new System.EventHandler(this.StegToHide_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(12, 71);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(55, 17);
+            this.label17.TabIndex = 1;
+            this.label17.Text = "Source :";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(12, 31);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(60, 17);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "To Hide :";
+            // 
+            // StegTypeBox
+            // 
+            this.StegTypeBox.Controls.Add(this.IsStegDecode);
+            this.StegTypeBox.Controls.Add(this.IsStegEncode);
+            this.StegTypeBox.Location = new System.Drawing.Point(14, 42);
+            this.StegTypeBox.Name = "StegTypeBox";
+            this.StegTypeBox.Size = new System.Drawing.Size(280, 55);
+            this.StegTypeBox.TabIndex = 7;
+            this.StegTypeBox.TabStop = false;
+            this.StegTypeBox.Text = "Steganography Type";
+            // 
+            // IsStegDecode
+            // 
+            this.IsStegDecode.AutoSize = true;
+            this.IsStegDecode.Location = new System.Drawing.Point(139, 24);
+            this.IsStegDecode.Name = "IsStegDecode";
+            this.IsStegDecode.Size = new System.Drawing.Size(71, 21);
+            this.IsStegDecode.TabIndex = 1;
+            this.IsStegDecode.Text = "Decode";
+            this.IsStegDecode.UseVisualStyleBackColor = true;
+            // 
+            // IsStegEncode
+            // 
+            this.IsStegEncode.AutoSize = true;
+            this.IsStegEncode.Checked = true;
+            this.IsStegEncode.Location = new System.Drawing.Point(46, 24);
+            this.IsStegEncode.Name = "IsStegEncode";
+            this.IsStegEncode.Size = new System.Drawing.Size(69, 21);
+            this.IsStegEncode.TabIndex = 0;
+            this.IsStegEncode.TabStop = true;
+            this.IsStegEncode.Text = "Encode";
+            this.IsStegEncode.UseVisualStyleBackColor = true;
+            // 
+            // StegRun
+            // 
+            this.StegRun.Location = new System.Drawing.Point(14, 13);
+            this.StegRun.Name = "StegRun";
+            this.StegRun.Size = new System.Drawing.Size(280, 23);
+            this.StegRun.TabIndex = 6;
+            this.StegRun.Text = "Run And Load";
+            this.StegRun.UseVisualStyleBackColor = true;
+            this.StegRun.Click += new System.EventHandler(this.StegRun_Click);
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(334, 37);
@@ -504,15 +1209,9 @@
             this.pictureBox2.TabIndex = 21;
             this.pictureBox2.TabStop = false;
             // 
-            // Convolution
+            // openFileDialog1
             // 
-            this.Convolution.Location = new System.Drawing.Point(4, 26);
-            this.Convolution.Name = "Convolution";
-            this.Convolution.Padding = new System.Windows.Forms.Padding(3);
-            this.Convolution.Size = new System.Drawing.Size(308, 489);
-            this.Convolution.TabIndex = 2;
-            this.Convolution.Text = "Convolution";
-            this.Convolution.UseVisualStyleBackColor = true;
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -542,6 +1241,41 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.Color.ResumeLayout(false);
+            this.ColorOption.ResumeLayout(false);
+            this.ColorOption.PerformLayout();
+            this.BlackWhiteBox.ResumeLayout(false);
+            this.BlackWhiteBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BlackTrackBar)).EndInit();
+            this.ColorFilterBox.ResumeLayout(false);
+            this.ColorFilterBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BlueTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GreenTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RedTrackBar)).EndInit();
+            this.GrayScaleBox.ResumeLayout(false);
+            this.GrayScaleBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GrayTrackBar)).EndInit();
+            this.Modification.ResumeLayout(false);
+            this.ModifRotationBox.ResumeLayout(false);
+            this.ModifRotationBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ModifRotationBar)).EndInit();
+            this.ModifExtensionBox.ResumeLayout(false);
+            this.ModifExtensionBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ModifExtensionBar)).EndInit();
+            this.ModifTypeBox.ResumeLayout(false);
+            this.ModifTypeBox.PerformLayout();
+            this.Convolution.ResumeLayout(false);
+            this.ConvCustomBox.ResumeLayout(false);
+            this.ConvCustomBox.PerformLayout();
+            this.ConvTypeBox.ResumeLayout(false);
+            this.ConvTypeBox.PerformLayout();
+            this.Stega.ResumeLayout(false);
+            this.StegDecodeBox.ResumeLayout(false);
+            this.StegDecodeBox.PerformLayout();
+            this.StegEncodeBox.ResumeLayout(false);
+            this.StegEncodeBox.PerformLayout();
+            this.StegTypeBox.ResumeLayout(false);
+            this.StegTypeBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
@@ -555,7 +1289,7 @@
         private Label label1;
         private PictureBox pictureBox1;
         private ListBox listBox1;
-        private Button Fractal;
+        private Button FractalRun;
         private TextBox FractalHeigth;
         private TextBox FractalWidth;
         private TextBox FractalIterations;
@@ -585,17 +1319,74 @@
         private TextBox FractalJSeedX;
         private Button Color1;
         private RadioButton radioButton3;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
+        private RadioButton IsStegDecode;
+        private RadioButton IsGray;
         private ColorDialog colorDialog1;
         private Label label10;
         private Button Color2;
         private ListBox listBox2;
-        private Button button6;
+        private Button StegToUnhide;
         private Label label11;
         private RadioButton IsCustom;
         private RadioButton IsGrayscale;
         private RadioButton IsRainbow;
+        private TabPage Color;
+        private GroupBox ColorFilterBox;
+        private GroupBox GrayScaleBox;
+        private GroupBox BlackWhiteBox;
+        private Button ColorRun;
+        private GroupBox ColorOption;
+        private RadioButton IsFilter;
+        private RadioButton IsBlack;
+        private Label label13;
+        private TrackBar GreenTrackBar;
+        private TrackBar RedTrackBar;
+        private Label label12;
+        private TrackBar GrayTrackBar;
+        private TrackBar BlueTrackBar;
+        private TrackBar BlackTrackBar;
+        private TabPage Modification;
+        private Button ModifRun;
+        private GroupBox ModifRotationBox;
+        private GroupBox ModifExtensionBox;
+        private TrackBar ModifExtensionBar;
+        private GroupBox ModifTypeBox;
+        private RadioButton IsRotation;
+        private RadioButton IsExtension;
         private TabPage Convolution;
+        private Label label14;
+        private Label label15;
+        private TrackBar ModifRotationBar;
+        private Button ConvRun;
+        private GroupBox ConvTypeBox;
+        private RadioButton IsOther;
+        private RadioButton IsEmbossing;
+        private RadioButton IsBorderDetection;
+        private RadioButton IsBlur;
+        private RadioButton IsConvCustom;
+        private GroupBox ConvCustomBox;
+        private TextBox ConvCustom33;
+        private TextBox ConvCustom32;
+        private TextBox ConvCustom31;
+        private TextBox ConvCustom23;
+        private TextBox ConvCustom22;
+        private TextBox ConvCustom21;
+        private TextBox ConvCustom13;
+        private TextBox ConvCustom12;
+        private TextBox ConvCustom11;
+        private TabPage Stega;
+        private GroupBox StegTypeBox;
+        private Button StegRun;
+        private RadioButton IsStegEncode;
+        private GroupBox StegDecodeBox;
+        private Label label18;
+        private GroupBox StegEncodeBox;
+        private Button StegSource;
+        private Button StegToHide;
+        private Label label17;
+        private Label label16;
+        private OpenFileDialog openFileDialog1;
+
+
     }
 }

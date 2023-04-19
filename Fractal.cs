@@ -1,5 +1,4 @@
 using static projects.Pixel;
-using static projects.Complexe;
 
 namespace projects
 {

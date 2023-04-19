@@ -482,7 +482,7 @@ namespace projects
         /// </summary>
         /// <param name="node">Parent node</param>
         /// <param name="depth">Depth of the node (add spaces before writing down the children nodes)</param>
-        public static void ShowTree(Node node, uint depth = 0)
+        public static void ShowTree(Node node, int depth = 0)
         {
             string spaces = Program.Spaces('|', depth);
 
