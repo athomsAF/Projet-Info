@@ -297,7 +297,7 @@ namespace projects
         }
 
         ///<summary> agrandissement de l'image </summary>
-        public void Agrandissement(int coeffAG){
+        public void Agrandissement(double coeffAG){
             int height = Convert.ToUInt16( this.ImagePixel.GetLength(0)* coeffAG);
             int width = Convert.ToUInt16( this.ImagePixel.GetLength(1)* coeffAG);
             Pixel[,] AGImage = new Pixel[height,width];

@@ -85,6 +85,9 @@
             this.label11 = new System.Windows.Forms.Label();
             this.GrayTrackBar = new System.Windows.Forms.TrackBar();
             this.Modification = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.ModifShrinkBar = new System.Windows.Forms.TrackBar();
             this.ModifRun = new System.Windows.Forms.Button();
             this.ModifRotationBox = new System.Windows.Forms.GroupBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -93,6 +96,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.ModifExtensionBar = new System.Windows.Forms.TrackBar();
             this.ModifTypeBox = new System.Windows.Forms.GroupBox();
+            this.IsShrink = new System.Windows.Forms.RadioButton();
             this.IsRotation = new System.Windows.Forms.RadioButton();
             this.IsExtension = new System.Windows.Forms.RadioButton();
             this.Convolution = new System.Windows.Forms.TabPage();
@@ -149,6 +153,8 @@
             this.GrayScaleBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrayTrackBar)).BeginInit();
             this.Modification.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ModifShrinkBar)).BeginInit();
             this.ModifRotationBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModifRotationBar)).BeginInit();
             this.ModifExtensionBox.SuspendLayout();
@@ -774,6 +780,7 @@
             // 
             this.Modification.AutoScroll = true;
             this.Modification.AutoScrollMargin = new System.Drawing.Size(0, 10);
+            this.Modification.Controls.Add(this.groupBox6);
             this.Modification.Controls.Add(this.ModifRun);
             this.Modification.Controls.Add(this.ModifRotationBox);
             this.Modification.Controls.Add(this.ModifExtensionBox);
@@ -784,6 +791,37 @@
             this.Modification.TabIndex = 3;
             this.Modification.Text = "Modif";
             this.Modification.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label19);
+            this.groupBox6.Controls.Add(this.ModifShrinkBar);
+            this.groupBox6.Location = new System.Drawing.Point(10, 216);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(278, 106);
+            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Shrink";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(111, 30);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(69, 17);
+            this.label19.TabIndex = 1;
+            this.label19.Text = "Coefficient";
+            // 
+            // ModifShrinkBar
+            // 
+            this.ModifShrinkBar.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.ModifShrinkBar.Location = new System.Drawing.Point(6, 50);
+            this.ModifShrinkBar.Minimum = 1;
+            this.ModifShrinkBar.Name = "ModifShrinkBar";
+            this.ModifShrinkBar.Size = new System.Drawing.Size(266, 45);
+            this.ModifShrinkBar.TabIndex = 0;
+            this.ModifShrinkBar.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.ModifShrinkBar.Value = 1;
             // 
             // ModifRun
             // 
@@ -799,7 +837,7 @@
             // 
             this.ModifRotationBox.Controls.Add(this.label15);
             this.ModifRotationBox.Controls.Add(this.ModifRotationBar);
-            this.ModifRotationBox.Location = new System.Drawing.Point(10, 235);
+            this.ModifRotationBox.Location = new System.Drawing.Point(10, 328);
             this.ModifRotationBox.Name = "ModifRotationBox";
             this.ModifRotationBox.Size = new System.Drawing.Size(278, 102);
             this.ModifRotationBox.TabIndex = 2;
@@ -840,7 +878,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(104, 21);
+            this.label14.Location = new System.Drawing.Point(111, 30);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(69, 17);
             this.label14.TabIndex = 1;
@@ -859,6 +897,7 @@
             // 
             // ModifTypeBox
             // 
+            this.ModifTypeBox.Controls.Add(this.IsShrink);
             this.ModifTypeBox.Controls.Add(this.IsRotation);
             this.ModifTypeBox.Controls.Add(this.IsExtension);
             this.ModifTypeBox.Location = new System.Drawing.Point(10, 41);
@@ -868,10 +907,20 @@
             this.ModifTypeBox.TabStop = false;
             this.ModifTypeBox.Text = "Modification Type";
             // 
+            // IsShrink
+            // 
+            this.IsShrink.AutoSize = true;
+            this.IsShrink.Location = new System.Drawing.Point(104, 24);
+            this.IsShrink.Name = "IsShrink";
+            this.IsShrink.Size = new System.Drawing.Size(61, 21);
+            this.IsShrink.TabIndex = 2;
+            this.IsShrink.Text = "Shrink";
+            this.IsShrink.UseVisualStyleBackColor = true;
+            // 
             // IsRotation
             // 
             this.IsRotation.AutoSize = true;
-            this.IsRotation.Location = new System.Drawing.Point(140, 24);
+            this.IsRotation.Location = new System.Drawing.Point(183, 24);
             this.IsRotation.Name = "IsRotation";
             this.IsRotation.Size = new System.Drawing.Size(75, 21);
             this.IsRotation.TabIndex = 1;
@@ -882,7 +931,7 @@
             // 
             this.IsExtension.AutoSize = true;
             this.IsExtension.Checked = true;
-            this.IsExtension.Location = new System.Drawing.Point(42, 24);
+            this.IsExtension.Location = new System.Drawing.Point(6, 24);
             this.IsExtension.Name = "IsExtension";
             this.IsExtension.Size = new System.Drawing.Size(81, 21);
             this.IsExtension.TabIndex = 0;
@@ -1256,6 +1305,9 @@
             this.GrayScaleBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrayTrackBar)).EndInit();
             this.Modification.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ModifShrinkBar)).EndInit();
             this.ModifRotationBox.ResumeLayout(false);
             this.ModifRotationBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ModifRotationBar)).EndInit();
@@ -1386,7 +1438,9 @@
         private Label label17;
         private Label label16;
         private OpenFileDialog openFileDialog1;
-
-
+        private RadioButton IsShrink;
+        private GroupBox groupBox6;
+        private Label label19;
+        private TrackBar ModifShrinkBar;
     }
 }

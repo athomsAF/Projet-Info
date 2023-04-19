@@ -143,6 +143,12 @@ namespace projects
                 image.Agrandissement(ModifExtensionBar.Value);
                 image.FromImageToFile("modif");
             }
+            else if (IsShrink.Checked)
+            {
+                Console.WriteLine("Running Shrink");
+                image.Agrandissement((double)1 /(double) ModifShrinkBar.Value);
+                image.FromImageToFile("modif");
+            }
             else if (IsRotation.Checked)
             {
                 Console.WriteLine("Running Rotation");
@@ -280,5 +286,6 @@ namespace projects
             string path = Program.PROJECT_PATH + "imagesOUT/steganography.bmp";
             pictureBox2.ImageLocation = path;
         }
+
     }
 }
