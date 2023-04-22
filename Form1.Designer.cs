@@ -49,6 +49,20 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.Fractals = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -130,9 +144,23 @@
             this.IsStegDecode = new System.Windows.Forms.RadioButton();
             this.IsStegEncode = new System.Windows.Forms.RadioButton();
             this.StegRun = new System.Windows.Forms.Button();
+            this.HuffmanTab = new System.Windows.Forms.TabPage();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -167,6 +195,7 @@
             this.StegDecodeBox.SuspendLayout();
             this.StegEncodeBox.SuspendLayout();
             this.StegTypeBox.SuspendLayout();
+            this.HuffmanTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -182,18 +211,18 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(5, 5);
+            this.button2.Location = new System.Drawing.Point(5, 33);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(298, 24);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Update";
+            this.button2.Text = "Default Files";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(245, 126);
+            this.button3.Location = new System.Drawing.Point(124, 180);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(58, 23);
@@ -205,7 +234,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(79, 124);
+            this.label1.Location = new System.Drawing.Point(102, 152);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 17);
@@ -224,7 +253,7 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 17;
-            this.listBox1.Location = new System.Drawing.Point(5, 33);
+            this.listBox1.Location = new System.Drawing.Point(5, 61);
             this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(298, 89);
@@ -357,6 +386,7 @@
             this.tabControl1.Controls.Add(this.Modification);
             this.tabControl1.Controls.Add(this.Convolution);
             this.tabControl1.Controls.Add(this.Stega);
+            this.tabControl1.Controls.Add(this.HuffmanTab);
             this.tabControl1.Location = new System.Drawing.Point(12, 11);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -365,6 +395,20 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label32);
+            this.tabPage1.Controls.Add(this.label31);
+            this.tabPage1.Controls.Add(this.label30);
+            this.tabPage1.Controls.Add(this.label29);
+            this.tabPage1.Controls.Add(this.label28);
+            this.tabPage1.Controls.Add(this.label27);
+            this.tabPage1.Controls.Add(this.label26);
+            this.tabPage1.Controls.Add(this.label25);
+            this.tabPage1.Controls.Add(this.label24);
+            this.tabPage1.Controls.Add(this.label23);
+            this.tabPage1.Controls.Add(this.label22);
+            this.tabPage1.Controls.Add(this.label21);
+            this.tabPage1.Controls.Add(this.label20);
+            this.tabPage1.Controls.Add(this.button5);
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.listBox1);
             this.tabPage1.Controls.Add(this.button3);
@@ -378,15 +422,156 @@
             this.tabPage1.Text = "Main";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(182, 320);
+            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(17, 17);
+            this.label32.TabIndex = 24;
+            this.label32.Text = "...";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(85, 320);
+            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(17, 17);
+            this.label31.TabIndex = 23;
+            this.label31.Text = "...";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(228, 291);
+            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(17, 17);
+            this.label30.TabIndex = 22;
+            this.label30.Text = "...";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(182, 261);
+            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(17, 17);
+            this.label29.TabIndex = 21;
+            this.label29.Text = "...";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(82, 291);
+            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(17, 17);
+            this.label28.TabIndex = 20;
+            this.label28.Text = "...";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(74, 261);
+            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(17, 17);
+            this.label27.TabIndex = 19;
+            this.label27.Text = "...";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(136, 320);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(49, 17);
+            this.label26.TabIndex = 18;
+            this.label26.Text = "Width :";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(28, 320);
+            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(53, 17);
+            this.label25.TabIndex = 17;
+            this.label25.Text = "Height :";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(136, 291);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(88, 17);
+            this.label24.TabIndex = 16;
+            this.label24.Text = "Bit Per Color :";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(28, 291);
+            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(50, 17);
+            this.label23.TabIndex = 15;
+            this.label23.Text = "Offset :";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(140, 261);
+            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(38, 17);
+            this.label22.TabIndex = 14;
+            this.label22.Text = "Size :";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(28, 261);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(42, 17);
+            this.label21.TabIndex = 13;
+            this.label21.Text = "Type :";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(7, 228);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(88, 17);
+            this.label20.TabIndex = 12;
+            this.label20.Text = "Informations :";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(5, 4);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(298, 24);
+            this.button5.TabIndex = 11;
+            this.button5.Text = "Select Custom File";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 124);
+            this.label10.Location = new System.Drawing.Point(7, 152);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(68, 17);
+            this.label10.Size = new System.Drawing.Size(91, 17);
             this.label10.TabIndex = 7;
-            this.label10.Text = "Selected : ";
+            this.label10.Text = "Selected File : ";
             // 
             // Fractals
             // 
@@ -706,7 +891,8 @@
             // 
             this.BlueTrackBar.BackColor = System.Drawing.SystemColors.HighlightText;
             this.BlueTrackBar.Location = new System.Drawing.Point(6, 143);
-            this.BlueTrackBar.Maximum = 500;
+            this.BlueTrackBar.Maximum = 255;
+            this.BlueTrackBar.Minimum = 1;
             this.BlueTrackBar.Name = "BlueTrackBar";
             this.BlueTrackBar.Size = new System.Drawing.Size(266, 45);
             this.BlueTrackBar.TabIndex = 4;
@@ -717,7 +903,8 @@
             // 
             this.GreenTrackBar.BackColor = System.Drawing.SystemColors.HighlightText;
             this.GreenTrackBar.Location = new System.Drawing.Point(6, 92);
-            this.GreenTrackBar.Maximum = 500;
+            this.GreenTrackBar.Maximum = 255;
+            this.GreenTrackBar.Minimum = 1;
             this.GreenTrackBar.Name = "GreenTrackBar";
             this.GreenTrackBar.Size = new System.Drawing.Size(266, 45);
             this.GreenTrackBar.TabIndex = 3;
@@ -728,7 +915,8 @@
             // 
             this.RedTrackBar.BackColor = System.Drawing.SystemColors.HighlightText;
             this.RedTrackBar.Location = new System.Drawing.Point(6, 41);
-            this.RedTrackBar.Maximum = 500;
+            this.RedTrackBar.Maximum = 255;
+            this.RedTrackBar.Minimum = 1;
             this.RedTrackBar.Name = "RedTrackBar";
             this.RedTrackBar.Size = new System.Drawing.Size(266, 45);
             this.RedTrackBar.TabIndex = 2;
@@ -1250,17 +1438,166 @@
             this.StegRun.UseVisualStyleBackColor = true;
             this.StegRun.Click += new System.EventHandler(this.StegRun_Click);
             // 
+            // HuffmanTab
+            // 
+            this.HuffmanTab.Controls.Add(this.label36);
+            this.HuffmanTab.Controls.Add(this.label35);
+            this.HuffmanTab.Controls.Add(this.label34);
+            this.HuffmanTab.Controls.Add(this.label33);
+            this.HuffmanTab.Controls.Add(this.button4);
+            this.HuffmanTab.Controls.Add(this.button12);
+            this.HuffmanTab.Controls.Add(this.button11);
+            this.HuffmanTab.Controls.Add(this.button10);
+            this.HuffmanTab.Controls.Add(this.button9);
+            this.HuffmanTab.Controls.Add(this.button8);
+            this.HuffmanTab.Controls.Add(this.button7);
+            this.HuffmanTab.Controls.Add(this.button6);
+            this.HuffmanTab.Location = new System.Drawing.Point(4, 26);
+            this.HuffmanTab.Name = "HuffmanTab";
+            this.HuffmanTab.Size = new System.Drawing.Size(308, 489);
+            this.HuffmanTab.TabIndex = 6;
+            this.HuffmanTab.Text = "Huffman";
+            this.HuffmanTab.UseVisualStyleBackColor = true;
+            // 
+            // label36
+            // 
+            this.label36.Location = new System.Drawing.Point(136, 285);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(82, 17);
+            this.label36.TabIndex = 11;
+            this.label36.Text = "not loaded";
+            // 
+            // label35
+            // 
+            this.label35.Location = new System.Drawing.Point(136, 257);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(82, 17);
+            this.label35.TabIndex = 10;
+            this.label35.Text = "not loaded";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(32, 285);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(98, 17);
+            this.label34.TabIndex = 9;
+            this.label34.Text = "Image Encode :";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(32, 257);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(87, 17);
+            this.label33.TabIndex = 8;
+            this.label33.Text = "Tree Encode :";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(54, 50);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(191, 23);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "Generate Huffman";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_2);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(54, 357);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(191, 23);
+            this.button12.TabIndex = 6;
+            this.button12.Text = "Image Decode";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(54, 328);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(191, 23);
+            this.button11.TabIndex = 5;
+            this.button11.Text = "Tree Decode";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(54, 189);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(191, 23);
+            this.button10.TabIndex = 4;
+            this.button10.Text = "Image Encode";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(54, 218);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(191, 23);
+            this.button9.TabIndex = 3;
+            this.button9.Text = "Tree Encode";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(54, 160);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(191, 23);
+            this.button8.TabIndex = 2;
+            this.button8.Text = "Get Huffman Encoding";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(54, 131);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(191, 23);
+            this.button7.TabIndex = 1;
+            this.button7.Text = "Get Huffman Tree";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(3, 3);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(302, 25);
+            this.button6.TabIndex = 0;
+            this.button6.Text = "Show / Hide Dialog";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(334, 37);
+            this.pictureBox2.Location = new System.Drawing.Point(334, 40);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(986, 493);
+            this.pictureBox2.Size = new System.Drawing.Size(986, 490);
             this.pictureBox2.TabIndex = 21;
             this.pictureBox2.TabStop = false;
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // textBox1
+            // 
+            this.textBox1.AcceptsReturn = true;
+            this.textBox1.AcceptsTab = true;
+            this.textBox1.Location = new System.Drawing.Point(332, 37);
+            this.textBox1.MaxLength = 60000;
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox1.Size = new System.Drawing.Size(988, 493);
+            this.textBox1.TabIndex = 22;
+            this.textBox1.WordWrap = false;
             // 
             // Form1
             // 
@@ -1272,6 +1609,7 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Projet Informatique";
@@ -1328,8 +1666,11 @@
             this.StegEncodeBox.PerformLayout();
             this.StegTypeBox.ResumeLayout(false);
             this.StegTypeBox.PerformLayout();
+            this.HuffmanTab.ResumeLayout(false);
+            this.HuffmanTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1442,5 +1783,33 @@
         private GroupBox groupBox6;
         private Label label19;
         private TrackBar ModifShrinkBar;
+        private Button button4;
+        private Button button5;
+        private Label label21;
+        private Label label20;
+        private Label label32;
+        private Label label31;
+        private Label label30;
+        private Label label29;
+        private Label label28;
+        private Label label27;
+        private Label label26;
+        private Label label25;
+        private Label label24;
+        private Label label23;
+        private Label label22;
+        private TabPage HuffmanTab;
+        private Button button12;
+        private Button button11;
+        private Button button10;
+        private Button button9;
+        private Button button8;
+        private Button button7;
+        private Button button6;
+        private TextBox textBox1;
+        private Label label36;
+        private Label label35;
+        private Label label34;
+        private Label label33;
     }
 }

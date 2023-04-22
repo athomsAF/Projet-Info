@@ -153,9 +153,7 @@ namespace projects
             else
             {
                 // Remove the node code at the begining of the bit array, create a new root node and add it to the stack
-                bitList.RemoveAt(0);
                 Stack<Node> pile = new();
-                pile.Push(root); // Add root node
 
                 // Loop while the stack and the bit array aren't empty 
                 do
@@ -176,32 +174,33 @@ namespace projects
                         bitList.RemoveRange(0, 24);
 
                         // Fill the parent node accordignly to the pre-existing chil node completion
-                        if (pile.Last().leftNode == null)
+                        if (pile.First().leftNode == null)
                         {
-                            pile.Last().leftNode = FeuilleNode;
+                            pile.First().leftNode = FeuilleNode;
                         }
-                        else if (pile.Last().rigthNode == null)
+                        else if (pile.First().rigthNode == null)
                         {
-                            pile.Last().rigthNode = FeuilleNode;
+                            pile.First().rigthNode = FeuilleNode;
                         }
 
                         // Remove the last branching node from the stack and add it to their parent node, repeat until the partent node isn't full 
-                        while (pile.Count != 0 && pile.Last().leftNode != null && pile.Last().rigthNode != null)
+                        while (pile.Count > 0 && pile.First().leftNode != null && pile.First().rigthNode != null)
                         {
-                            Node temp = pile.Last();
+                            Node temp = pile.First();
+
                             pile.Pop();
 
                             if (pile.Count == 0)
                             {
                                 root = temp;
                             }
-                            else if (pile.Last().leftNode == null)
+                            else if (pile.First().leftNode == null)
                             {
-                                pile.Last().leftNode = temp;
+                                pile.First().leftNode = temp;
                             }
-                            else if (pile.Last().rigthNode == null)
+                            else if (pile.First().rigthNode == null)
                             {
-                                pile.Last().rigthNode = temp;
+                                pile.First().rigthNode = temp;
                             }
                         }
                     }
@@ -268,7 +267,7 @@ namespace projects
 
                 for (int i = 0; i < 24; i++)
                 {
-                    result[i] = bitArray[i];
+                    result.Add(bitArray[i]);
                 }
             }
 
@@ -278,8 +277,10 @@ namespace projects
         /// <summary>
         /// Write down each pixel and their corresponding huffamn encoded value
         /// </summary>
-        public void ShowPixelEncoding()
+        public string ShowPixelEncoding()
         {
+            string ret = "";
+
             if (this.root != null && this.pixelFrequencyTable != null)
             {
                 foreach (Pixel key in this.pixelFrequencyTable.Keys)
@@ -288,25 +289,27 @@ namespace projects
 
                     if (test != null)
                     {
-                        Console.Write("(" + key.R + "," + key.G + "," + key.B + ") = ");
+                        ret += "(" + key.R + "," + key.G + "," + key.B + ") = ";
 
                         foreach (bool bin in test)
                         {
                             if (bin)
                             {
-                                Console.Write("1");
+                                ret += "1";
                             }
                             else
                             {
-                                Console.Write("0");
+                                ret += "0";
                             }
 
                         }
 
-                        Console.WriteLine();
+                        ret += "\r\n";
                     }
                 }
             }
+
+            return ret;
         }
 
         /// <summary>
@@ -344,8 +347,9 @@ namespace projects
         /// <param name="image">Image to be encoded</param>
         /// <param name="showMatrixBeforeEncoding">Option to show the resulting encoded matrix before converting it to an array</param>
         /// <returns>Bit array of all the pixel encoded values of the immage</returns>
-        public List<bool> ImageEncode(Pixel[,] image, bool showMatrixBeforeEncoding = false)
+        public (string, List<bool>) ImageEncode(Pixel[,] image, bool showMatrixBeforeEncoding = false)
         {
+            string resmatrix = "";
             List<bool> bits = new();
 
             if(image != null && image.Length >= 0)
@@ -372,10 +376,10 @@ namespace projects
                     }
                 }
 
-                if (showMatrixBeforeEncoding) ShowHuffmanEncodedImage(encodedImage);
+                if (showMatrixBeforeEncoding) resmatrix = ShowHuffmanEncodedImage(encodedImage);
 
             }
-            return bits;
+            return (resmatrix, bits);
         }
 
         /// <summary>
@@ -408,8 +412,10 @@ namespace projects
         /// Show each encoded pixel value in an encoded image
         /// </summary>
         /// <param name="encodedImage">Huffamn encoded image</param>
-        public static void ShowHuffmanEncodedImage(List<bool>[,] encodedImage)
+        public static string ShowHuffmanEncodedImage(List<bool>[,] encodedImage)
         {
+            string res = "";
+
             if(encodedImage != null && encodedImage.Length >= 0)
             {
                 // Loop through each encoded pixel in the image
@@ -420,15 +426,17 @@ namespace projects
                         // Write binary encoded value
                         foreach(bool bit in encodedImage[row, col])
                         {
-                            if (bit) Console.Write("1"); else Console.Write("0");
+                            if (bit) res += "1"; else res += "0";
                         }
 
-                        Console.Write(" ");
+                        res += " ";
                     }
 
-                    Console.WriteLine();
+                    res += "\r\n";
                 }
             }
+
+            return res;
         }
     }
 
@@ -482,28 +490,31 @@ namespace projects
         /// </summary>
         /// <param name="node">Parent node</param>
         /// <param name="depth">Depth of the node (add spaces before writing down the children nodes)</param>
-        public static void ShowTree(Node node, int depth = 0)
+        public static string ShowTree(Node node, int depth = 0)
         {
+            string ret = "";
             string spaces = Program.Spaces('|', depth);
 
             if (node == null)
             {
-                Console.WriteLine("Null node");
+                ret += ("Null node\r\n");
             }
             else if (node.pixel == null && node.rigthNode != null && node.leftNode != null)
             {
-                Console.WriteLine(spaces + "Start");
+                ret += spaces + "Start\r\n";
 
-                ShowTree(node.rigthNode, depth + 1);
+                ret += ShowTree(node.rigthNode, depth + 1);
 
-                ShowTree(node.leftNode, depth + 1);
+                ret += ShowTree(node.leftNode, depth + 1);
 
-                Console.WriteLine(spaces + "End");
+                ret += spaces + "End\r\n";
             }
             else if (node.pixel != null)
             {
-                Console.WriteLine(spaces + node.pixel.ToString());
+                ret += spaces + node.pixel.ToString() + "\r\n";
             }
+
+            return ret;
         }
 
         /// <summary>

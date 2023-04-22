@@ -34,7 +34,6 @@ namespace projects
 
             // Convert the list ImageByte to a matrix of pixels ImagePixel
             this.ImagePixel = new Pixel[Dimensions[0], Dimensions[1]];
-
         }
 
         /// <summary>
@@ -43,43 +42,87 @@ namespace projects
         /// <param name="Path">current path of the iamge</param>
         public BitMap(string Path)
         {
-            // File content
-            byte[] myfile = File.ReadAllBytes(Program.PROJECT_PATH + "imagesIN/" + Path + ".bmp");
+            bool error = false;
 
-            // Image data in bytes
-            byte[] Header= myfile.Take(14).ToArray();
-            byte[] ImageInfo= myfile.Where((x, i) => i >= 14 && i < 54).ToArray();
-            byte[] ImageByte = myfile.Skip(54).ToArray();
-
-            // Height / Witdh of the image
-            this.Dimensions = new int[2];
-            this.Dimensions[1] = ConvertirEndianToInt(ImageInfo.Skip(4).Take(4).ToArray()); // Width image : bytes de 4 a 8 de ImageInfo
-            this.Dimensions[0] = ConvertirEndianToInt(ImageInfo.Skip(8).Take(4).ToArray()); // Height Image : bytes de 8 a 12 de ImageInfo
-
-            // Other images properties
-            this.Type = (Header[0] == (byte) 66 && Header[1] == (byte) 77)? "BMP" : "Autre";
-            this.Size = ConvertirEndianToInt(Header.Skip(2).Take(4).ToArray());
-            this.Offset = ConvertirEndianToInt(Header.Skip(10).Take(4).ToArray());
-            this.BitsParCouleur = ConvertirEndianToInt(ImageInfo.Skip(14).Take(2).ToArray());
-
-            // Convert the list ImageByte to a matrix of pixels ImagePixel
-            this.ImagePixel = new Pixel[Dimensions[0], Dimensions[1]];
-            var var = 0;
-            for (int i = 0; i < Dimensions[0]; i++)
+            try
             {
-                for (int j = 0; j < Dimensions[1]; j++)
+                File.Open(Path, FileMode.Open).Close();
+
+                if (Path.EndsWith(".bmp"))
                 {
-                    var =  (i * Dimensions[1] + j) * 3; 
-                    this.ImagePixel[Dimensions[0] - i - 1, j] = new Pixel(ImageByte[var], ImageByte[var+1], ImageByte[var+2]); // Chain of 3 pixels : R G B
+                    // File content
+                    byte[] myfile = File.ReadAllBytes(Path);
+
+                    // Image data in bytes
+                    byte[] Header = myfile.Take(14).ToArray();
+                    byte[] ImageInfo = myfile.Where((x, i) => i >= 14 && i < 54).ToArray();
+                    byte[] ImageByte = myfile.Skip(54).ToArray();
+
+                    // Height / Witdh of the image
+                    this.Dimensions = new int[2];
+                    this.Dimensions[1] = ConvertirEndianToInt(ImageInfo.Skip(4).Take(4).ToArray()); // Width image : bytes de 4 a 8 de ImageInfo
+                    this.Dimensions[0] = ConvertirEndianToInt(ImageInfo.Skip(8).Take(4).ToArray()); // Height Image : bytes de 8 a 12 de ImageInfo
+
+                    // Other images properties
+                    this.Type = (Header[0] == (byte)66 && Header[1] == (byte)77) ? "BMP" : "Autre";
+                    this.Size = ConvertirEndianToInt(Header.Skip(2).Take(4).ToArray());
+                    this.Offset = ConvertirEndianToInt(Header.Skip(10).Take(4).ToArray());
+                    this.BitsParCouleur = ConvertirEndianToInt(ImageInfo.Skip(14).Take(2).ToArray());
+
+                    // Convert the list ImageByte to a matrix of pixels ImagePixel
+                    this.ImagePixel = new Pixel[Dimensions[0], Dimensions[1]];
+                    var var = 0;
+                    for (int i = 0; i < Dimensions[0]; i++)
+                    {
+                        for (int j = 0; j < Dimensions[1]; j++)
+                        {
+                            var = (i * Dimensions[1] + j) * 3;
+                            this.ImagePixel[Dimensions[0] - i - 1, j] = new Pixel(ImageByte[var], ImageByte[var + 1], ImageByte[var + 2]); // Chain of 3 pixels : R G B
+                        }
+                    }
+
+                    // Write down the loaded image properties
+                    Console.WriteLine(
+                        "Nouvelle image chargée : " + Path + "\n" +
+                        "Données Headers : Type : " + this.Type + " , Size : " + this.Size + " octets , Offset : " + this.Offset + "\n" +
+                        "Données ImageInfo : Hauteur " + this.Dimensions[0] + " pi , Largeur : " + this.Dimensions[1] + " pi , Nbp : " + this.BitsParCouleur
+                    );
+                }
+                else
+                {
+                    error = true;
                 }
             }
+            catch (DirectoryNotFoundException e)
+            {
+                error = true;
+                Console.WriteLine("Folder doesn't exists !");
+            }
+            catch (FileNotFoundException e)
+            {
+                error = true;
+                Console.WriteLine("File doesn't exists !");
+            }
+            finally
+            {
+                if(error)
+                {
+                    Console.WriteLine("Wrong file format");
 
-            // Write down the loaded image properties
-            Console.WriteLine(
-                "Nouvelle image chargée : " + Path + "\n" +
-                "Données Headers : Type : " + this.Type + " , Size : " + this.Size + " octets , Offset : " + this.Offset + "\n" +
-                "Données ImageInfo : Hauteur " + this.Dimensions[0] + " pi , Largeur : " + this.Dimensions[1] + " pi , Nbp : " + this.BitsParCouleur
-            );
+                    // Height / Witdh of the image
+                    this.Dimensions = new int[2];
+                    this.Dimensions[1] = 200;
+                    this.Dimensions[0] = 100;
+                    // Other images properties
+                    this.Type = "BMP";
+                    this.Size = Dimensions[0] * Dimensions[1] * 3 + 54;
+                    this.Offset = 54;
+                    this.BitsParCouleur = 24;
+
+                    // Convert the list ImageByte to a matrix of pixels ImagePixel
+                    this.ImagePixel = new Pixel[Dimensions[0], Dimensions[1]];
+                }
+            }
         }
 
         /// <summary>
@@ -144,25 +187,23 @@ namespace projects
                 }
 
                 // Add the right ammount of null bytes to have a line length multpiple of 4
-                if (Dimensions[1] % 4 != 0 && Dimensions[1] % 4 != 2)
+                if (Dimensions[1] % 4 != 0)
                 {
-                    for (int k = 0; k < 3 -  Dimensions[1] % 4; k++)
+                    for (int k = 0; k < Dimensions[1] % 4; k++)
                     {
-                        data.Add(0);
-                        data.Add(0);
                         data.Add(0);
                     }
                 }
 
-                // Parcicular case
-                if (Dimensions[1] % 4 == 2)
-                {
-                    data.Add(0);
-                    data.Add(0);
-                }
             }
 
             File.WriteAllBytes(Program.PROJECT_PATH + $"imagesOUT/{file}.bmp", data.ToArray());
+
+            Console.WriteLine(
+                "Nouvelle image sauvegradée " +
+                "Données Headers : Type : " + this.Type + " , Size : " + this.Size + " octets , Offset : " + this.Offset + "\n" +
+                "Données ImageInfo : Hauteur " + this.Dimensions[0] + " pi , Largeur : " + this.Dimensions[1] + " pi , Nbp : " + this.BitsParCouleur
+            );
 
             Console.WriteLine("New Image Saved !");
         }
@@ -173,12 +214,12 @@ namespace projects
         /// <param name="force">Intensity of the transformy</param>
         public void GrayScale(int force = 255)
         {
-            Pixel[,] transformed = new Pixel[Dimensions[0], Dimensions[1]];
+            Pixel[,] transformed = new Pixel[this.ImagePixel.GetLength(0), this.ImagePixel.GetLength(1)];
 
             // Loop through each pixel
-            for(int row = 0; row < Dimensions[0]; row++)
+            for(int row = 0; row < this.ImagePixel.GetLength(0); row++)
             {
-                for(int col = 0; col < Dimensions[1]; col++)
+                for(int col = 0; col <  this.ImagePixel.GetLength(1); col++)
                 {
                     // Adjust the pixel values by computing the average of the 3 components of a pixel
                     int avgValue = force * (this.ImagePixel[row,col].RI + this.ImagePixel[row,col].GI + this.ImagePixel[row,col].BI) / (3 * 255);
@@ -201,12 +242,12 @@ namespace projects
         /// <param name="force">Intensity of the transform</param>
         public void BlackAndWhite(int force = 125)
         {
-            Pixel[,] transformed = new Pixel[Dimensions[0], Dimensions[1]];
+            Pixel[,] transformed = new Pixel[this.ImagePixel.GetLength(0), this.ImagePixel.GetLength(1)];
 
             // Loop through each pixel
-            for (int row = 0; row < Dimensions[0]; row++)
+            for (int row = 0; row < this.ImagePixel.GetLength(0); row++)
             {
-                for(int col = 0; col < Dimensions[1]; col++)
+                for(int col = 0; col < this.ImagePixel.GetLength(1); col++)
                 {
                     // Replace by White if the avg value of the 3 components are under of the limit, replace by black otherwise
                     int avgValue = (this.ImagePixel[row,col].RI + this.ImagePixel[row,col].GI + this.ImagePixel[row,col].BI)/3;
@@ -224,7 +265,6 @@ namespace projects
             this.ImagePixel = transformed;
         }
 
-
         /// <summary>
         /// Transform an image to it's transform through a color filter
         /// </summary>
@@ -233,13 +273,13 @@ namespace projects
         /// <param name="blue">Blue intensity</param>
         public void ColorFilter(int red = 255, int green = 255, int blue = 255)
         {
-            Pixel[,] transformed = new Pixel[Dimensions[0], Dimensions[1]];
+            Pixel[,] transformed = new Pixel[this.ImagePixel.GetLength(0), this.ImagePixel.GetLength(1)];
 
-            for(int row = 0; row < Dimensions[0]; row++)
+            for(int row = 0; row < this.ImagePixel.GetLength(0); row++)
             {
-                for(int col = 0; col < Dimensions[1]; col++)
+                for(int col = 0; col < this.ImagePixel.GetLength(1); col++)
                 {   
-                    transformed[row,col] = new Pixel(this.ImagePixel[row,col].BI * (blue/255),this.ImagePixel[row,col].GI * (green/255), this.ImagePixel[row,col].RI * (red/255));
+                    transformed[row,col] = new Pixel((int) (((double) this.ImagePixel[row,col].BI * blue)/255.0), (int) (((double) this.ImagePixel[row,col].GI * green)/255.0), (int) (((double) this.ImagePixel[row,col].RI * red)/255.0));
                 }
             }
 
@@ -283,7 +323,7 @@ namespace projects
 
                     if (!(RotationCoordinates[0] < 0 || RotationCoordinates[1] < 0 || RotationCoordinates[0] >= this.ImagePixel.GetLength(0) || RotationCoordinates[1] >= this.ImagePixel.GetLength(1)))
                     {
-                        Rotation[newLine, newColumn] = this.ImagePixel[RotationCoordinates[0], Dimensions[1] - RotationCoordinates[1] - 1];
+                        Rotation[newLine, newColumn] = this.ImagePixel[RotationCoordinates[0], this.ImagePixel.GetLength(1) - RotationCoordinates[1] - 1];
                     }
                     else
                     {
@@ -380,9 +420,11 @@ namespace projects
                 Program.mainBinary[,] image2Binary = Program.mainBinaryMatrix(image2.ImagePixel);
                 Pixel[,] steganographyImage = new Pixel[image1Binary.GetLength(0), image1Binary.GetLength(1)];
                 for (int i = 0; i < image1Binary.GetLength(0); i++)
-                {   
+                {
                     for (int j = 0; j < image1Binary.GetLength(1); j++)
                     {
+                        steganographyImage[i, j] = new Pixel();
+
                         steganographyImage[i, j].R = (byte)Convert.ToInt32((image1Binary[i, j].R + image2Binary[i, j].R).ToString(), 2);
                         steganographyImage[i, j].G = (byte)Convert.ToInt32((image1Binary[i, j].G + image2Binary[i, j].G).ToString(), 2);
                         steganographyImage[i, j].B = (byte)Convert.ToInt32((image1Binary[i, j].B + image2Binary[i, j].B).ToString(), 2);
