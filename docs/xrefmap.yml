@@ -1,0 +1,764 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: projects
+  name: projects
+  href: api/projects.html
+  commentId: N:projects
+  fullName: projects
+  nameWithType: projects
+- uid: projects.BitMap
+  name: BitMap
+  href: api/projects.BitMap.html
+  commentId: T:projects.BitMap
+  fullName: projects.BitMap
+  nameWithType: BitMap
+- uid: projects.BitMap.#ctor
+  name: BitMap()
+  href: api/projects.BitMap.html#projects_BitMap__ctor
+  commentId: M:projects.BitMap.#ctor
+  name.vb: New()
+  fullName: projects.BitMap.BitMap()
+  fullName.vb: projects.BitMap.New()
+  nameWithType: BitMap.BitMap()
+  nameWithType.vb: BitMap.New()
+- uid: projects.BitMap.#ctor(System.String)
+  name: BitMap(string)
+  href: api/projects.BitMap.html#projects_BitMap__ctor_System_String_
+  commentId: M:projects.BitMap.#ctor(System.String)
+  name.vb: New(String)
+  fullName: projects.BitMap.BitMap(string)
+  fullName.vb: projects.BitMap.New(String)
+  nameWithType: BitMap.BitMap(string)
+  nameWithType.vb: BitMap.New(String)
+- uid: projects.BitMap.#ctor*
+  name: BitMap
+  href: api/projects.BitMap.html#projects_BitMap__ctor_
+  commentId: Overload:projects.BitMap.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: projects.BitMap.BitMap
+  fullName.vb: projects.BitMap.New
+  nameWithType: BitMap.BitMap
+  nameWithType.vb: BitMap.New
+- uid: projects.BitMap.Agrandissement(System.Double)
+  name: Agrandissement(double)
+  href: api/projects.BitMap.html#projects_BitMap_Agrandissement_System_Double_
+  commentId: M:projects.BitMap.Agrandissement(System.Double)
+  name.vb: Agrandissement(Double)
+  fullName: projects.BitMap.Agrandissement(double)
+  fullName.vb: projects.BitMap.Agrandissement(Double)
+  nameWithType: BitMap.Agrandissement(double)
+  nameWithType.vb: BitMap.Agrandissement(Double)
+- uid: projects.BitMap.Agrandissement*
+  name: Agrandissement
+  href: api/projects.BitMap.html#projects_BitMap_Agrandissement_
+  commentId: Overload:projects.BitMap.Agrandissement
+  isSpec: "True"
+  fullName: projects.BitMap.Agrandissement
+  nameWithType: BitMap.Agrandissement
+- uid: projects.BitMap.BitsParCouleur
+  name: BitsParCouleur
+  href: api/projects.BitMap.html#projects_BitMap_BitsParCouleur
+  commentId: P:projects.BitMap.BitsParCouleur
+  fullName: projects.BitMap.BitsParCouleur
+  nameWithType: BitMap.BitsParCouleur
+- uid: projects.BitMap.BitsParCouleur*
+  name: BitsParCouleur
+  href: api/projects.BitMap.html#projects_BitMap_BitsParCouleur_
+  commentId: Overload:projects.BitMap.BitsParCouleur
+  isSpec: "True"
+  fullName: projects.BitMap.BitsParCouleur
+  nameWithType: BitMap.BitsParCouleur
+- uid: projects.BitMap.BlackAndWhite(System.Int32)
+  name: BlackAndWhite(int)
+  href: api/projects.BitMap.html#projects_BitMap_BlackAndWhite_System_Int32_
+  commentId: M:projects.BitMap.BlackAndWhite(System.Int32)
+  name.vb: BlackAndWhite(Integer)
+  fullName: projects.BitMap.BlackAndWhite(int)
+  fullName.vb: projects.BitMap.BlackAndWhite(Integer)
+  nameWithType: BitMap.BlackAndWhite(int)
+  nameWithType.vb: BitMap.BlackAndWhite(Integer)
+- uid: projects.BitMap.BlackAndWhite*
+  name: BlackAndWhite
+  href: api/projects.BitMap.html#projects_BitMap_BlackAndWhite_
+  commentId: Overload:projects.BitMap.BlackAndWhite
+  isSpec: "True"
+  fullName: projects.BitMap.BlackAndWhite
+  nameWithType: BitMap.BlackAndWhite
+- uid: projects.BitMap.ChangementBase(System.Int32,System.Int32,System.Double,System.Double,System.Double[0:,0:])
+  name: ChangementBase(int, int, double, double, double[,])
+  href: api/projects.BitMap.html#projects_BitMap_ChangementBase_System_Int32_System_Int32_System_Double_System_Double_System_Double_0__0___
+  commentId: M:projects.BitMap.ChangementBase(System.Int32,System.Int32,System.Double,System.Double,System.Double[0:,0:])
+  name.vb: ChangementBase(Integer, Integer, Double, Double, Double(,))
+  fullName: projects.BitMap.ChangementBase(int, int, double, double, double[,])
+  fullName.vb: projects.BitMap.ChangementBase(Integer, Integer, Double, Double, Double(,))
+  nameWithType: BitMap.ChangementBase(int, int, double, double, double[,])
+  nameWithType.vb: BitMap.ChangementBase(Integer, Integer, Double, Double, Double(,))
+- uid: projects.BitMap.ChangementBase*
+  name: ChangementBase
+  href: api/projects.BitMap.html#projects_BitMap_ChangementBase_
+  commentId: Overload:projects.BitMap.ChangementBase
+  isSpec: "True"
+  fullName: projects.BitMap.ChangementBase
+  nameWithType: BitMap.ChangementBase
+- uid: projects.BitMap.ColorFilter(System.Int32,System.Int32,System.Int32)
+  name: ColorFilter(int, int, int)
+  href: api/projects.BitMap.html#projects_BitMap_ColorFilter_System_Int32_System_Int32_System_Int32_
+  commentId: M:projects.BitMap.ColorFilter(System.Int32,System.Int32,System.Int32)
+  name.vb: ColorFilter(Integer, Integer, Integer)
+  fullName: projects.BitMap.ColorFilter(int, int, int)
+  fullName.vb: projects.BitMap.ColorFilter(Integer, Integer, Integer)
+  nameWithType: BitMap.ColorFilter(int, int, int)
+  nameWithType.vb: BitMap.ColorFilter(Integer, Integer, Integer)
+- uid: projects.BitMap.ColorFilter*
+  name: ColorFilter
+  href: api/projects.BitMap.html#projects_BitMap_ColorFilter_
+  commentId: Overload:projects.BitMap.ColorFilter
+  isSpec: "True"
+  fullName: projects.BitMap.ColorFilter
+  nameWithType: BitMap.ColorFilter
+- uid: projects.BitMap.ConvertirEndianToInt(System.Byte[])
+  name: ConvertirEndianToInt(byte[])
+  href: api/projects.BitMap.html#projects_BitMap_ConvertirEndianToInt_System_Byte___
+  commentId: M:projects.BitMap.ConvertirEndianToInt(System.Byte[])
+  name.vb: ConvertirEndianToInt(Byte())
+  fullName: projects.BitMap.ConvertirEndianToInt(byte[])
+  fullName.vb: projects.BitMap.ConvertirEndianToInt(Byte())
+  nameWithType: BitMap.ConvertirEndianToInt(byte[])
+  nameWithType.vb: BitMap.ConvertirEndianToInt(Byte())
+- uid: projects.BitMap.ConvertirEndianToInt*
+  name: ConvertirEndianToInt
+  href: api/projects.BitMap.html#projects_BitMap_ConvertirEndianToInt_
+  commentId: Overload:projects.BitMap.ConvertirEndianToInt
+  isSpec: "True"
+  fullName: projects.BitMap.ConvertirEndianToInt
+  nameWithType: BitMap.ConvertirEndianToInt
+- uid: projects.BitMap.ConvertirIntToEndian(System.Int32,System.Int32)
+  name: ConvertirIntToEndian(int, int)
+  href: api/projects.BitMap.html#projects_BitMap_ConvertirIntToEndian_System_Int32_System_Int32_
+  commentId: M:projects.BitMap.ConvertirIntToEndian(System.Int32,System.Int32)
+  name.vb: ConvertirIntToEndian(Integer, Integer)
+  fullName: projects.BitMap.ConvertirIntToEndian(int, int)
+  fullName.vb: projects.BitMap.ConvertirIntToEndian(Integer, Integer)
+  nameWithType: BitMap.ConvertirIntToEndian(int, int)
+  nameWithType.vb: BitMap.ConvertirIntToEndian(Integer, Integer)
+- uid: projects.BitMap.ConvertirIntToEndian*
+  name: ConvertirIntToEndian
+  href: api/projects.BitMap.html#projects_BitMap_ConvertirIntToEndian_
+  commentId: Overload:projects.BitMap.ConvertirIntToEndian
+  isSpec: "True"
+  fullName: projects.BitMap.ConvertirIntToEndian
+  nameWithType: BitMap.ConvertirIntToEndian
+- uid: projects.BitMap.convolution(System.Int32[0:,0:])
+  name: convolution(int[,])
+  href: api/projects.BitMap.html#projects_BitMap_convolution_System_Int32_0__0___
+  commentId: M:projects.BitMap.convolution(System.Int32[0:,0:])
+  name.vb: convolution(Integer(,))
+  fullName: projects.BitMap.convolution(int[,])
+  fullName.vb: projects.BitMap.convolution(Integer(,))
+  nameWithType: BitMap.convolution(int[,])
+  nameWithType.vb: BitMap.convolution(Integer(,))
+- uid: projects.BitMap.convolution*
+  name: convolution
+  href: api/projects.BitMap.html#projects_BitMap_convolution_
+  commentId: Overload:projects.BitMap.convolution
+  isSpec: "True"
+  fullName: projects.BitMap.convolution
+  nameWithType: BitMap.convolution
+- uid: projects.BitMap.Dimensions
+  name: Dimensions
+  href: api/projects.BitMap.html#projects_BitMap_Dimensions
+  commentId: P:projects.BitMap.Dimensions
+  fullName: projects.BitMap.Dimensions
+  nameWithType: BitMap.Dimensions
+- uid: projects.BitMap.Dimensions*
+  name: Dimensions
+  href: api/projects.BitMap.html#projects_BitMap_Dimensions_
+  commentId: Overload:projects.BitMap.Dimensions
+  isSpec: "True"
+  fullName: projects.BitMap.Dimensions
+  nameWithType: BitMap.Dimensions
+- uid: projects.BitMap.FromImageToFile(System.String)
+  name: FromImageToFile(string)
+  href: api/projects.BitMap.html#projects_BitMap_FromImageToFile_System_String_
+  commentId: M:projects.BitMap.FromImageToFile(System.String)
+  name.vb: FromImageToFile(String)
+  fullName: projects.BitMap.FromImageToFile(string)
+  fullName.vb: projects.BitMap.FromImageToFile(String)
+  nameWithType: BitMap.FromImageToFile(string)
+  nameWithType.vb: BitMap.FromImageToFile(String)
+- uid: projects.BitMap.FromImageToFile*
+  name: FromImageToFile
+  href: api/projects.BitMap.html#projects_BitMap_FromImageToFile_
+  commentId: Overload:projects.BitMap.FromImageToFile
+  isSpec: "True"
+  fullName: projects.BitMap.FromImageToFile
+  nameWithType: BitMap.FromImageToFile
+- uid: projects.BitMap.GrayScale(System.Int32)
+  name: GrayScale(int)
+  href: api/projects.BitMap.html#projects_BitMap_GrayScale_System_Int32_
+  commentId: M:projects.BitMap.GrayScale(System.Int32)
+  name.vb: GrayScale(Integer)
+  fullName: projects.BitMap.GrayScale(int)
+  fullName.vb: projects.BitMap.GrayScale(Integer)
+  nameWithType: BitMap.GrayScale(int)
+  nameWithType.vb: BitMap.GrayScale(Integer)
+- uid: projects.BitMap.GrayScale*
+  name: GrayScale
+  href: api/projects.BitMap.html#projects_BitMap_GrayScale_
+  commentId: Overload:projects.BitMap.GrayScale
+  isSpec: "True"
+  fullName: projects.BitMap.GrayScale
+  nameWithType: BitMap.GrayScale
+- uid: projects.BitMap.ImagePixel
+  name: ImagePixel
+  href: api/projects.BitMap.html#projects_BitMap_ImagePixel
+  commentId: P:projects.BitMap.ImagePixel
+  fullName: projects.BitMap.ImagePixel
+  nameWithType: BitMap.ImagePixel
+- uid: projects.BitMap.ImagePixel*
+  name: ImagePixel
+  href: api/projects.BitMap.html#projects_BitMap_ImagePixel_
+  commentId: Overload:projects.BitMap.ImagePixel
+  isSpec: "True"
+  fullName: projects.BitMap.ImagePixel
+  nameWithType: BitMap.ImagePixel
+- uid: projects.BitMap.Offset
+  name: Offset
+  href: api/projects.BitMap.html#projects_BitMap_Offset
+  commentId: P:projects.BitMap.Offset
+  fullName: projects.BitMap.Offset
+  nameWithType: BitMap.Offset
+- uid: projects.BitMap.Offset*
+  name: Offset
+  href: api/projects.BitMap.html#projects_BitMap_Offset_
+  commentId: Overload:projects.BitMap.Offset
+  isSpec: "True"
+  fullName: projects.BitMap.Offset
+  nameWithType: BitMap.Offset
+- uid: projects.BitMap.Rotation(System.Int32)
+  name: Rotation(int)
+  href: api/projects.BitMap.html#projects_BitMap_Rotation_System_Int32_
+  commentId: M:projects.BitMap.Rotation(System.Int32)
+  name.vb: Rotation(Integer)
+  fullName: projects.BitMap.Rotation(int)
+  fullName.vb: projects.BitMap.Rotation(Integer)
+  nameWithType: BitMap.Rotation(int)
+  nameWithType.vb: BitMap.Rotation(Integer)
+- uid: projects.BitMap.Rotation*
+  name: Rotation
+  href: api/projects.BitMap.html#projects_BitMap_Rotation_
+  commentId: Overload:projects.BitMap.Rotation
+  isSpec: "True"
+  fullName: projects.BitMap.Rotation
+  nameWithType: BitMap.Rotation
+- uid: projects.BitMap.Size
+  name: Size
+  href: api/projects.BitMap.html#projects_BitMap_Size
+  commentId: P:projects.BitMap.Size
+  fullName: projects.BitMap.Size
+  nameWithType: BitMap.Size
+- uid: projects.BitMap.Size*
+  name: Size
+  href: api/projects.BitMap.html#projects_BitMap_Size_
+  commentId: Overload:projects.BitMap.Size
+  isSpec: "True"
+  fullName: projects.BitMap.Size
+  nameWithType: BitMap.Size
+- uid: projects.BitMap.steganography(projects.BitMap,projects.BitMap)
+  name: steganography(BitMap, BitMap)
+  href: api/projects.BitMap.html#projects_BitMap_steganography_projects_BitMap_projects_BitMap_
+  commentId: M:projects.BitMap.steganography(projects.BitMap,projects.BitMap)
+  fullName: projects.BitMap.steganography(projects.BitMap, projects.BitMap)
+  nameWithType: BitMap.steganography(BitMap, BitMap)
+- uid: projects.BitMap.steganography*
+  name: steganography
+  href: api/projects.BitMap.html#projects_BitMap_steganography_
+  commentId: Overload:projects.BitMap.steganography
+  isSpec: "True"
+  fullName: projects.BitMap.steganography
+  nameWithType: BitMap.steganography
+- uid: projects.BitMap.Type
+  name: Type
+  href: api/projects.BitMap.html#projects_BitMap_Type
+  commentId: P:projects.BitMap.Type
+  fullName: projects.BitMap.Type
+  nameWithType: BitMap.Type
+- uid: projects.BitMap.Type*
+  name: Type
+  href: api/projects.BitMap.html#projects_BitMap_Type_
+  commentId: Overload:projects.BitMap.Type
+  isSpec: "True"
+  fullName: projects.BitMap.Type
+  nameWithType: BitMap.Type
+- uid: projects.ColorTable
+  name: ColorTable
+  href: api/projects.ColorTable.html
+  commentId: T:projects.ColorTable
+  fullName: projects.ColorTable
+  nameWithType: ColorTable
+- uid: projects.ColorTable.#ctor(projects.Pixel,projects.Pixel,System.Int32)
+  name: ColorTable(Pixel, Pixel, int)
+  href: api/projects.ColorTable.html#projects_ColorTable__ctor_projects_Pixel_projects_Pixel_System_Int32_
+  commentId: M:projects.ColorTable.#ctor(projects.Pixel,projects.Pixel,System.Int32)
+  name.vb: New(Pixel, Pixel, Integer)
+  fullName: projects.ColorTable.ColorTable(projects.Pixel, projects.Pixel, int)
+  fullName.vb: projects.ColorTable.New(projects.Pixel, projects.Pixel, Integer)
+  nameWithType: ColorTable.ColorTable(Pixel, Pixel, int)
+  nameWithType.vb: ColorTable.New(Pixel, Pixel, Integer)
+- uid: projects.ColorTable.#ctor(projects.Pixel[],System.Int32)
+  name: ColorTable(Pixel[], int)
+  href: api/projects.ColorTable.html#projects_ColorTable__ctor_projects_Pixel___System_Int32_
+  commentId: M:projects.ColorTable.#ctor(projects.Pixel[],System.Int32)
+  name.vb: New(Pixel(), Integer)
+  fullName: projects.ColorTable.ColorTable(projects.Pixel[], int)
+  fullName.vb: projects.ColorTable.New(projects.Pixel(), Integer)
+  nameWithType: ColorTable.ColorTable(Pixel[], int)
+  nameWithType.vb: ColorTable.New(Pixel(), Integer)
+- uid: projects.ColorTable.#ctor(System.Int32)
+  name: ColorTable(int)
+  href: api/projects.ColorTable.html#projects_ColorTable__ctor_System_Int32_
+  commentId: M:projects.ColorTable.#ctor(System.Int32)
+  name.vb: New(Integer)
+  fullName: projects.ColorTable.ColorTable(int)
+  fullName.vb: projects.ColorTable.New(Integer)
+  nameWithType: ColorTable.ColorTable(int)
+  nameWithType.vb: ColorTable.New(Integer)
+- uid: projects.ColorTable.#ctor*
+  name: ColorTable
+  href: api/projects.ColorTable.html#projects_ColorTable__ctor_
+  commentId: Overload:projects.ColorTable.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: projects.ColorTable.ColorTable
+  fullName.vb: projects.ColorTable.New
+  nameWithType: ColorTable.ColorTable
+  nameWithType.vb: ColorTable.New
+- uid: projects.ColorTable.table
+  name: table
+  href: api/projects.ColorTable.html#projects_ColorTable_table
+  commentId: F:projects.ColorTable.table
+  fullName: projects.ColorTable.table
+  nameWithType: ColorTable.table
+- uid: projects.Form1
+  name: Form1
+  href: api/projects.Form1.html
+  commentId: T:projects.Form1
+  fullName: projects.Form1
+  nameWithType: Form1
+- uid: projects.Form1.#ctor
+  name: Form1()
+  href: api/projects.Form1.html#projects_Form1__ctor
+  commentId: M:projects.Form1.#ctor
+  name.vb: New()
+  fullName: projects.Form1.Form1()
+  fullName.vb: projects.Form1.New()
+  nameWithType: Form1.Form1()
+  nameWithType.vb: Form1.New()
+- uid: projects.Form1.#ctor*
+  name: Form1
+  href: api/projects.Form1.html#projects_Form1__ctor_
+  commentId: Overload:projects.Form1.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: projects.Form1.Form1
+  fullName.vb: projects.Form1.New
+  nameWithType: Form1.Form1
+  nameWithType.vb: Form1.New
+- uid: projects.Form1.Dispose(System.Boolean)
+  name: Dispose(bool)
+  href: api/projects.Form1.html#projects_Form1_Dispose_System_Boolean_
+  commentId: M:projects.Form1.Dispose(System.Boolean)
+  name.vb: Dispose(Boolean)
+  fullName: projects.Form1.Dispose(bool)
+  fullName.vb: projects.Form1.Dispose(Boolean)
+  nameWithType: Form1.Dispose(bool)
+  nameWithType.vb: Form1.Dispose(Boolean)
+- uid: projects.Form1.Dispose*
+  name: Dispose
+  href: api/projects.Form1.html#projects_Form1_Dispose_
+  commentId: Overload:projects.Form1.Dispose
+  isSpec: "True"
+  fullName: projects.Form1.Dispose
+  nameWithType: Form1.Dispose
+- uid: projects.Fractal
+  name: Fractal
+  href: api/projects.Fractal.html
+  commentId: T:projects.Fractal
+  fullName: projects.Fractal
+  nameWithType: Fractal
+- uid: projects.Fractal.Julia(System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.Double,System.Double,System.Double,projects.ColorTable)
+  name: Julia(int, int, int, double, double, double, double, double, ColorTable)
+  href: api/projects.Fractal.html#projects_Fractal_Julia_System_Int32_System_Int32_System_Int32_System_Double_System_Double_System_Double_System_Double_System_Double_projects_ColorTable_
+  commentId: M:projects.Fractal.Julia(System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.Double,System.Double,System.Double,projects.ColorTable)
+  name.vb: Julia(Integer, Integer, Integer, Double, Double, Double, Double, Double, ColorTable)
+  fullName: projects.Fractal.Julia(int, int, int, double, double, double, double, double, projects.ColorTable)
+  fullName.vb: projects.Fractal.Julia(Integer, Integer, Integer, Double, Double, Double, Double, Double, projects.ColorTable)
+  nameWithType: Fractal.Julia(int, int, int, double, double, double, double, double, ColorTable)
+  nameWithType.vb: Fractal.Julia(Integer, Integer, Integer, Double, Double, Double, Double, Double, ColorTable)
+- uid: projects.Fractal.Julia*
+  name: Julia
+  href: api/projects.Fractal.html#projects_Fractal_Julia_
+  commentId: Overload:projects.Fractal.Julia
+  isSpec: "True"
+  fullName: projects.Fractal.Julia
+  nameWithType: Fractal.Julia
+- uid: projects.Fractal.Mandelbrot(System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.Double,projects.ColorTable)
+  name: Mandelbrot(int, int, int, double, double, double, ColorTable?)
+  href: api/projects.Fractal.html#projects_Fractal_Mandelbrot_System_Int32_System_Int32_System_Int32_System_Double_System_Double_System_Double_projects_ColorTable_
+  commentId: M:projects.Fractal.Mandelbrot(System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.Double,projects.ColorTable)
+  name.vb: Mandelbrot(Integer, Integer, Integer, Double, Double, Double, ColorTable)
+  fullName: projects.Fractal.Mandelbrot(int, int, int, double, double, double, projects.ColorTable?)
+  fullName.vb: projects.Fractal.Mandelbrot(Integer, Integer, Integer, Double, Double, Double, projects.ColorTable)
+  nameWithType: Fractal.Mandelbrot(int, int, int, double, double, double, ColorTable?)
+  nameWithType.vb: Fractal.Mandelbrot(Integer, Integer, Integer, Double, Double, Double, ColorTable)
+- uid: projects.Fractal.Mandelbrot*
+  name: Mandelbrot
+  href: api/projects.Fractal.html#projects_Fractal_Mandelbrot_
+  commentId: Overload:projects.Fractal.Mandelbrot
+  isSpec: "True"
+  fullName: projects.Fractal.Mandelbrot
+  nameWithType: Fractal.Mandelbrot
+- uid: projects.Pixel
+  name: Pixel
+  href: api/projects.Pixel.html
+  commentId: T:projects.Pixel
+  fullName: projects.Pixel
+  nameWithType: Pixel
+- uid: projects.Pixel.#ctor
+  name: Pixel()
+  href: api/projects.Pixel.html#projects_Pixel__ctor
+  commentId: M:projects.Pixel.#ctor
+  name.vb: New()
+  fullName: projects.Pixel.Pixel()
+  fullName.vb: projects.Pixel.New()
+  nameWithType: Pixel.Pixel()
+  nameWithType.vb: Pixel.New()
+- uid: projects.Pixel.#ctor(System.Byte,System.Byte,System.Byte)
+  name: Pixel(byte, byte, byte)
+  href: api/projects.Pixel.html#projects_Pixel__ctor_System_Byte_System_Byte_System_Byte_
+  commentId: M:projects.Pixel.#ctor(System.Byte,System.Byte,System.Byte)
+  name.vb: New(Byte, Byte, Byte)
+  fullName: projects.Pixel.Pixel(byte, byte, byte)
+  fullName.vb: projects.Pixel.New(Byte, Byte, Byte)
+  nameWithType: Pixel.Pixel(byte, byte, byte)
+  nameWithType.vb: Pixel.New(Byte, Byte, Byte)
+- uid: projects.Pixel.#ctor(System.Int32,System.Int32,System.Int32)
+  name: Pixel(int, int, int)
+  href: api/projects.Pixel.html#projects_Pixel__ctor_System_Int32_System_Int32_System_Int32_
+  commentId: M:projects.Pixel.#ctor(System.Int32,System.Int32,System.Int32)
+  name.vb: New(Integer, Integer, Integer)
+  fullName: projects.Pixel.Pixel(int, int, int)
+  fullName.vb: projects.Pixel.New(Integer, Integer, Integer)
+  nameWithType: Pixel.Pixel(int, int, int)
+  nameWithType.vb: Pixel.New(Integer, Integer, Integer)
+- uid: projects.Pixel.#ctor*
+  name: Pixel
+  href: api/projects.Pixel.html#projects_Pixel__ctor_
+  commentId: Overload:projects.Pixel.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: projects.Pixel.Pixel
+  fullName.vb: projects.Pixel.New
+  nameWithType: Pixel.Pixel
+  nameWithType.vb: Pixel.New
+- uid: projects.Pixel.B
+  name: B
+  href: api/projects.Pixel.html#projects_Pixel_B
+  commentId: F:projects.Pixel.B
+  fullName: projects.Pixel.B
+  nameWithType: Pixel.B
+- uid: projects.Pixel.BI
+  name: BI
+  href: api/projects.Pixel.html#projects_Pixel_BI
+  commentId: P:projects.Pixel.BI
+  fullName: projects.Pixel.BI
+  nameWithType: Pixel.BI
+- uid: projects.Pixel.BI*
+  name: BI
+  href: api/projects.Pixel.html#projects_Pixel_BI_
+  commentId: Overload:projects.Pixel.BI
+  isSpec: "True"
+  fullName: projects.Pixel.BI
+  nameWithType: Pixel.BI
+- uid: projects.Pixel.G
+  name: G
+  href: api/projects.Pixel.html#projects_Pixel_G
+  commentId: F:projects.Pixel.G
+  fullName: projects.Pixel.G
+  nameWithType: Pixel.G
+- uid: projects.Pixel.GI
+  name: GI
+  href: api/projects.Pixel.html#projects_Pixel_GI
+  commentId: P:projects.Pixel.GI
+  fullName: projects.Pixel.GI
+  nameWithType: Pixel.GI
+- uid: projects.Pixel.GI*
+  name: GI
+  href: api/projects.Pixel.html#projects_Pixel_GI_
+  commentId: Overload:projects.Pixel.GI
+  isSpec: "True"
+  fullName: projects.Pixel.GI
+  nameWithType: Pixel.GI
+- uid: projects.Pixel.R
+  name: R
+  href: api/projects.Pixel.html#projects_Pixel_R
+  commentId: F:projects.Pixel.R
+  fullName: projects.Pixel.R
+  nameWithType: Pixel.R
+- uid: projects.Pixel.RI
+  name: RI
+  href: api/projects.Pixel.html#projects_Pixel_RI
+  commentId: P:projects.Pixel.RI
+  fullName: projects.Pixel.RI
+  nameWithType: Pixel.RI
+- uid: projects.Pixel.RI*
+  name: RI
+  href: api/projects.Pixel.html#projects_Pixel_RI_
+  commentId: Overload:projects.Pixel.RI
+  isSpec: "True"
+  fullName: projects.Pixel.RI
+  nameWithType: Pixel.RI
+- uid: projects.Pixel.ToString
+  name: ToString()
+  href: api/projects.Pixel.html#projects_Pixel_ToString
+  commentId: M:projects.Pixel.ToString
+  fullName: projects.Pixel.ToString()
+  nameWithType: Pixel.ToString()
+- uid: projects.Pixel.ToString*
+  name: ToString
+  href: api/projects.Pixel.html#projects_Pixel_ToString_
+  commentId: Overload:projects.Pixel.ToString
+  isSpec: "True"
+  fullName: projects.Pixel.ToString
+  nameWithType: Pixel.ToString
+- uid: projects.PixelJPG
+  name: PixelJPG
+  href: api/projects.PixelJPG.html
+  commentId: T:projects.PixelJPG
+  fullName: projects.PixelJPG
+  nameWithType: PixelJPG
+- uid: projects.PixelJPG.#ctor(System.Byte,System.Byte,System.Byte)
+  name: PixelJPG(byte, byte, byte)
+  href: api/projects.PixelJPG.html#projects_PixelJPG__ctor_System_Byte_System_Byte_System_Byte_
+  commentId: M:projects.PixelJPG.#ctor(System.Byte,System.Byte,System.Byte)
+  name.vb: New(Byte, Byte, Byte)
+  fullName: projects.PixelJPG.PixelJPG(byte, byte, byte)
+  fullName.vb: projects.PixelJPG.New(Byte, Byte, Byte)
+  nameWithType: PixelJPG.PixelJPG(byte, byte, byte)
+  nameWithType.vb: PixelJPG.New(Byte, Byte, Byte)
+- uid: projects.PixelJPG.#ctor*
+  name: PixelJPG
+  href: api/projects.PixelJPG.html#projects_PixelJPG__ctor_
+  commentId: Overload:projects.PixelJPG.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: projects.PixelJPG.PixelJPG
+  fullName.vb: projects.PixelJPG.New
+  nameWithType: PixelJPG.PixelJPG
+  nameWithType.vb: PixelJPG.New
+- uid: projects.PixelJPG.Cb
+  name: Cb
+  href: api/projects.PixelJPG.html#projects_PixelJPG_Cb
+  commentId: F:projects.PixelJPG.Cb
+  fullName: projects.PixelJPG.Cb
+  nameWithType: PixelJPG.Cb
+- uid: projects.PixelJPG.Cr
+  name: Cr
+  href: api/projects.PixelJPG.html#projects_PixelJPG_Cr
+  commentId: F:projects.PixelJPG.Cr
+  fullName: projects.PixelJPG.Cr
+  nameWithType: PixelJPG.Cr
+- uid: projects.PixelJPG.Y
+  name: Y
+  href: api/projects.PixelJPG.html#projects_PixelJPG_Y
+  commentId: F:projects.PixelJPG.Y
+  fullName: projects.PixelJPG.Y
+  nameWithType: PixelJPG.Y
+- uid: projects.Program
+  name: Program
+  href: api/projects.Program.html
+  commentId: T:projects.Program
+  fullName: projects.Program
+  nameWithType: Program
+- uid: projects.Program.convolution1Pixel(projects.Pixel[0:,0:],System.Int32[0:,0:],System.Int32,System.Int32)
+  name: convolution1Pixel(Pixel[,], int[,], int, int)
+  href: api/projects.Program.html#projects_Program_convolution1Pixel_projects_Pixel_0__0___System_Int32_0__0___System_Int32_System_Int32_
+  commentId: M:projects.Program.convolution1Pixel(projects.Pixel[0:,0:],System.Int32[0:,0:],System.Int32,System.Int32)
+  name.vb: convolution1Pixel(Pixel(,), Integer(,), Integer, Integer)
+  fullName: projects.Program.convolution1Pixel(projects.Pixel[,], int[,], int, int)
+  fullName.vb: projects.Program.convolution1Pixel(projects.Pixel(,), Integer(,), Integer, Integer)
+  nameWithType: Program.convolution1Pixel(Pixel[,], int[,], int, int)
+  nameWithType.vb: Program.convolution1Pixel(Pixel(,), Integer(,), Integer, Integer)
+- uid: projects.Program.convolution1Pixel*
+  name: convolution1Pixel
+  href: api/projects.Program.html#projects_Program_convolution1Pixel_
+  commentId: Overload:projects.Program.convolution1Pixel
+  isSpec: "True"
+  fullName: projects.Program.convolution1Pixel
+  nameWithType: Program.convolution1Pixel
+- uid: projects.Program.getFourBinary(System.String)
+  name: getFourBinary(string)
+  href: api/projects.Program.html#projects_Program_getFourBinary_System_String_
+  commentId: M:projects.Program.getFourBinary(System.String)
+  name.vb: getFourBinary(String)
+  fullName: projects.Program.getFourBinary(string)
+  fullName.vb: projects.Program.getFourBinary(String)
+  nameWithType: Program.getFourBinary(string)
+  nameWithType.vb: Program.getFourBinary(String)
+- uid: projects.Program.getFourBinary*
+  name: getFourBinary
+  href: api/projects.Program.html#projects_Program_getFourBinary_
+  commentId: Overload:projects.Program.getFourBinary
+  isSpec: "True"
+  fullName: projects.Program.getFourBinary
+  nameWithType: Program.getFourBinary
+- uid: projects.Program.INTERFACE
+  name: INTERFACE
+  href: api/projects.Program.html#projects_Program_INTERFACE
+  commentId: F:projects.Program.INTERFACE
+  fullName: projects.Program.INTERFACE
+  nameWithType: Program.INTERFACE
+- uid: projects.Program.jpg(projects.Pixel[0:,0:])
+  name: jpg(Pixel[,])
+  href: api/projects.Program.html#projects_Program_jpg_projects_Pixel_0__0___
+  commentId: M:projects.Program.jpg(projects.Pixel[0:,0:])
+  name.vb: jpg(Pixel(,))
+  fullName: projects.Program.jpg(projects.Pixel[,])
+  fullName.vb: projects.Program.jpg(projects.Pixel(,))
+  nameWithType: Program.jpg(Pixel[,])
+  nameWithType.vb: Program.jpg(Pixel(,))
+- uid: projects.Program.jpg*
+  name: jpg
+  href: api/projects.Program.html#projects_Program_jpg_
+  commentId: Overload:projects.Program.jpg
+  isSpec: "True"
+  fullName: projects.Program.jpg
+  nameWithType: Program.jpg
+- uid: projects.Program.Main2
+  name: Main2()
+  href: api/projects.Program.html#projects_Program_Main2
+  commentId: M:projects.Program.Main2
+  fullName: projects.Program.Main2()
+  nameWithType: Program.Main2()
+- uid: projects.Program.Main2*
+  name: Main2
+  href: api/projects.Program.html#projects_Program_Main2_
+  commentId: Overload:projects.Program.Main2
+  isSpec: "True"
+  fullName: projects.Program.Main2
+  nameWithType: Program.Main2
+- uid: projects.Program.mainBinary
+  name: Program.mainBinary
+  href: api/projects.Program.mainBinary.html
+  commentId: T:projects.Program.mainBinary
+  fullName: projects.Program.mainBinary
+  nameWithType: Program.mainBinary
+- uid: projects.Program.mainBinary.#ctor(projects.Pixel)
+  name: mainBinary(Pixel)
+  href: api/projects.Program.mainBinary.html#projects_Program_mainBinary__ctor_projects_Pixel_
+  commentId: M:projects.Program.mainBinary.#ctor(projects.Pixel)
+  name.vb: New(Pixel)
+  fullName: projects.Program.mainBinary.mainBinary(projects.Pixel)
+  fullName.vb: projects.Program.mainBinary.New(projects.Pixel)
+  nameWithType: Program.mainBinary.mainBinary(Pixel)
+  nameWithType.vb: Program.mainBinary.New(Pixel)
+- uid: projects.Program.mainBinary.#ctor*
+  name: mainBinary
+  href: api/projects.Program.mainBinary.html#projects_Program_mainBinary__ctor_
+  commentId: Overload:projects.Program.mainBinary.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: projects.Program.mainBinary.mainBinary
+  fullName.vb: projects.Program.mainBinary.New
+  nameWithType: Program.mainBinary.mainBinary
+  nameWithType.vb: Program.mainBinary.New
+- uid: projects.Program.mainBinary.B
+  name: B
+  href: api/projects.Program.mainBinary.html#projects_Program_mainBinary_B
+  commentId: F:projects.Program.mainBinary.B
+  fullName: projects.Program.mainBinary.B
+  nameWithType: Program.mainBinary.B
+- uid: projects.Program.mainBinary.G
+  name: G
+  href: api/projects.Program.mainBinary.html#projects_Program_mainBinary_G
+  commentId: F:projects.Program.mainBinary.G
+  fullName: projects.Program.mainBinary.G
+  nameWithType: Program.mainBinary.G
+- uid: projects.Program.mainBinary.R
+  name: R
+  href: api/projects.Program.mainBinary.html#projects_Program_mainBinary_R
+  commentId: F:projects.Program.mainBinary.R
+  fullName: projects.Program.mainBinary.R
+  nameWithType: Program.mainBinary.R
+- uid: projects.Program.mainBinaryMatrix(projects.Pixel[0:,0:])
+  name: mainBinaryMatrix(Pixel[,])
+  href: api/projects.Program.html#projects_Program_mainBinaryMatrix_projects_Pixel_0__0___
+  commentId: M:projects.Program.mainBinaryMatrix(projects.Pixel[0:,0:])
+  name.vb: mainBinaryMatrix(Pixel(,))
+  fullName: projects.Program.mainBinaryMatrix(projects.Pixel[,])
+  fullName.vb: projects.Program.mainBinaryMatrix(projects.Pixel(,))
+  nameWithType: Program.mainBinaryMatrix(Pixel[,])
+  nameWithType.vb: Program.mainBinaryMatrix(Pixel(,))
+- uid: projects.Program.mainBinaryMatrix*
+  name: mainBinaryMatrix
+  href: api/projects.Program.html#projects_Program_mainBinaryMatrix_
+  commentId: Overload:projects.Program.mainBinaryMatrix
+  isSpec: "True"
+  fullName: projects.Program.mainBinaryMatrix
+  nameWithType: Program.mainBinaryMatrix
+- uid: projects.Program.MultiplicationMatriceint(System.Double[0:,0:],System.Double[0:,0:])
+  name: MultiplicationMatriceint(double[,], double[,])
+  href: api/projects.Program.html#projects_Program_MultiplicationMatriceint_System_Double_0__0___System_Double_0__0___
+  commentId: M:projects.Program.MultiplicationMatriceint(System.Double[0:,0:],System.Double[0:,0:])
+  name.vb: MultiplicationMatriceint(Double(,), Double(,))
+  fullName: projects.Program.MultiplicationMatriceint(double[,], double[,])
+  fullName.vb: projects.Program.MultiplicationMatriceint(Double(,), Double(,))
+  nameWithType: Program.MultiplicationMatriceint(double[,], double[,])
+  nameWithType.vb: Program.MultiplicationMatriceint(Double(,), Double(,))
+- uid: projects.Program.MultiplicationMatriceint*
+  name: MultiplicationMatriceint
+  href: api/projects.Program.html#projects_Program_MultiplicationMatriceint_
+  commentId: Overload:projects.Program.MultiplicationMatriceint
+  isSpec: "True"
+  fullName: projects.Program.MultiplicationMatriceint
+  nameWithType: Program.MultiplicationMatriceint
+- uid: projects.Program.PROJECT_PATH
+  name: PROJECT_PATH
+  href: api/projects.Program.html#projects_Program_PROJECT_PATH
+  commentId: F:projects.Program.PROJECT_PATH
+  fullName: projects.Program.PROJECT_PATH
+  nameWithType: Program.PROJECT_PATH
+- uid: projects.Program.Rotation(System.Single)
+  name: Rotation(float)
+  href: api/projects.Program.html#projects_Program_Rotation_System_Single_
+  commentId: M:projects.Program.Rotation(System.Single)
+  name.vb: Rotation(Single)
+  fullName: projects.Program.Rotation(float)
+  fullName.vb: projects.Program.Rotation(Single)
+  nameWithType: Program.Rotation(float)
+  nameWithType.vb: Program.Rotation(Single)
+- uid: projects.Program.Rotation*
+  name: Rotation
+  href: api/projects.Program.html#projects_Program_Rotation_
+  commentId: Overload:projects.Program.Rotation
+  isSpec: "True"
+  fullName: projects.Program.Rotation
+  nameWithType: Program.Rotation
+- uid: projects.Program.Spaces(System.Char,System.Int32)
+  name: Spaces(char, int)
+  href: api/projects.Program.html#projects_Program_Spaces_System_Char_System_Int32_
+  commentId: M:projects.Program.Spaces(System.Char,System.Int32)
+  name.vb: Spaces(Char, Integer)
+  fullName: projects.Program.Spaces(char, int)
+  fullName.vb: projects.Program.Spaces(Char, Integer)
+  nameWithType: Program.Spaces(char, int)
+  nameWithType.vb: Program.Spaces(Char, Integer)
+- uid: projects.Program.Spaces*
+  name: Spaces
+  href: api/projects.Program.html#projects_Program_Spaces_
+  commentId: Overload:projects.Program.Spaces
+  isSpec: "True"
+  fullName: projects.Program.Spaces
+  nameWithType: Program.Spaces

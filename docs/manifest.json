@@ -1,0 +1,193 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/thoma/Documents/#03_Ecole/S4/info/projects image/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/projects.BitMap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/projects.BitMap.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/projects.ColorTable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/projects.ColorTable.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/projects.Form1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/projects.Form1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/projects.Fractal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/projects.Fractal.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/projects.Pixel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/projects.Pixel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/projects.PixelJPG.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/projects.PixelJPG.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/projects.Program.mainBinary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/projects.Program.mainBinary.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/projects.Program.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/projects.Program.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/projects.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/projects.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Presentation.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Presentation.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/fractal.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/fractal.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/interface.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/interface.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
