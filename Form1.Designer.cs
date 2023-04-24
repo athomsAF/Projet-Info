@@ -78,6 +78,9 @@
             this.FractalJSeedX = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.JsonFractalSave = new System.Windows.Forms.Button();
+            this.JsonFractalLoad = new System.Windows.Forms.Button();
+            this.FractalJsonList = new System.Windows.Forms.ComboBox();
             this.IsMandelbrot = new System.Windows.Forms.RadioButton();
             this.IsJulia = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -125,6 +128,9 @@
             this.ConvCustom12 = new System.Windows.Forms.TextBox();
             this.ConvCustom11 = new System.Windows.Forms.TextBox();
             this.ConvTypeBox = new System.Windows.Forms.GroupBox();
+            this.ConvolutionJsonSave = new System.Windows.Forms.Button();
+            this.ConvolutionJsonLoad = new System.Windows.Forms.Button();
+            this.JsonConvolutionList = new System.Windows.Forms.ComboBox();
             this.IsConvCustom = new System.Windows.Forms.RadioButton();
             this.IsOther = new System.Windows.Forms.RadioButton();
             this.IsEmbossing = new System.Windows.Forms.RadioButton();
@@ -598,7 +604,7 @@
             this.groupBox5.Controls.Add(this.IsRainbow);
             this.groupBox5.Controls.Add(this.IsCustom);
             this.groupBox5.Controls.Add(this.IsGrayscale);
-            this.groupBox5.Location = new System.Drawing.Point(6, 467);
+            this.groupBox5.Location = new System.Drawing.Point(6, 494);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(276, 128);
             this.groupBox5.TabIndex = 22;
@@ -665,7 +671,7 @@
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.FractalJSeedY);
             this.groupBox4.Controls.Add(this.FractalJSeedX);
-            this.groupBox4.Location = new System.Drawing.Point(6, 373);
+            this.groupBox4.Location = new System.Drawing.Point(6, 400);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(276, 88);
             this.groupBox4.TabIndex = 23;
@@ -714,7 +720,7 @@
             this.groupBox3.Controls.Add(this.FractalMMoveY);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Location = new System.Drawing.Point(6, 276);
+            this.groupBox3.Location = new System.Drawing.Point(6, 305);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(276, 91);
             this.groupBox3.TabIndex = 22;
@@ -723,14 +729,45 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.JsonFractalSave);
+            this.groupBox2.Controls.Add(this.JsonFractalLoad);
+            this.groupBox2.Controls.Add(this.FractalJsonList);
             this.groupBox2.Controls.Add(this.IsMandelbrot);
             this.groupBox2.Controls.Add(this.IsJulia);
             this.groupBox2.Location = new System.Drawing.Point(6, 44);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(276, 61);
+            this.groupBox2.Size = new System.Drawing.Size(276, 90);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Fractal Type";
+            // 
+            // JsonFractalSave
+            // 
+            this.JsonFractalSave.Location = new System.Drawing.Point(166, 53);
+            this.JsonFractalSave.Name = "JsonFractalSave";
+            this.JsonFractalSave.Size = new System.Drawing.Size(56, 23);
+            this.JsonFractalSave.TabIndex = 24;
+            this.JsonFractalSave.Text = "Save";
+            this.JsonFractalSave.UseVisualStyleBackColor = true;
+            this.JsonFractalSave.Click += new System.EventHandler(this.JsonFractalSave_Click);
+            // 
+            // JsonFractalLoad
+            // 
+            this.JsonFractalLoad.Location = new System.Drawing.Point(104, 53);
+            this.JsonFractalLoad.Name = "JsonFractalLoad";
+            this.JsonFractalLoad.Size = new System.Drawing.Size(56, 23);
+            this.JsonFractalLoad.TabIndex = 23;
+            this.JsonFractalLoad.Text = "Load";
+            this.JsonFractalLoad.UseVisualStyleBackColor = true;
+            this.JsonFractalLoad.Click += new System.EventHandler(this.JsonFractalLoad_Click);
+            // 
+            // FractalJsonList
+            // 
+            this.FractalJsonList.FormattingEnabled = true;
+            this.FractalJsonList.Location = new System.Drawing.Point(6, 51);
+            this.FractalJsonList.Name = "FractalJsonList";
+            this.FractalJsonList.Size = new System.Drawing.Size(92, 25);
+            this.FractalJsonList.TabIndex = 22;
             // 
             // IsMandelbrot
             // 
@@ -764,7 +801,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.FractalZoom);
-            this.groupBox1.Location = new System.Drawing.Point(6, 111);
+            this.groupBox1.Location = new System.Drawing.Point(6, 140);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(276, 159);
             this.groupBox1.TabIndex = 7;
@@ -1150,7 +1187,7 @@
             this.ConvCustomBox.Controls.Add(this.ConvCustom13);
             this.ConvCustomBox.Controls.Add(this.ConvCustom12);
             this.ConvCustomBox.Controls.Add(this.ConvCustom11);
-            this.ConvCustomBox.Location = new System.Drawing.Point(14, 131);
+            this.ConvCustomBox.Location = new System.Drawing.Point(14, 192);
             this.ConvCustomBox.Name = "ConvCustomBox";
             this.ConvCustomBox.Size = new System.Drawing.Size(280, 168);
             this.ConvCustomBox.TabIndex = 7;
@@ -1222,6 +1259,9 @@
             // 
             // ConvTypeBox
             // 
+            this.ConvTypeBox.Controls.Add(this.ConvolutionJsonSave);
+            this.ConvTypeBox.Controls.Add(this.ConvolutionJsonLoad);
+            this.ConvTypeBox.Controls.Add(this.JsonConvolutionList);
             this.ConvTypeBox.Controls.Add(this.IsConvCustom);
             this.ConvTypeBox.Controls.Add(this.IsOther);
             this.ConvTypeBox.Controls.Add(this.IsEmbossing);
@@ -1229,10 +1269,38 @@
             this.ConvTypeBox.Controls.Add(this.IsBlur);
             this.ConvTypeBox.Location = new System.Drawing.Point(14, 41);
             this.ConvTypeBox.Name = "ConvTypeBox";
-            this.ConvTypeBox.Size = new System.Drawing.Size(280, 84);
+            this.ConvTypeBox.Size = new System.Drawing.Size(280, 145);
             this.ConvTypeBox.TabIndex = 6;
             this.ConvTypeBox.TabStop = false;
             this.ConvTypeBox.Text = "Convolution Type";
+            // 
+            // ConvolutionJsonSave
+            // 
+            this.ConvolutionJsonSave.Location = new System.Drawing.Point(175, 107);
+            this.ConvolutionJsonSave.Name = "ConvolutionJsonSave";
+            this.ConvolutionJsonSave.Size = new System.Drawing.Size(56, 23);
+            this.ConvolutionJsonSave.TabIndex = 27;
+            this.ConvolutionJsonSave.Text = "Save";
+            this.ConvolutionJsonSave.UseVisualStyleBackColor = true;
+            this.ConvolutionJsonSave.Click += new System.EventHandler(this.ConvolutionJsonSave_Click);
+            // 
+            // ConvolutionJsonLoad
+            // 
+            this.ConvolutionJsonLoad.Location = new System.Drawing.Point(113, 107);
+            this.ConvolutionJsonLoad.Name = "ConvolutionJsonLoad";
+            this.ConvolutionJsonLoad.Size = new System.Drawing.Size(56, 23);
+            this.ConvolutionJsonLoad.TabIndex = 26;
+            this.ConvolutionJsonLoad.Text = "Load";
+            this.ConvolutionJsonLoad.UseVisualStyleBackColor = true;
+            this.ConvolutionJsonLoad.Click += new System.EventHandler(this.ConvolutionJsonLoad_Click);
+            // 
+            // JsonConvolutionList
+            // 
+            this.JsonConvolutionList.FormattingEnabled = true;
+            this.JsonConvolutionList.Location = new System.Drawing.Point(15, 105);
+            this.JsonConvolutionList.Name = "JsonConvolutionList";
+            this.JsonConvolutionList.Size = new System.Drawing.Size(92, 25);
+            this.JsonConvolutionList.TabIndex = 25;
             // 
             // IsConvCustom
             // 
@@ -1253,6 +1321,7 @@
             this.IsOther.TabIndex = 3;
             this.IsOther.Text = "NOM";
             this.IsOther.UseVisualStyleBackColor = true;
+            this.IsOther.Visible = false;
             // 
             // IsEmbossing
             // 
@@ -1267,7 +1336,7 @@
             // IsBorderDetection
             // 
             this.IsBorderDetection.AutoSize = true;
-            this.IsBorderDetection.Location = new System.Drawing.Point(33, 54);
+            this.IsBorderDetection.Location = new System.Drawing.Point(15, 54);
             this.IsBorderDetection.Name = "IsBorderDetection";
             this.IsBorderDetection.Size = new System.Drawing.Size(125, 21);
             this.IsBorderDetection.TabIndex = 1;
@@ -1320,6 +1389,7 @@
             this.StegDecodeBox.TabIndex = 9;
             this.StegDecodeBox.TabStop = false;
             this.StegDecodeBox.Text = "Decode";
+            this.StegDecodeBox.Visible = false;
             // 
             // StegToUnhide
             // 
@@ -1415,6 +1485,7 @@
             this.IsStegDecode.TabIndex = 1;
             this.IsStegDecode.Text = "Decode";
             this.IsStegDecode.UseVisualStyleBackColor = true;
+            this.IsStegDecode.Visible = false;
             // 
             // IsStegEncode
             // 
@@ -1811,5 +1882,11 @@
         private Label label35;
         private Label label34;
         private Label label33;
+        private Button JsonFractalSave;
+        private Button JsonFractalLoad;
+        public ComboBox FractalJsonList;
+        private Button ConvolutionJsonSave;
+        private Button ConvolutionJsonLoad;
+        public ComboBox JsonConvolutionList;
     }
 }

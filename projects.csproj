@@ -12,4 +12,6 @@
     <Folder Include="imagesOUT\" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties data_1json__JsonSchema="https://citation-file-format.github.io/1.2.0/schema.json" /></VisualStudio></ProjectExtensions>
+
 </Project>

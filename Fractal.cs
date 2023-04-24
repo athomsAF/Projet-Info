@@ -21,9 +21,10 @@ namespace projects
         public static Pixel[,] Mandelbrot(int height, int width, int maxiter = 1000, double zoom = 1, double decalx = 0, double decaly = 0, ColorTable ?colorTable = null)
         {
             // Initialisation of all parameters
+            colorTable = null;
             double realzoom = 4.0 / (zoom * Math.Pow(10, zoom - 1));
 
-            colorTable ??= new ColorTable();
+            colorTable ??= new ColorTable(new Pixel[] { new Pixel(0,0,0), new Pixel(255,255,255), new Pixel(0,0,0) }) ;
 
             Pixel[,] mandelbrot = new Pixel[height, width];
 
@@ -82,10 +83,9 @@ namespace projects
             double zx, zy, tmp;
             int i;
 
-            if (colorTable == null)
-            {
-                colorTable = new ColorTable();
-            }
+            colorTable = null;
+            colorTable ??= new ColorTable(new Pixel[] { new Pixel(0, 0, 0), new Pixel(255, 255, 255) , new Pixel(255, 0, 0), new Pixel(255, 255, 255) });
+
 
             // Loop through the canvas and compute the level of the pixel in the mandelbrot fractal through their iteration count
             for (int row = 0; row < height; row++)

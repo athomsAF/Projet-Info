@@ -23,6 +23,16 @@ namespace projects
             openFileDialog1.InitialDirectory = Program.PROJECT_PATH;
             openFileDialog1.Filter = "Bitmap files (*.bmp)|*.bmp";
             this.textBox1.Hide();
+
+            foreach (string key in Program.DATA["Fractal"].Keys)
+            {
+                this.FractalJsonList.Items.Add(key);
+            }
+
+            foreach (string key in Program.DATA["Convolution"].Keys)
+            {
+                this.JsonConvolutionList.Items.Add(key);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -321,16 +331,26 @@ namespace projects
 
                 BitMap image1 = new BitMap(StegToHide.Text);
                 BitMap image2 = new BitMap(StegSource.Text);
-                image.ImagePixel = BitMap.steganography(image1, image2);
+                image.ImagePixel = BitMap.steganographyEncode(image1, image2);
                 image.FromImageToFile("steganography");
             }
             else if (IsStegDecode.Checked)
             {
-                /*
-                image.convolution(DContours);
-                Console.WriteLine("Running Steganography Decode");
-                image.FromImageToFile("steganography");
-                */
+                BitMap source = new BitMap(StegToUnhide.Text);
+
+                Pixel[,] image1, image2;
+
+                (image1, image2) = BitMap.steganographyDecode(source.ImagePixel);
+
+
+                BitMap STEGDEC1 = new();
+                STEGDEC1.ImagePixel = image1;
+                STEGDEC1.FromImageToFile("steganographydecode1");
+
+                BitMap STEGDEC2 = new();
+                STEGDEC2.ImagePixel = image2;
+                STEGDEC2.FromImageToFile("steganographydecode1");
+
             }
             else
             {
@@ -520,6 +540,64 @@ namespace projects
                 Console.WriteLine("Warning, huffman image not encoded !");
                 this.button12.BackColor = System.Drawing.Color.OrangeRed;
             }
+        }
+
+        private void ConvolutionJsonLoad_Click(object sender, EventArgs e)
+        {
+            double[] conv = DATA["Convolution"][this.JsonConvolutionList.Text];
+
+            if(conv.Length >= 9)
+            {
+                this.ConvCustom11.Text = conv[0].ToString();
+                this.ConvCustom12.Text = conv[1].ToString();
+                this.ConvCustom13.Text = conv[2].ToString();
+                this.ConvCustom21.Text = conv[3].ToString();
+                this.ConvCustom22.Text = conv[4].ToString();
+                this.ConvCustom23.Text = conv[5].ToString();
+                this.ConvCustom31.Text = conv[6].ToString();
+                this.ConvCustom32.Text = conv[7].ToString();
+                this.ConvCustom33.Text = conv[8].ToString();
+            }
+
+        }
+
+        private void ConvolutionJsonSave_Click(object sender, EventArgs e)
+        {
+            double[] conv = new double[] { double.Parse(this.ConvCustom11.Text.ToString()), double.Parse(this.ConvCustom12.Text.ToString()), double.Parse(this.ConvCustom13.Text.ToString()),
+                                        double.Parse(this.ConvCustom21.Text.ToString()), double.Parse(this.ConvCustom22.Text.ToString()), double.Parse(this.ConvCustom23.Text.ToString()),
+                                        double.Parse(this.ConvCustom31.Text.ToString()), double.Parse(this.ConvCustom33.Text.ToString()), double.Parse(this.ConvCustom33.Text.ToString())
+                                    };
+
+            Program.DATA["Convolution"].TryAdd(this.JsonConvolutionList.Text, conv);
+            this.JsonConvolutionList.Items.Add(this.JsonConvolutionList.Text);
+        }
+
+        private void JsonFractalLoad_Click(object sender, EventArgs e)
+        {
+            double[] conv = Program.DATA["Fractal"][this.FractalJsonList.Text];
+
+            if (conv.Length >= 8)
+            {
+                this.FractalHeigth.Text = conv[0].ToString();
+                this.FractalWidth.Text = conv[1].ToString();
+                this.FractalIterations.Text = conv[1].ToString();
+                this.FractalZoom.Text = conv[3].ToString();
+                this.FractalMMoveX.Text = conv[4].ToString();
+                this.FractalMMoveY.Text = conv[5].ToString();
+                this.FractalJSeedX.Text = conv[6].ToString();
+                this.FractalJSeedY.Text = conv[7].ToString();
+            }
+        }
+
+        private void JsonFractalSave_Click(object sender, EventArgs e)
+        {
+            double[] conv = new double[] { double.Parse(this.FractalHeigth.Text.ToString()), double.Parse(  this.FractalWidth.Text.ToString()), double.Parse(this.FractalIterations.Text.ToString()),
+                                        double.Parse(  this.FractalZoom.Text.ToString()), double.Parse(this.FractalMMoveX.Text.ToString()), double.Parse(this.FractalMMoveY.Text.ToString()),
+                                        double.Parse(this.FractalJSeedX.Text.ToString()), double.Parse(this.FractalJSeedY.Text.ToString())};
+
+
+            Program.DATA["Fractal"].TryAdd(this.FractalJsonList.Text,conv);
+            this.FractalJsonList.Items.Add(this.FractalJsonList.Text);
         }
     }
 }

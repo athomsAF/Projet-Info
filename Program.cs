@@ -2,19 +2,38 @@ using static projects.Fractal;
 using static projects.Form1;
 using static projects.BitMap;
 using static projects.Pixel;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Xml;
+using System.Runtime.CompilerServices;
 
 namespace projects
 {
     public static class Program
     {
         public static string PROJECT_PATH = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\"));
-        public static bool INTERFACE = true;
+        public static bool INTERFACE = !false;
+        public static Dictionary<string, Dictionary<string, double[]>> ?DATA;
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+
+            DATA = JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, double[]>>>(File.ReadAllText("../../../data.json"));
+
+            if(DATA == null)
+            {
+                DATA = new Dictionary<string, Dictionary<string, double[]>>();
+            }
+
+            if(DATA.Keys.Count == 0)
+            {
+                DATA["Fractal"] = new Dictionary<string, double[]>();
+                DATA["Convolution"] = new Dictionary<string, double[]>();
+            }
+
             if(INTERFACE)
             {
                 Console.WriteLine(PROJECT_PATH);
@@ -26,6 +45,9 @@ namespace projects
             {
                 Main2();
             }
+
+            var jsonString = JsonSerializer.Serialize(DATA, new JsonSerializerOptions { WriteIndented = true, });
+            File.WriteAllText("../../../data.json", jsonString);
 
         }
         public static void Main2()
@@ -128,9 +150,6 @@ namespace projects
 
             return(newPixel);
         }
-
-
-
 
         public static int[,] MultiplicationMatriceint(double[,] matrice1, double[,] matrice2)
         {
