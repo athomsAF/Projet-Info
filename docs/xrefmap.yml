@@ -266,19 +266,35 @@ references:
   isSpec: "True"
   fullName: projects.BitMap.Size
   nameWithType: BitMap.Size
-- uid: projects.BitMap.steganography(projects.BitMap,projects.BitMap)
-  name: steganography(BitMap, BitMap)
-  href: api/projects.BitMap.html#projects_BitMap_steganography_projects_BitMap_projects_BitMap_
-  commentId: M:projects.BitMap.steganography(projects.BitMap,projects.BitMap)
-  fullName: projects.BitMap.steganography(projects.BitMap, projects.BitMap)
-  nameWithType: BitMap.steganography(BitMap, BitMap)
-- uid: projects.BitMap.steganography*
-  name: steganography
-  href: api/projects.BitMap.html#projects_BitMap_steganography_
-  commentId: Overload:projects.BitMap.steganography
+- uid: projects.BitMap.steganographyDecode(projects.Pixel[0:,0:])
+  name: steganographyDecode(Pixel[,])
+  href: api/projects.BitMap.html#projects_BitMap_steganographyDecode_projects_Pixel_0__0___
+  commentId: M:projects.BitMap.steganographyDecode(projects.Pixel[0:,0:])
+  name.vb: steganographyDecode(Pixel(,))
+  fullName: projects.BitMap.steganographyDecode(projects.Pixel[,])
+  fullName.vb: projects.BitMap.steganographyDecode(projects.Pixel(,))
+  nameWithType: BitMap.steganographyDecode(Pixel[,])
+  nameWithType.vb: BitMap.steganographyDecode(Pixel(,))
+- uid: projects.BitMap.steganographyDecode*
+  name: steganographyDecode
+  href: api/projects.BitMap.html#projects_BitMap_steganographyDecode_
+  commentId: Overload:projects.BitMap.steganographyDecode
   isSpec: "True"
-  fullName: projects.BitMap.steganography
-  nameWithType: BitMap.steganography
+  fullName: projects.BitMap.steganographyDecode
+  nameWithType: BitMap.steganographyDecode
+- uid: projects.BitMap.steganographyEncode(projects.BitMap,projects.BitMap)
+  name: steganographyEncode(BitMap, BitMap)
+  href: api/projects.BitMap.html#projects_BitMap_steganographyEncode_projects_BitMap_projects_BitMap_
+  commentId: M:projects.BitMap.steganographyEncode(projects.BitMap,projects.BitMap)
+  fullName: projects.BitMap.steganographyEncode(projects.BitMap, projects.BitMap)
+  nameWithType: BitMap.steganographyEncode(BitMap, BitMap)
+- uid: projects.BitMap.steganographyEncode*
+  name: steganographyEncode
+  href: api/projects.BitMap.html#projects_BitMap_steganographyEncode_
+  commentId: Overload:projects.BitMap.steganographyEncode
+  isSpec: "True"
+  fullName: projects.BitMap.steganographyEncode
+  nameWithType: BitMap.steganographyEncode
 - uid: projects.BitMap.Type
   name: Type
   href: api/projects.BitMap.html#projects_BitMap_Type
@@ -382,6 +398,18 @@ references:
   isSpec: "True"
   fullName: projects.Form1.Dispose
   nameWithType: Form1.Dispose
+- uid: projects.Form1.FractalJsonList
+  name: FractalJsonList
+  href: api/projects.Form1.html#projects_Form1_FractalJsonList
+  commentId: F:projects.Form1.FractalJsonList
+  fullName: projects.Form1.FractalJsonList
+  nameWithType: Form1.FractalJsonList
+- uid: projects.Form1.JsonConvolutionList
+  name: JsonConvolutionList
+  href: api/projects.Form1.html#projects_Form1_JsonConvolutionList
+  commentId: F:projects.Form1.JsonConvolutionList
+  fullName: projects.Form1.JsonConvolutionList
+  nameWithType: Form1.JsonConvolutionList
 - uid: projects.Fractal
   name: Fractal
   href: api/projects.Fractal.html
@@ -598,6 +626,12 @@ references:
   isSpec: "True"
   fullName: projects.Program.convolution1Pixel
   nameWithType: Program.convolution1Pixel
+- uid: projects.Program.DATA
+  name: DATA
+  href: api/projects.Program.html#projects_Program_DATA
+  commentId: F:projects.Program.DATA
+  fullName: projects.Program.DATA
+  nameWithType: Program.DATA
 - uid: projects.Program.getFourBinary(System.String)
   name: getFourBinary(string)
   href: api/projects.Program.html#projects_Program_getFourBinary_System_String_
@@ -762,3 +796,51 @@ references:
   isSpec: "True"
   fullName: projects.Program.Spaces
   nameWithType: Program.Spaces
+- uid: projects.xUnitTest
+  name: xUnitTest
+  href: api/projects.xUnitTest.html
+  commentId: T:projects.xUnitTest
+  fullName: projects.xUnitTest
+  nameWithType: xUnitTest
+- uid: projects.xUnitTest.Test1
+  name: Test1()
+  href: api/projects.xUnitTest.html#projects_xUnitTest_Test1
+  commentId: M:projects.xUnitTest.Test1
+  fullName: projects.xUnitTest.Test1()
+  nameWithType: xUnitTest.Test1()
+- uid: projects.xUnitTest.Test1*
+  name: Test1
+  href: api/projects.xUnitTest.html#projects_xUnitTest_Test1_
+  commentId: Overload:projects.xUnitTest.Test1
+  isSpec: "True"
+  fullName: projects.xUnitTest.Test1
+  nameWithType: xUnitTest.Test1
+- uid: projects.xUnitTest.TestImageCreation
+  name: TestImageCreation()
+  href: api/projects.xUnitTest.html#projects_xUnitTest_TestImageCreation
+  commentId: M:projects.xUnitTest.TestImageCreation
+  fullName: projects.xUnitTest.TestImageCreation()
+  nameWithType: xUnitTest.TestImageCreation()
+- uid: projects.xUnitTest.TestImageCreation*
+  name: TestImageCreation
+  href: api/projects.xUnitTest.html#projects_xUnitTest_TestImageCreation_
+  commentId: Overload:projects.xUnitTest.TestImageCreation
+  isSpec: "True"
+  fullName: projects.xUnitTest.TestImageCreation
+  nameWithType: xUnitTest.TestImageCreation
+- uid: projects.xUnitTest.testRotation(System.Int32)
+  name: testRotation(int)
+  href: api/projects.xUnitTest.html#projects_xUnitTest_testRotation_System_Int32_
+  commentId: M:projects.xUnitTest.testRotation(System.Int32)
+  name.vb: testRotation(Integer)
+  fullName: projects.xUnitTest.testRotation(int)
+  fullName.vb: projects.xUnitTest.testRotation(Integer)
+  nameWithType: xUnitTest.testRotation(int)
+  nameWithType.vb: xUnitTest.testRotation(Integer)
+- uid: projects.xUnitTest.testRotation*
+  name: testRotation
+  href: api/projects.xUnitTest.html#projects_xUnitTest_testRotation_
+  commentId: Overload:projects.xUnitTest.testRotation
+  isSpec: "True"
+  fullName: projects.xUnitTest.testRotation
+  nameWithType: xUnitTest.testRotation

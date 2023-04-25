@@ -95,6 +95,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/projects.xUnitTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/projects.xUnitTest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/projects.yml",
       "output": {
         ".html": {
