@@ -1389,7 +1389,6 @@
             this.StegDecodeBox.TabIndex = 9;
             this.StegDecodeBox.TabStop = false;
             this.StegDecodeBox.Text = "Decode";
-            this.StegDecodeBox.Visible = false;
             // 
             // StegToUnhide
             // 
@@ -1485,7 +1484,6 @@
             this.IsStegDecode.TabIndex = 1;
             this.IsStegDecode.Text = "Decode";
             this.IsStegDecode.UseVisualStyleBackColor = true;
-            this.IsStegDecode.Visible = false;
             // 
             // IsStegEncode
             // 

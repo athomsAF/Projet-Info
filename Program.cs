@@ -132,7 +132,7 @@ namespace projects
             int R=0, G=0, B=0;
             for (int i=-1;i<=1;i++){
                 for (int j=-1;j<=1;j++){
-                    if (j+y>=0 && j+y<image.GetLength(0) && i+x>=0 && i+x<image.GetLength(1)){
+                    if (j+y>=0 && i+x<image.GetLength(0) && i+x>=0 && j+y<image.GetLength(1)){
                         R += image[i+x,j+y].RI * matrice[i+1,j+1];
                         G += image[i+x,j+y].GI * matrice[i+1,j+1];
                         B += image[i+x,j+y].BI * matrice[i+1,j+1];
@@ -233,6 +233,46 @@ namespace projects
                 R = Convert.ToString(pixel.B, 2);
                 R = getFourBinary(R);
             }
+        }
+
+        public static string getFourLastBinary(string str)
+        {
+            int len = str.Length;
+            for (int i = 0; i <= 7 - len; i++)
+            {
+                str = "0" + str;
+            }
+            return (new string( str.Skip(4).Take(4).ToArray())) ;
+        }
+
+        public struct LastBinary
+        {
+            public string R;
+            public string G;
+            public string B;
+            public LastBinary(Pixel pixel)
+            {
+                B = Convert.ToString(pixel.R, 2);
+                B = getFourLastBinary(B);
+                G = Convert.ToString(pixel.G, 2);
+                G = getFourLastBinary(G);
+                R = Convert.ToString(pixel.B, 2);
+                R = getFourLastBinary(R);
+            }
+        }
+
+        public static LastBinary[,] LastBinaryMatrix(Pixel[,] image)
+        { 
+            //for all element in image add 1
+            LastBinary[,] fimage = new LastBinary[image.GetLength(0), image.GetLength(1)];
+            for (int i = 0; i < image.GetLength(0); i++)
+            {
+                for (int j = 0; j < image.GetLength(1); j++)
+                {
+                    fimage[i, j] = new LastBinary(image[i, j]);
+                }
+            }
+            return fimage;
         }
     }
 }

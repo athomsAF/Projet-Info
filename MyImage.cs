@@ -180,9 +180,9 @@ namespace projects
                 for (int col = 0; col < Dimensions[1]; col++)
                 {
 
-                    data.Add(this.ImagePixel[Dimensions[0] - row - 1, col].B);
-                    data.Add(this.ImagePixel[Dimensions[0] - row - 1, col].G);
                     data.Add(this.ImagePixel[Dimensions[0] - row - 1, col].R);
+                    data.Add(this.ImagePixel[Dimensions[0] - row - 1, col].G);
+                    data.Add(this.ImagePixel[Dimensions[0] - row - 1, col].B);
 
                 }
 
@@ -431,9 +431,9 @@ namespace projects
                     {
                         steganographyImage[i, j] = new Pixel();
 
-                        steganographyImage[i, j].R = (byte)Convert.ToInt32((image1Binary[i, j].R + image2Binary[i, j].R).ToString(), 2);
+                        steganographyImage[i, j].B = (byte)Convert.ToInt32((image1Binary[i, j].R + image2Binary[i, j].R).ToString(), 2);
                         steganographyImage[i, j].G = (byte)Convert.ToInt32((image1Binary[i, j].G + image2Binary[i, j].G).ToString(), 2);
-                        steganographyImage[i, j].B = (byte)Convert.ToInt32((image1Binary[i, j].B + image2Binary[i, j].B).ToString(), 2);
+                        steganographyImage[i, j].R = (byte)Convert.ToInt32((image1Binary[i, j].B + image2Binary[i, j].B).ToString(), 2);
                     }
                 }
                 return steganographyImage;
@@ -443,6 +443,7 @@ namespace projects
         public static (Pixel[,], Pixel[,]) steganographyDecode(Pixel[,] image)
         {
 
+            Program.LastBinary[,] imageBinaryLast = Program.LastBinaryMatrix(image);
             Program.mainBinary[,] image1Binary = Program.mainBinaryMatrix(image);
 
             Pixel[,] steganographyImage1 = new Pixel[image1Binary.GetLength(0), image1Binary.GetLength(1)];
@@ -452,9 +453,9 @@ namespace projects
             {
                 for (int j = 0; j < image1Binary.GetLength(1); j++)
                 {
-                    (string, string) separationPixelR = (new string(image1Binary[i, j].R.Take(4).ToArray()), new string(image1Binary[i, j].R.Skip(4).ToArray()));
-                    (string, string) separationPixelG = (new string(image1Binary[i, j].G.Take(4).ToArray()), new string(image1Binary[i, j].G.Skip(4).ToArray()));
-                    (string, string) separationPixelB = (new string(image1Binary[i, j].B.Take(4).ToArray()), new string(image1Binary[i, j].B.Skip(4).ToArray()));
+                    (string, string) separationPixelR = (new string(image1Binary[i, j].R.ToArray()), new string(imageBinaryLast[i, j].R.ToArray()));
+                    (string, string) separationPixelG = (new string(image1Binary[i, j].G.ToArray()), new string(imageBinaryLast[i, j].G.ToArray()));
+                    (string, string) separationPixelB = (new string(image1Binary[i, j].B.ToArray()), new string(imageBinaryLast[i, j].B.ToArray()));
 
                     steganographyImage1[i, j] = new Pixel();
                     steganographyImage2[i, j] = new Pixel();
@@ -475,9 +476,9 @@ namespace projects
         public void convolution(int[,] matrice)
         {
             Pixel[,] newImage = new Pixel[this.ImagePixel.GetLength(0), this.ImagePixel.GetLength(1)];
-            for (int j = 0; j < this.ImagePixel.GetLength(0); j++)
+            for (int j = 0; j < this.ImagePixel.GetLength(1); j++)
             {
-                for (int i = 0; i < this.ImagePixel.GetLength(1); i++)
+                for (int i = 0; i < this.ImagePixel.GetLength(0); i++)
                 {
                     newImage[i, j] = Program.convolution1Pixel(this.ImagePixel, matrice, i, j);
                 }
