@@ -21,7 +21,6 @@ namespace projects
         public static Pixel[,] Mandelbrot(int height, int width, int maxiter = 1000, double zoom = 1, double decalx = 0, double decaly = 0, ColorTable ?colorTable = null)
         {
             // Initialisation of all parameters
-            colorTable = null;
             double realzoom = 4.0 / (zoom * Math.Pow(10, zoom - 1));
 
             colorTable ??= new ColorTable(new Pixel[] { new Pixel(0,0,0), new Pixel(255,255,255), new Pixel(0,0,0) }) ;
@@ -83,7 +82,6 @@ namespace projects
             double zx, zy, tmp;
             int i;
 
-            colorTable = null;
             colorTable ??= new ColorTable(new Pixel[] { new Pixel(0, 0, 0), new Pixel(255, 255, 255) , new Pixel(255, 0, 0), new Pixel(255, 255, 255) });
 
 
